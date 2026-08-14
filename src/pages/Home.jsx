@@ -4,7 +4,7 @@ import {
   Clock3, FileSearch, Globe2, Leaf, Menu, Network, Search, Send,
   ShieldCheck, Sprout, Users
 } from "lucide-react";
-import homeBg from "../assets";
+import homeBg from "../assets/images/homeBg.png";
 import goal from "../assets/images/goal.png";
 
 const green = "#2f8b2f";
@@ -51,12 +51,6 @@ export default function Home() {
       @media(max-width:760px){.wrap{width:min(100% - 28px,620px)}.nav{height:76px}.submit{display:none}.brand-mark{font-size:34px}.hero{min-height:auto;background-position:68% center;position:relative}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,#fffffff2 62%,#ffffff70)}.hero-inner{position:relative;padding:46px 0}.hero-copy{width:100%;max-width:560px}.hero h1{font-size:36px}.trust-row{grid-template-columns:repeat(2,1fr);gap:18px}.trust-item{border:0;padding:0}.actions{gap:10px;flex-direction:column;align-items:stretch}.stats{grid-template-columns:repeat(2,1fr);gap:25px;margin-top:0}.stat:nth-child(2){border:0}.reason-grid{grid-template-columns:repeat(2,1fr)}.conference-grid{grid-template-columns:1fr}.feature-grid{grid-template-columns:repeat(2,1fr);gap:28px}.feature:nth-child(2){border:0}.footer-grid{grid-template-columns:1fr}.footer-col{border:0;padding:0}.sdg-strip{grid-template-columns:80px 1fr}.sdg-wheel{width:80px;height:80px}}
       @media(max-width:480px){.hero h1{font-size:31px}.lead{font-size:14px}.stats{grid-template-columns:1fr;padding:25px}.stat,.stat:nth-child(2){border:0;padding:0}.reason-grid{grid-template-columns:1fr}.reason{min-height:0}.sdg-strip{grid-template-columns:1fr;text-align:center}.sdg-wheel{margin:auto}.conference-head{align-items:flex-start}.feature-grid{grid-template-columns:1fr}.feature{border:0!important;padding:0}.newsletter{flex-direction:column;gap:8px}.newsletter input,.newsletter button{border-radius:4px;padding:11px}.footer-grid{gap:25px}}
     `}</style>
-
-    <header className="wrap nav">
-      <a className="brand" href="#"><div className="brand-mark">i<span>c</span></div><div className="brand-name">INNOVATION</div><div className="brand-sub">CONFERENCE · IDEAS. RESEARCH. IMPACT.</div></a>
-      <nav className="navlinks"><a href="#">Home</a><a className="drop" href="#">Conferences <ChevronDown size={13}/></a><a className="drop" href="#">Journals & Proceedings <ChevronDown size={13}/></a><a className="drop" href="#">For Authors <ChevronDown size={13}/></a><a className="drop" href="#">About Us <ChevronDown size={13}/></a><a href="#">SDG Impact</a></nav>
-      <a href="#" className="submit">Submit Your Paper <Send size={17}/></a><Menu className="mobile-menu"/>
-    </header>
 
     <section className="hero"><div className="wrap hero-inner"><motion.div className="hero-copy" initial={{opacity:0,x:-38}} animate={{opacity:1,x:0}} transition={{duration:.7}}>
       <h1>High Quality Conferences.<br/>Scopus Indexed.<br/><span>Global Impact.</span></h1>
