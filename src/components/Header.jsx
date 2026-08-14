@@ -343,10 +343,10 @@ export default function Header() {
       </header>
 
      
-      <div
-        className="h-[90px] shrink-0 lg:h-[116px]"
-        aria-hidden="true"
-      />
+     <div
+  className="h-[90px] shrink-0 lg:h-[86px]"
+  aria-hidden="true"
+/>
 
       {/* =========================================================
           MOBILE BACKDROP

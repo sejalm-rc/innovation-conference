@@ -39,8 +39,6 @@ import sdg16 from "../assets/img/sd16.png";
 import sdg17 from "../assets/img/sd17.png";
 import sdgLogo from "../assets/img/sd18.png";
 
-
-
 const trust = [
   [ShieldCheck, "Scopus Indexed", "Conferences & Proceedings"],
   [Users, "Rigorous Peer Review", "& High Quality Standards"],
@@ -173,7 +171,7 @@ export default function Home() {
             transition={{ duration: 0.7 }}
             className="max-w-[555px]"
           >
-            <h1 className="text-[36px] font-[600] leading-[1.12]  tracking-tight sm:text-[40px]">
+            <h1 className="text-[34px] font-[600] leading-[1.12]  tracking-tight sm:text-[38px]">
               High Quality Conferences.
               <br />
               Scopus Indexed.
@@ -185,29 +183,27 @@ export default function Home() {
               high quality Scopus indexed conferences, proceedings and journals
               driving sustainable development worldwide.
             </p>
-           <div className="mt-7 grid grid-cols-2 gap-y-2 text-center sm:grid-cols-4 sm:gap-0">
-  {trust.map(([Icon, title, text], i) => (
-    <motion.div
-      key={title}
-      whileHover={{ y: -5 }}
-      className={`flex min-h-[108px] flex-col items-center px-2 text-center sm:border-r sm:border-slate-200 ${
-        i === 0 ? "sm:pl-0" : ""
-      } ${i === 3 ? "sm:border-r-0" : ""}`}
-    >
-      <Icon
-        size={31}
-        strokeWidth={1.6}
-        className="mb-2 text-[#318b32]"
-      />
+            <div className="mt-7 grid grid-cols-2 gap-y-2 text-center sm:grid-cols-4 sm:gap-0">
+              {trust.map(([Icon, title, text], i) => (
+                <motion.div
+                  key={title}
+                  whileHover={{ y: -5 }}
+                  className={`flex min-h-[108px] flex-col items-center px-2 text-center sm:border-r sm:border-slate-200 ${
+                    i === 0 ? "sm:pl-0" : ""
+                  } ${i === 3 ? "sm:border-r-0" : ""}`}
+                >
+                  <Icon
+                    size={31}
+                    strokeWidth={1.6}
+                    className="mb-2 text-[#318b32]"
+                  />
 
-      <b className="block text-[11px] leading-5">{title}</b>
+                  <b className="block text-[11px] leading-5">{title}</b>
 
-      <span className="block text-[11px] leading-5">
-        {text}
-      </span>
-    </motion.div>
-  ))}
-</div>
+                  <span className="block text-[11px] leading-5">{text}</span>
+                </motion.div>
+              ))}
+            </div>
             <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:gap-7">
               <a
                 href="#"
@@ -227,44 +223,44 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      
-  {/* ==================== STATISTICS SECTION ==================== */}
-<section className="relative z-10">
-  <motion.div
-    {...show}
-    transition={{ duration: 0.55 }}
-    className="mx-auto grid w-[calc(100%-40px)] max-w-[1170px] grid-cols-1 gap-6 rounded-xl bg-gradient-to-r from-[#082f63] to-[#004272] px-6 py-6 text-white shadow-xl sm:w-[calc(100%-64px)] sm:grid-cols-2 sm:px-8 lg:grid-cols-4 lg:gap-0 lg:px-10 xl:w-full"
-  >
-    {stats.map(([Icon, value, text], i) => (
-      <motion.div
-        key={value}
-        whileHover={{ y: -4 }}
-        transition={{ duration: 0.25 }}
-        className={`flex min-h-[75px] items-center justify-center gap-4 px-3 text-left sm:justify-start lg:min-h-[62px] lg:border-r lg:border-white/30 lg:px-8 ${
-          i === 0 ? "lg:pl-0" : ""
-        } ${i === 3 ? "lg:border-r-0 lg:pr-0" : ""}`}
-      >
-        {/* Statistics icon */}
-        <Icon
-          size={40}
-          strokeWidth={1.5}
-          className="shrink-0 text-white"
-        />
 
-        {/* Statistics content */}
-        <div className="w-full max-w-[145px]">
-          <strong className="block text-[19px] font-[550] leading-tight text-[#73d637]">
-            {value}
-          </strong>
+      {/* ==================== STATISTICS SECTION ==================== */}
+      <section className="relative z-10">
+        <motion.div
+          {...show}
+          transition={{ duration: 0.55 }}
+          className="mx-auto grid w-[calc(100%-40px)] max-w-[1170px] grid-cols-1 gap-6 rounded-xl bg-gradient-to-r from-[#082f63] to-[#004272] px-6 py-6 text-white shadow-xl sm:w-[calc(100%-64px)] sm:grid-cols-2 sm:px-8 lg:grid-cols-4 lg:gap-0 lg:px-10 xl:w-full"
+        >
+          {stats.map(([Icon, value, text], i) => (
+            <motion.div
+              key={value}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.25 }}
+              className={`flex min-h-[75px] items-center justify-center gap-4 px-3 text-left sm:justify-start lg:min-h-[62px] lg:border-r lg:border-white/30 lg:px-8 ${
+                i === 0 ? "lg:pl-0" : ""
+              } ${i === 3 ? "lg:border-r-0 lg:pr-0" : ""}`}
+            >
+              {/* Statistics icon */}
+              <Icon
+                size={40}
+                strokeWidth={1.5}
+                className="shrink-0 text-white"
+              />
 
-          <span className="mt-1 block text-[11px] leading-[1.65] text-white">
-            {text}
-          </span>
-        </div>
-      </motion.div>
-    ))}
-  </motion.div>
-</section>
+              {/* Statistics content */}
+              <div className="w-full max-w-[145px]">
+                <strong className="block text-[19px] font-[550] leading-tight text-[#73d637]">
+                  {value}
+                </strong>
+
+                <span className="mt-1 block text-[11px] leading-[1.65] text-white">
+                  {text}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
       {/* ==================== WHY CHOOSE US SECTION ==================== */}
       <section className="mx-auto max-w-[1170px] px-5 pb-7 pt-7 sm:px-8 lg:px-10 xl:px-0">
         <h2 className="text-center text-[22px] font-[550]">
@@ -294,82 +290,77 @@ export default function Home() {
         </div>
       </section>
       {/* ==================== SDG CTA SECTION ==================== */}
-<motion.section
-  {...show}
-  transition={{ duration: 0.6 }}
-  className="mx-auto mb-5 w-[calc(100%-32px)] max-w-[1170px] overflow-hidden rounded-xl bg-[#f4f7f4] px-4 py-4 shadow-sm sm:px-5"
->
-  <div className="grid grid-cols-1 items-center gap-5 lg:grid-cols-[110px_315px_1fr] lg:gap-4">
-    {/* Left SDG goal image */}
-    <motion.div
-      whileHover={{ scale: 1.05, rotate: 2 }}
-      transition={{ duration: 0.3 }}
-      className="flex items-center justify-center"
-    >
-      <img
-        src={goal}
-        alt="Sustainable Development Goals"
-        className="h-[105px] w-[105px] object-contain sm:h-[112px] sm:w-[112px]"
-      />
-    </motion.div>
-
-    {/* Middle text content */}
-    <div className="text-center lg:text-left">
-      <h2 className="text-[15px] font-bold leading-snug text-[#2d8733] sm:text-[16px]">
-        Driving Research for a Sustainable World
-      </h2>
-
-      <p className="mx-auto mt-2 max-w-[310px] text-[10.5px] leading-[1.65] text-[#1c3048] lg:mx-0">
-        Our conferences and publications support all 17 Sustainable Development
-        Goals of the United Nations.
-      </p>
-
-      <a
-        href="#"
-        className="mt-3 inline-flex min-h-[35px] items-center justify-center gap-2 rounded-md border border-[#8099b7] bg-white px-4 text-[10px] font-bold text-[#082f63] transition duration-300 hover:-translate-y-1 hover:border-[#318b32] hover:text-[#318b32] hover:shadow-md"
+      <motion.section
+        {...show}
+        transition={{ duration: 0.6 }}
+        className="mx-auto mb-5 w-[calc(100%-32px)] max-w-[1170px] overflow-hidden rounded-xl bg-[#f4f7f4] px-4 py-4 shadow-sm sm:px-5"
       >
-        Learn More About Our SDG Impact
+        <div className="grid grid-cols-1 items-center gap-5 lg:grid-cols-[110px_315px_1fr] lg:gap-4">
+          {/* Left SDG goal image */}
+          <motion.div
+            whileHover={{ scale: 1.05, rotate: 2 }}
+            transition={{ duration: 0.3 }}
+            className="flex items-center justify-center"
+          >
+            <img
+              src={goal}
+              alt="Sustainable Development Goals"
+              className="h-[105px] w-[105px] object-contain sm:h-[112px] sm:w-[112px]"
+            />
+          </motion.div>
 
-        <Leaf
-          size={14}
-          strokeWidth={1.8}
-          className="text-[#318b32]"
-        />
-      </a>
-    </div>
+          {/* Middle text content */}
+          <div className="text-center lg:text-left">
+            <h2 className="text-[16px] font-[550] leading-snug text-[#2d8733] sm:text-[16px]">
+              Driving Research for a Sustainable World
+            </h2>
 
-    {/* Right 18 SDG images */}
-    <div className="grid grid-cols-3 gap-2 sm:grid-cols-6 lg:grid-cols-9 lg:gap-[7px]">
-      {sdgImages.map((image, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, scale: 0.85 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.35,
-            delay: index * 0.025,
-          }}
-          whileHover={{
-            y: -4,
-            scale: 1.06,
-          }}
-          className="flex aspect-square items-center justify-center overflow-hidden rounded-[2px] bg-white transition-shadow duration-300 hover:z-10 hover:shadow-lg"
-        >
-          <img
-            src={image}
-            alt={
-              index < 17
-                ? `Sustainable Development Goal ${index + 1}`
-                : "Sustainable Development Goals logo"
-            }
-            className="h-full w-full object-contain"
-          />
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</motion.section>
+            <p className="mx-auto mt-2 max-w-[310px] text-[12px] leading-[1.65] text-[#1c3048] lg:mx-0">
+              Our conferences and publications support all 17 Sustainable
+              Development Goals of the United Nations.
+            </p>
+
+            <a
+              href="#"
+              className="mt-3 inline-flex min-h-[35px] items-center justify-center gap-2 rounded-md border border-[#8099b7] bg-white px-4 text-[12px] font-[550] text-[#082f63] transition duration-300 hover:-translate-y-1 hover:border-[#318b32] hover:text-[#318b32] hover:shadow-md"
+            >
+              Learn More About Our SDG Impact
+              <Leaf size={16} strokeWidth={1.8} className="text-[#318b32]" />
+            </a>
+          </div>
+
+          {/* Right 18 SDG images */}
+          <div className="grid grid-cols-3 gap-2 sm:grid-cols-6 lg:grid-cols-9 lg:gap-[7px]">
+            {sdgImages.map((image, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.35,
+                  delay: index * 0.025,
+                }}
+                whileHover={{
+                  y: -4,
+                  scale: 1.06,
+                }}
+                className="flex aspect-square items-center justify-center overflow-hidden rounded-[2px] bg-white transition-shadow duration-300 hover:z-10 hover:shadow-lg"
+              >
+                <img
+                  src={image}
+                  alt={
+                    index < 17
+                      ? `Sustainable Development Goal ${index + 1}`
+                      : "Sustainable Development Goals logo"
+                  }
+                  className="h-full w-full object-contain"
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
       {/* ==================== UPCOMING CONFERENCES SECTION ==================== */}
       <section className="mx-auto max-w-[1170px] px-5 pb-4 sm:px-8 lg:px-10 xl:px-0">
         <div className="mb-4 flex items-center justify-between">
