@@ -1,73 +1,163 @@
 import { motion } from "framer-motion";
 import {
-  ArrowRight, BarChart3, BookOpen, ChevronDown, ChevronLeft, ChevronRight,
-  Clock3, FileSearch, Globe2, Leaf, Menu, Network, Search, Send,
-  ShieldCheck, Sprout, Users
+  ArrowRight, BarChart3, BookOpen, ChevronLeft, ChevronRight,
+  Clock3, FileSearch, Globe2, Grid2X2, Leaf, Network, Search,
+  Send, ShieldCheck, Sprout, Users,
 } from "lucide-react";
-import homeBg from "../assets/images/homeBg.png";
-import goal from "../assets/images/goal.png";
+import homeBg from "../assets/img/homeBg.png";
+import goal from "../assets/img/goal.png";
 
-const green = "#2f8b2f";
-const navy = "#082b5b";
-
-const trust = [
-  [ShieldCheck, "Scopus Indexed", "Conferences & Proceedings"],
-  [Users, "Rigorous Peer Review", "& High Quality Standards"],
-  [Globe2, "Global Visibility", "& Academic Recognition"],
-  [Leaf, "Aligned with", "Sustainable Development Goals"],
+const trust=[
+ [ShieldCheck,"Scopus Indexed","Conferences & Proceedings"],[Users,"Rigorous Peer Review","& High Quality Standards"],
+ [Globe2,"Global Visibility","& Academic Recognition"],[Leaf,"Aligned with","Sustainable Development Goals"]
 ];
-const stats = [
-  [Users, "500+", "International", "Conferences Hosted"],
-  [BookOpen, "Scopus Indexed", "Proceedings", "& Journals"],
-  [Globe2, "10,000+", "Authors from", "120+ Countries"],
-  [BarChart3, "High Impact", "Research.", "Real World Change."],
+const stats=[[Users,"500+","International Conferences Hosted"],[BookOpen,"Scopus Indexed","Proceedings & Journals"],[Globe2,"10,000+","Authors from 120+ Countries"],[BarChart3,"High Impact","Research. Real World Change."]];
+const reasons=[
+ [ShieldCheck,"text-green-700 border-green-200","Quality You Can Trust","All conferences follow strict peer review and quality evaluation to ensure high academic standards."],
+ [FileSearch,"text-sky-600 border-sky-200","Scopus Indexed Publications","Publish in Scopus indexed proceedings and journals for greater visibility and credibility."],
+ [Users,"text-violet-600 border-violet-200","For Authors, By Researchers","Designed to support authors at every step – from discovery to publication."],
+ [Clock3,"text-sky-700 border-sky-200","Timely & Efficient Process","Transparent timeline and smooth process from submission to publication."],
+ [Sprout,"text-green-600 border-green-200","Sustainable Future Together","We promote research and innovation that contributes to achieving the UN Sustainable Development Goals."]
 ];
-const reasons = [
-  [ShieldCheck, "Quality You Can Trust", "All conferences follow strict peer review and quality evaluation to ensure high academic standards."],
-  [FileSearch, "Scopus Indexed Publications", "Publish in Scopus indexed proceedings and journals for greater visibility and credibility."],
-  [Users, "For Authors, By Researchers", "Designed to support authors at every step – from discovery to publication."],
-  [Clock3, "Timely & Efficient Process", "Transparent timeline and smooth process from submission to publication."],
-  [Sprout, "Sustainable Future Together", "We promote research and innovation that contributes to achieving the UN Sustainable Development Goals."],
+const conferences=[
+ ["20–22","SEP 2026","Singapore","https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=900&q=85","International Conference on AI, Data Science & Innovation (ICADSI 2026)"],
+ ["15–17","OCT 2026","Barcelona, Spain","https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=900&q=85","Global Conference on Sustainability, Engineering & Technology (GCSET 2026)"],
+ ["10–12","NOV 2026","Dubai, UAE","https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=85","International Conference on Health, Medicine & Life Sciences (ICHMLS 2026)"]
 ];
-const conferences = [
-  ["20–22", "SEP 2026", "Singapore", "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=900&q=80", "International Conference on AI, Data Science & Innovation (ICADSI 2026)"],
-  ["15–17", "OCT 2026", "Barcelona, Spain", "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=900&q=80", "Global Conference on Sustainability, Engineering & Technology (GCSET 2026)"],
-  ["10–12", "NOV 2026", "Dubai, UAE", "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80", "International Conference on Health, Medicine & Life Sciences (ICHMLS 2026)"],
-];
-const lower = [
-  [ShieldCheck, "Transparent Process", "Clear guidelines and transparent communication at every step."],
-  [Clock3, "Timely Publication", "We value your time and ensure timely reviews and publications."],
-  [Network, "Global Networking", "Connect with researchers, innovators and experts worldwide."],
-  [BookOpen, "Open to All Disciplines", "From engineering to social sciences, life sciences to arts – all research areas are welcome."],
-];
-
-const reveal = { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: .15 }, transition: { duration: .55 } };
+const features=[[ShieldCheck,"Transparent Process","Clear guidelines and transparent communication at every step."],[Clock3,"Timely Publication","We value your time and ensure timely reviews and publications."],[Network,"Global Networking","Connect with researchers, innovators and experts worldwide."],[Grid2X2,"Open to All Disciplines","From engineering to social sciences, life sciences to arts – all research areas are welcome."]];
+const show = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.15 },
+};
 
 export default function Home() {
-  return <main className="home-page">
-    <style>{`
-      .home-page{font-family:Inter,ui-sans-serif,system-ui,sans-serif;color:#071f46;background:#fff}.home-page *{box-sizing:border-box}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}.home-page a{text-decoration:none;color:inherit}.nav{height:92px;display:flex;align-items:center;gap:42px}.brand{margin-right:auto;line-height:1}.brand-mark{font-size:42px;font-weight:900;letter-spacing:-6px;color:#0a5d91}.brand-mark span{color:#70a72e}.brand-name{font-weight:800;letter-spacing:3px;font-size:15px}.brand-sub{font-size:7px;letter-spacing:2px;color:#5a697d;margin-top:5px}.navlinks{display:flex;align-items:center;gap:29px;font-size:13px;font-weight:600}.navlinks a{transition:.25s}.navlinks a:hover{color:${green}}.navlinks a:first-child{color:${green};padding-bottom:10px;border-bottom:2px solid ${green}}.drop{display:inline-flex;align-items:center;gap:4px}.submit,.primary{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:${navy};color:#fff!important;border-radius:8px;padding:14px 20px;font-weight:700;box-shadow:0 7px 18px #082b5b25;transition:.25s}.submit:hover,.primary:hover{transform:translateY(-3px);background:#0c3c79}.mobile-menu{display:none}.hero{min-height:540px;background-image:url(${homeBg});background-position:center;background-size:cover}.hero-inner{padding-top:53px}.hero-copy{width:48%;max-width:545px}.hero h1{font-size:43px;line-height:1.12;letter-spacing:-1px;margin:0;font-weight:800}.hero h1 span{color:${green}}.lead{font-size:15px;line-height:1.65;color:#253a57;margin:18px 0 24px}.trust-row{display:grid;grid-template-columns:repeat(4,1fr);margin:0 0 27px}.trust-item{min-height:104px;padding:0 17px;border-right:1px solid #dbe1e8}.trust-item:first-child{padding-left:0}.trust-item:last-child{border:0}.trust-item svg{color:${green};margin-bottom:9px}.trust-item b,.trust-item small{display:block;font-size:11px;line-height:1.55}.trust-item small{color:#172a44}.actions{display:flex;gap:28px}.secondary{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid #8096b5;border-radius:7px;padding:13px 20px;font-weight:700;font-size:13px;background:#fff;color:${navy};transition:.25s}.secondary:hover{border-color:${green};color:${green};transform:translateY(-3px)}.stats{margin-top:-25px;position:relative;z-index:2;background:linear-gradient(100deg,#082d60,#003e72);border-radius:12px;padding:23px 38px;display:grid;grid-template-columns:repeat(4,1fr);box-shadow:0 12px 25px #071f4624}.stat{display:flex;align-items:center;gap:17px;padding:0 30px;border-right:1px solid #ffffff55;color:#fff}.stat:first-child{padding-left:0}.stat:last-child{border:0}.stat svg{min-width:39px}.stat strong{color:#77d636;font-size:22px;line-height:1.05}.stat strong,.stat small,.stat em{display:block}.stat small,.stat em{font-size:11px;font-style:normal;line-height:1.55}.section{padding:26px 0}.title{text-align:center;font-size:22px;margin:0 0 21px}.title:after{content:"";display:block;width:57px;height:2px;background:${green};margin:8px auto}.reason-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:25px}.reason{border:1px solid #dce3e9;border-radius:10px;padding:16px 17px 20px;text-align:center;min-height:244px;transition:.3s;background:#fff}.reason:hover{transform:translateY(-8px);box-shadow:0 16px 30px #092d5a18;border-color:#a7cea7}.icon-circle{width:59px;height:59px;margin:0 auto 14px;border:1px solid #cce3cb;border-radius:50%;display:grid;place-items:center;color:${green}}.reason:nth-child(2) .icon-circle,.reason:nth-child(4) .icon-circle{color:#0866a7;border-color:#b6d7ee}.reason:nth-child(3) .icon-circle{color:#684af0;border-color:#d3c9ff}.reason h3{font-size:13px;min-height:32px;margin:0 0 10px}.reason p{font-size:11px;line-height:1.65;margin:0}.sdg-strip{background:#f6f8f6;border-radius:12px;margin:2px auto 20px;padding:15px 21px;display:grid;grid-template-columns:125px 350px 1fr;align-items:center;gap:16px}.sdg-wheel{width:112px;height:112px;object-fit:contain}.sdg-copy h2{font-size:16px;color:${green};margin:0 0 8px}.sdg-copy p{font-size:11px;line-height:1.6;margin:0 0 10px}.sdg-copy .secondary{padding:9px 15px;font-size:11px}.goal-banner{width:100%;height:112px;object-fit:cover;object-position:center;border-radius:7px}.conference-head{display:flex;justify-content:space-between;align-items:center}.conference-head h2{font-size:20px}.view{font-size:11px;color:${green}!important;font-weight:700}.conference-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{border:1px solid #dde3e8;border-radius:9px;overflow:hidden;background:#fff;box-shadow:0 5px 12px #082b5b10;transition:.3s}.card:hover{transform:translateY(-7px);box-shadow:0 16px 30px #082b5b22}.card-image{height:102px;background-size:cover;background-position:center;position:relative}.date{position:absolute;left:13px;top:0;background:${green};color:white;padding:8px 12px;border-radius:0 0 6px 6px;text-align:center;font-size:8px}.date b{display:block;font-size:17px}.card-body{padding:13px 16px}.card h3{font-size:12px;line-height:1.45;min-height:36px;margin:0 0 11px}.pills{display:flex;gap:8px}.pill{font-size:8px;background:#e8f2ff;color:#0c55a1;border-radius:20px;padding:6px 10px}.pill:last-child{background:#eef7e9;color:${green}}.arrows{position:relative}.circle-arrow{position:absolute;top:75px;width:36px;height:36px;border:0;border-radius:50%;background:${navy};color:#fff;display:grid;place-items:center;z-index:2}.circle-arrow.left{left:-52px}.circle-arrow.right{right:-52px}.feature-band{margin-top:10px;background:linear-gradient(90deg,#06356b,#003e77);color:white;padding:27px 0}.feature-grid{display:grid;grid-template-columns:repeat(4,1fr)}.feature{display:flex;gap:17px;padding:0 30px;border-right:1px solid #ffffff55}.feature:first-child{padding-left:0}.feature:last-child{border:0}.feature svg{min-width:35px}.feature h3{font-size:13px;margin:0 0 5px}.feature p{font-size:10px;line-height:1.55;margin:0}.footer-cta{color:#fff;background:radial-gradient(circle at 86% 120%,#319e76 0,transparent 36%),linear-gradient(100deg,#145d9a,#006d75);padding:20px 0}.footer-grid{display:grid;grid-template-columns:1.2fr 1fr .8fr;gap:38px}.footer-col{padding:0 26px;border-right:1px solid #ffffff66}.footer-col:first-child{padding-left:0}.footer-col:last-child{border:0}.footer-col h3{font-size:16px;margin:0 0 5px}.footer-col p{font-size:10px;margin:0 0 10px}.green-btn{display:inline-flex;gap:12px;align-items:center;background:#3a9c35;color:#fff;border:0;border-radius:4px;padding:10px 20px;font-weight:700}.newsletter{display:flex}.newsletter input{min-width:0;width:100%;border:0;padding:10px 12px;border-radius:4px 0 0 4px}.newsletter button{border:0;background:#3c9e38;color:white;padding:0 18px;border-radius:0 4px 4px 0}.socials{display:flex;gap:9px}.socials a{width:30px;height:30px;border:1px solid #ffffff99;border-radius:50%;display:grid;place-items:center;transition:.25s}.socials a:hover{background:#fff;color:${navy};transform:translateY(-3px)}
-      @media(max-width:1050px){.navlinks{display:none}.mobile-menu{display:block}.hero{background-position:58% center}.hero-copy{width:58%}.reason-grid{grid-template-columns:repeat(3,1fr)}.sdg-strip{grid-template-columns:100px 1fr}.goal-banner{grid-column:1/-1}.stat{padding:0 15px}.circle-arrow{display:none}}
-      @media(max-width:760px){.wrap{width:min(100% - 28px,620px)}.nav{height:76px}.submit{display:none}.brand-mark{font-size:34px}.hero{min-height:auto;background-position:68% center;position:relative}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,#fffffff2 62%,#ffffff70)}.hero-inner{position:relative;padding:46px 0}.hero-copy{width:100%;max-width:560px}.hero h1{font-size:36px}.trust-row{grid-template-columns:repeat(2,1fr);gap:18px}.trust-item{border:0;padding:0}.actions{gap:10px;flex-direction:column;align-items:stretch}.stats{grid-template-columns:repeat(2,1fr);gap:25px;margin-top:0}.stat:nth-child(2){border:0}.reason-grid{grid-template-columns:repeat(2,1fr)}.conference-grid{grid-template-columns:1fr}.feature-grid{grid-template-columns:repeat(2,1fr);gap:28px}.feature:nth-child(2){border:0}.footer-grid{grid-template-columns:1fr}.footer-col{border:0;padding:0}.sdg-strip{grid-template-columns:80px 1fr}.sdg-wheel{width:80px;height:80px}}
-      @media(max-width:480px){.hero h1{font-size:31px}.lead{font-size:14px}.stats{grid-template-columns:1fr;padding:25px}.stat,.stat:nth-child(2){border:0;padding:0}.reason-grid{grid-template-columns:1fr}.reason{min-height:0}.sdg-strip{grid-template-columns:1fr;text-align:center}.sdg-wheel{margin:auto}.conference-head{align-items:flex-start}.feature-grid{grid-template-columns:1fr}.feature{border:0!important;padding:0}.newsletter{flex-direction:column;gap:8px}.newsletter input,.newsletter button{border-radius:4px;padding:11px}.footer-grid{gap:25px}}
-    `}</style>
-
-    <section className="hero"><div className="wrap hero-inner"><motion.div className="hero-copy" initial={{opacity:0,x:-38}} animate={{opacity:1,x:0}} transition={{duration:.7}}>
-      <h1>High Quality Conferences.<br/>Scopus Indexed.<br/><span>Global Impact.</span></h1>
-      <p className="lead">A trusted platform for researchers and innovators to publish in high quality Scopus indexed conferences, proceedings and journals driving sustainable development worldwide.</p>
-      <div className="trust-row">{trust.map(([Icon,title,desc])=><div className="trust-item" key={title}><Icon size={30}/><b>{title}</b><small>{desc}</small></div>)}</div>
-      <div className="actions"><a className="primary" href="#"><Search size={17}/> Explore Conferences</a><a className="secondary" href="#"><BookOpen size={18}/> Browse Journals & Proceedings</a></div>
-    </motion.div></div></section>
-
-    <motion.section className="wrap stats" {...reveal}>{stats.map(([Icon,value,a,b])=><div className="stat" key={value}><Icon size={39}/><div><strong>{value}</strong><small>{a}</small><em>{b}</em></div></div>)}</motion.section>
-
-    <section className="wrap section"><h2 className="title">Why Choose Innovation Conference Hub?</h2><div className="reason-grid">{reasons.map(([Icon,title,desc],i)=><motion.article className="reason" key={title} {...reveal} transition={{duration:.45,delay:i*.07}}><div className="icon-circle"><Icon size={31}/></div><h3>{title}</h3><p>{desc}</p></motion.article>)}</div></section>
-
-    <motion.section className="wrap sdg-strip" {...reveal}><img className="sdg-wheel" src={goal} alt="United Nations Sustainable Development Goals"/><div className="sdg-copy"><h2>Driving Research for a Sustainable World</h2><p>Our conferences and publications support all 17 Sustainable Development Goals of the United Nations.</p><a className="secondary" href="#">Learn More About Our SDG Impact <Leaf size={14}/></a></div><img className="goal-banner" src={goal} alt="All 17 Sustainable Development Goals"/></motion.section>
-
-    <section className="wrap section"><div className="conference-head"><h2>Upcoming Conferences</h2><a className="view" href="#">View All Conferences &nbsp; →</a></div><div className="arrows"><button className="circle-arrow left" aria-label="Previous"><ChevronLeft/></button><div className="conference-grid">{conferences.map(([day,month,place,img,title],i)=><motion.article className="card" key={title} {...reveal} transition={{duration:.45,delay:i*.08}}><div className="card-image" style={{backgroundImage:`url(${img})`}}><div className="date"><b>{day}</b>{month}<br/>{place}</div></div><div className="card-body"><h3>{title}</h3><div className="pills"><span className="pill">Scopus Indexed Proceedings</span><span className="pill">Hybrid</span></div></div></motion.article>)}</div><button className="circle-arrow right" aria-label="Next"><ChevronRight/></button></div></section>
-
-    <section className="feature-band"><div className="wrap feature-grid">{lower.map(([Icon,title,desc])=><motion.div className="feature" key={title} {...reveal}><Icon size={36}/><div><h3>{title}</h3><p>{desc}</p></div></motion.div>)}</div></section>
-    <section className="footer-cta"><div className="wrap footer-grid"><div className="footer-col"><h3>Be Part of Innovation. Be Part of Impact.</h3><p>Share your research. Inspire change. Build a better future.</p><a className="green-btn" href="#">Submit Your Paper <Send size={15}/></a></div><div className="footer-col"><h3>Stay Updated</h3><p>Subscribe to get latest conference updates and important announcements.</p><div className="newsletter"><input type="email" placeholder="Enter your email"/><button type="button">Subscribe</button></div></div><div className="footer-col"><h3>Connect With Us</h3><div className="socials">{["in","𝕏","f","▶","◎"].map((label,i)=><a href="#" aria-label="Social media" key={i}><b style={{fontSize:12}}>{label}</b></a>)}</div></div></div></section>
-  </main>;
+  return (
+    <main className="overflow-hidden bg-white font-sans text-[#071f46]">
+{/* ==================== HERO SECTION ==================== */}
+<section className="relative mt-0 min-h-[545px] bg-cover bg-[64%_center] lg:bg-center" style={{backgroundImage:`url(${homeBg})`}}>
+<div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent lg:hidden"/>
+<div className="relative mx-auto max-w-[1170px] px-5 pb-14 pt-12 sm:px-8 lg:px-10 xl:px-0">
+<motion.div initial={{opacity:0,x:-35}} animate={{opacity:1,x:0}} transition={{duration:.7}} className="max-w-[555px]">
+<h1 className="text-[38px] font-[600] leading-[1.12]  tracking-tight sm:text-[41px]">High Quality Conferences.<br/>Scopus Indexed.<br/>
+<span className="text-[#318b32]">Global Impact.</span>
+</h1>
+<p className="mt-5 max-w-[480px] text-[14px] leading-[1.65] text-[#243954] sm:text-[15px]">A trusted platform for researchers and innovators to publish in high quality Scopus indexed conferences, proceedings and journals driving sustainable development worldwide.</p>
+<div className="mt-7 grid grid-cols-2 gap-y-6 sm:grid-cols-4 text-center  sm:gap-0">{trust.map(([Icon,title,text],i)=>
+<motion.div whileHover={{y:-5}} key={title} className={`min-h-[108px] px-3 tsm:border-r sm:border-slate-200 ${i===0?"pl-0":""} ${i===3?"sm:border-0":""}`}>
+<Icon size={31} className="mb-2 text-center text-[#318b32]" strokeWidth={1.6}/>
+<b className="block text-[11px] leading-5">{title}</b>
+<span className="block text-[11px] leading-5">{text}</span>
+</motion.div>)}</div>
+<div className="mt-7 flex flex-col gap-4 sm:flex-row sm:gap-7">
+<a href="#" className="flex items-center justify-center gap-2 rounded-lg bg-[#082f63] px-5 py-3.5 text-[13px] font-bold text-white shadow-lg transition hover:-translate-y-1 hover:bg-[#0b417f]">
+<Search size={18}/>Explore Conferences</a>
+<a href="#" className="flex items-center justify-center gap-2 rounded-lg border border-[#7d96b8] bg-white px-5 py-3.5 text-[13px] font-bold transition hover:-translate-y-1 hover:border-green-600 hover:text-green-700">
+<BookOpen size={18}/>Browse Journals & Proceedings</a>
+</div>
+</motion.div>
+</div>
+</section>
+{/* ==================== STATISTICS CTA SECTION ==================== */}
+<motion.section {...show} className="relative z-10 mx-auto -mt-0 grid w-[calc(100%-32px)] max-w-[1125px] grid-cols-1 gap-7 rounded-xl bg-gradient-to-r from-[#082f63] to-[#004272] px-7 py-6 text-white shadow-xl sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:px-10">{stats.map(([Icon,value,text],i)=>
+<motion.div whileHover={{y:-4}} key={value} className={`flex items-center gap-4 lg:border-r lg:border-white/30 lg:px-8 ${i===0?"lg:pl-0":""} ${i===3?"lg:border-0 lg:pr-0":""}`}>
+<Icon size={40} strokeWidth={1.5}/>
+<div>
+<strong className="block text-[20px] leading-tight text-[#73d637]">{value}</strong>
+<span className="block max-w-[115px] text-[10px] leading-[1.65]">{text}</span>
+</div>
+</motion.div>)}</motion.section>
+{/* ==================== WHY CHOOSE US SECTION ==================== */}
+<section className="mx-auto max-w-[1170px] px-5 pb-7 pt-7 sm:px-8 lg:px-10 xl:px-0">
+<h2 className="text-center text-[21px] font-bold">Why Choose Innovation Conference Hub?</h2>
+<i className="mx-auto mt-2 block h-0.5 w-14 bg-[#318b32]"/>
+<div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">{reasons.map(([Icon,color,title,text],i)=>
+<motion.article {...show} transition={{duration:.45,delay:i*.06}} whileHover={{y:-8}} key={title} className="min-h-[245px] rounded-[10px] border border-slate-200 bg-white px-4 py-4 text-center transition-shadow hover:border-green-300 hover:shadow-xl">
+<div className={`mx-auto mb-4 grid h-[60px] w-[60px] place-items-center rounded-full border ${color}`}>
+<Icon size={31}/>
+</div>
+<h3 className="mx-auto mb-3 max-w-[155px] text-[12px] font-bold leading-[1.45]">{title}</h3>
+<p className="text-[10.5px] leading-[1.65]">{text}</p>
+</motion.article>)}</div>
+</section>
+{/* ==================== SDG CTA SECTION ==================== */}
+<motion.section {...show} className="mx-auto mb-4 grid w-[calc(100%-32px)] max-w-[1170px] grid-cols-1 items-center gap-5 rounded-xl bg-[#f4f7f4] p-4 sm:grid-cols-[110px_1fr] lg:grid-cols-[125px_345px_1fr]">
+<img src={goal} alt="Sustainable Development Goals" className="mx-auto h-[105px] w-[105px] object-contain"/>
+<div className="text-center sm:text-left">
+<h2 className="text-[15px] font-bold text-[#2d8733]">Driving Research for a Sustainable World</h2>
+<p className="mt-2 text-[10.5px] leading-relaxed">Our conferences and publications support all 17 Sustainable Development Goals of the United Nations.</p>
+<a href="#" className="mt-3 inline-flex items-center gap-2 rounded-md border border-[#8099b7] bg-white px-4 py-2 text-[10px] font-bold transition hover:-translate-y-1 hover:border-green-600 hover:text-green-700">Learn More About Our SDG Impact <Leaf size={14}/>
+</a>
+</div>
+<div className="hidden h-[105px] overflow-hidden rounded-md bg-white lg:block">
+<img src={goal} alt="All 17 SDG icons" className="h-full w-full object-cover"/>
+</div>
+</motion.section>
+{/* ==================== UPCOMING CONFERENCES SECTION ==================== */}
+<section className="mx-auto max-w-[1170px] px-5 pb-4 sm:px-8 lg:px-10 xl:px-0">
+<div className="mb-4 flex items-center justify-between">
+<h2 className="text-[19px] font-bold">Upcoming Conferences</h2>
+<a href="#" className="flex items-center gap-1 text-[10px] font-bold text-[#318b32] hover:gap-2">View All Conferences <ArrowRight size={14}/>
+</a>
+</div>
+<div className="relative">
+<button className="absolute -left-9 top-[72px] z-10 hidden h-9 w-9 place-items-center rounded-full bg-[#082f63] text-white transition hover:scale-110 xl:grid">
+<ChevronLeft/>
+</button>
+<div className="grid grid-cols-1 gap-5 md:grid-cols-3">{conferences.map(([date,month,place,image,title],i)=>
+<motion.article {...show} transition={{delay:i*.07}} whileHover={{y:-7}} key={title} className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-md hover:shadow-xl">
+<div className="relative h-[103px] bg-cover bg-center" style={{backgroundImage:`url(${image})`}}>
+<div className="absolute left-3 top-0 rounded-b-md bg-[#318b32] px-3 py-2 text-center text-[7px] text-white">
+<b className="block text-[17px] leading-none">{date}</b>{month}<br/>{place}</div>
+</div>
+<div className="px-4 py-3">
+<h3 className="min-h-[36px] text-[11px] font-bold leading-[1.45]">{title}</h3>
+<div className="mt-2 flex gap-2">
+<span className="rounded-full bg-blue-50 px-3 py-1.5 text-[8px] text-blue-700">Scopus Indexed Proceedings</span>
+<span className="rounded-full bg-green-50 px-3 py-1.5 text-[8px] text-green-700">Hybrid</span>
+</div>
+</div>
+</motion.article>)}</div>
+<button className="absolute -right-9 top-[72px] z-10 hidden h-9 w-9 place-items-center rounded-full bg-[#082f63] text-white transition hover:scale-110 xl:grid">
+<ChevronRight/>
+</button>
+</div>
+</section>
+{/* ==================== PLATFORM FEATURES SECTION ==================== */}
+<section className="mt-2 bg-gradient-to-r from-[#07386f] to-[#004276] py-7 text-white">
+<div className="mx-auto grid max-w-[1170px] grid-cols-1 gap-7 px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-4 lg:gap-0 lg:px-10 xl:px-0">{features.map(([Icon,title,text],i)=>
+<motion.div {...show} whileHover={{y:-4}} key={title} className={`flex gap-4 lg:border-r lg:border-white/30 lg:px-7 ${i===0?"lg:pl-0":""} ${i===3?"lg:border-0":""}`}>
+<Icon size={35} className="shrink-0"/>
+<div>
+<h3 className="text-[12px] font-bold">{title}</h3>
+<p className="mt-1 text-[9.5px] leading-relaxed">{text}</p>
+</div>
+</motion.div>)}</div>
+</section>
+{/* ==================== NEWSLETTER CTA SECTION ==================== */}
+<section className="bg-[radial-gradient(circle_at_92%_120%,#319a75_0%,transparent_38%),linear-gradient(100deg,#155d98,#006d75)] py-5 text-white">
+<div className="mx-auto grid max-w-[1170px] grid-cols-1 gap-7 px-5 sm:px-8 md:grid-cols-[1.15fr_1fr_.8fr] lg:px-10 xl:px-0">
+<div className="md:border-r md:border-white/35 md:pr-8">
+<h3 className="text-[16px] font-bold">Be Part of Innovation. Be Part of Impact.</h3>
+<p className="mt-1 text-[9.5px]">Share your research. Inspire change. Build a better future.</p>
+<a href="#" className="mt-3 inline-flex items-center gap-3 rounded bg-[#3b9e38] px-5 py-2.5 text-[10px] font-bold transition hover:-translate-y-1">Submit Your Paper <Send size={14}/>
+</a>
+</div>
+<div className="md:border-r md:border-white/35 md:pr-8">
+<h3 className="text-[13px] font-bold">Stay Updated</h3>
+<p className="mt-1 text-[9.5px]">Subscribe to get latest conference updates and important announcements.</p>
+<div className="mt-2 flex">
+<input placeholder="Enter your email" className="min-w-0 flex-1 rounded-l px-3 py-2 text-[10px] text-slate-900 outline-none"/>
+<button className="rounded-r bg-[#3b9e38] px-5 text-[10px] font-bold hover:bg-green-500">Subscribe</button>
+</div>
+</div>
+<div>
+<h3 className="text-[13px] font-bold">Connect With Us</h3>
+<div className="mt-4 flex gap-2">{["in","𝕏","f","▶","◎"].map(x=>
+<a href="#" key={x} className="grid h-8 w-8 place-items-center rounded-full border border-white/60 text-[11px] font-bold transition hover:-translate-y-1 hover:bg-white hover:text-[#083664]">{x}</a>)}</div>
+</div>
+</div>
+</section>
+    </main>
+  );
 }

@@ -40,7 +40,7 @@ export default function Header() {
   }, [location.pathname]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-navy-100 mt-1">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur mt-1">
       <div className="container-page flex items-center justify-between h-20">
         <Link to="/" className="flex-shrink-0" aria-label="Innovation Conference home">
           <img src={logo} alt="Innovation Conference logo" className="h-[5.5rem] w-auto object-contain" />
