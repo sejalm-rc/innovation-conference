@@ -1,19 +1,38 @@
-import { Link } from "react-router-dom";
+// src/components/Footer.jsx
+
+import { Link, useLocation } from "react-router-dom";
 import { Mail, Phone, Globe, MapPin } from "lucide-react";
-import { LinkedinIcon, TwitterIcon, FacebookIcon, YoutubeIcon, InstagramIcon } from "./SocialIcons";
+import { motion } from "framer-motion";
+
+import {
+  LinkedinIcon,
+  TwitterIcon,
+  FacebookIcon,
+  YoutubeIcon,
+  InstagramIcon,
+} from "./SocialIcons";
+
 import logo from "../assets/images/logo.png";
 
+/* =========================================================
+   QUICK LINKS
+========================================================= */
+
 const quickLinks = [
-  { label: "Home", to: "/" },
+
   { label: "Conferences", to: "/conferences" },
-  { label: "Journals & Proceedings", to: "/conferences" },
+  
   { label: "For Authors", to: "/associate-conference" },
   { label: "About Us", to: "/about" },
   { label: "SDG Impact", to: "/sdg-impact" },
-  { label: "Contact Us", to: "/about" },
+  { label: "Contact Us", to: "/contact" },
 ];
 
-const confLinks = [
+/* =========================================================
+   CONFERENCE LINKS
+========================================================= */
+
+const conferenceLinks = [
   { label: "Upcoming Conferences", to: "/conferences" },
   { label: "Past Conferences", to: "/conferences" },
   { label: "Conference Calendar", to: "/conferences" },
@@ -21,123 +40,705 @@ const confLinks = [
   { label: "Submission Guidelines", to: "/associate-conference" },
 ];
 
-const supportSdgIds = [4, 9, 11, 13, 17];
+/* =========================================================
+   SOCIAL LINKS
+========================================================= */
 
 const socials = [
-  { icon: LinkedinIcon, label: "LinkedIn" },
-  { icon: TwitterIcon, label: "Twitter" },
-  { icon: FacebookIcon, label: "Facebook" },
-  { icon: YoutubeIcon, label: "YouTube" },
-  { icon: InstagramIcon, label: "Instagram" },
+  {
+    Icon: LinkedinIcon,
+    label: "LinkedIn",
+    href: "#",
+  },
+  {
+    Icon: TwitterIcon,
+    label: "Twitter",
+    href: "#",
+  },
+  {
+    Icon: FacebookIcon,
+    label: "Facebook",
+    href: "#",
+  },
+  {
+    Icon: YoutubeIcon,
+    label: "YouTube",
+    href: "#",
+  },
+  {
+    Icon: InstagramIcon,
+    label: "Instagram",
+    href: "#",
+  },
 ];
 
-const sdgColors = {
-  4: "#c5192d",
-  9: "#fd6925",
-  11: "#fd9d24",
-  13: "#3f7e44",
-  17: "#19486a",
-};
+/* =========================================================
+   SDG DATA
+========================================================= */
+
+const sdgs = [
+  {
+    id: 4,
+    title: "QUALITY EDUCATION",
+    bg: "#C5192D",
+  },
+  {
+    id: 9,
+    title: "INDUSTRY, INNOVATION AND INFRASTRUCTURE",
+    bg: "#FD6925",
+  },
+  {
+    id: 11,
+    title: "SUSTAINABLE CITIES AND COMMUNITIES",
+    bg: "#FD9D24",
+  },
+  {
+    id: 13,
+    title: "CLIMATE ACTION",
+    bg: "#3F7E44",
+  },
+  {
+    id: 17,
+    title: "PARTNERSHIPS FOR THE GOALS",
+    bg: "#19486A",
+  },
+];
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 export default function Footer() {
+  const location = useLocation();
+
+  const isActive = (path) => {
+    if (path === "/") return location.pathname === "/";
+    return location.pathname.startsWith(path);
+  };
+
   return (
-    <footer className="bg-navy-900 text-navy-100">
-      <div className="container-page py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-        <div>
-          <img src={logo} alt="Innovation Conference logo" className="h-14 w-auto object-contain bg-white/95 rounded p-1" />
-          <p className="mt-4 text-sm text-navy-200 leading-relaxed max-w-xs">
-            Advancing research and innovation through high quality, pre-evaluated conferences with global impact.
+    <footer className="relative overflow-hidden bg-[#002b4c] text-white">
+      {/* =====================================================
+          SUBTLE BACKGROUND
+      ====================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          bg-[radial-gradient(circle_at_85%_10%,rgba(24,111,157,0.18),transparent_28%)]
+        "
+      />
+
+      {/* =====================================================
+          MAIN FOOTER
+      ====================================================== */}
+
+      <div
+        className="
+          relative
+          mx-auto
+          grid
+          w-full
+          max-w-[1440px]
+          grid-cols-1
+          gap-0
+          px-5
+          py-8
+
+          sm:px-7
+
+          md:grid-cols-2
+          md:gap-y-8
+          md:px-8
+
+          lg:grid-cols-[1.15fr_1fr_1.05fr_1.35fr_1.3fr]
+          lg:gap-0
+          lg:px-10
+          lg:py-8
+
+          xl:px-14
+        "
+      >
+        {/* ===================================================
+            1. BRAND COLUMN
+        ==================================================== */}
+
+        <div
+          className="
+            pb-7
+
+            md:pr-8
+
+            lg:min-h-[205px]
+            lg:border-r
+            lg:border-white/10
+            lg:pb-0
+            lg:pr-7
+
+            xl:pr-9
+          "
+        >
+          {/* Logo */}
+
+          <Link
+            to="/"
+            aria-label="Innovation Conference Home"
+            className="inline-flex"
+          >
+            <motion.img
+              whileHover={{
+                scale: 1.03,
+              }}
+              transition={{
+                duration: 0.25,
+              }}
+              src={logo}
+              alt="Innovation Conference"
+              className="
+                h-[72px]
+                w-auto
+                object-contain
+
+                sm:h-[76px]
+
+                lg:h-[78px]
+              "
+            />
+          </Link>
+
+          {/* Description */}
+
+          <p
+            className="
+              mt-3
+              max-w-[205px]
+              text-[11px]
+              font-normal
+              leading-[1.45]
+              text-white/80
+            "
+          >
+            Advancing research and innovation through high-quality,
+            peer-evaluated conferences with global impact.
           </p>
-          <div className="flex gap-3 mt-5">
-            {socials.map(({ icon: Icon, label }) => (
-              <a
+
+          {/* Social Icons */}
+
+          <div className="mt-4 flex items-center gap-2">
+            {socials.map(({ Icon, label, href }) => (
+              <motion.a
                 key={label}
-                href="#"
+                href={href}
                 aria-label={label}
-                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-brandGreen transition-colors"
+                whileHover={{
+                  y: -3,
+                  scale: 1.08,
+                }}
+                whileTap={{
+                  scale: 0.93,
+                }}
+                transition={{
+                  duration: 0.2,
+                }}
+                className="
+                  group
+                  flex
+                
+                  items-center
+                  justify-center
+                
+              
+           
+               
+                  text-white
+                  transition-all
+                  duration-300
+
+               
+                  hover:shadow-[0_5px_15px_rgba(70,163,69,0.25)]
+                "
               >
-                <Icon size={16} />
-              </a>
+                <Icon
+                  size={12}
+                  className="transition-transform duration-300"
+                />
+              </motion.a>
             ))}
           </div>
         </div>
 
-        <div>
-          <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-          <ul className="space-y-2.5 text-sm">
-            {quickLinks.map((l) => (
-              <li key={l.label}>
-                <Link to={l.to} className="text-navy-200 hover:text-brandGreen transition-colors">
-                  {l.label}
+        {/* ===================================================
+            2. QUICK LINKS
+        ==================================================== */}
+
+        <div
+          className="
+            border-t
+            border-white/10
+            py-7
+
+            md:border-t-0
+            md:py-0
+            md:pl-8
+
+            lg:min-h-[205px]
+            lg:border-r
+            lg:border-white/10
+            lg:px-7
+
+            xl:px-9
+          "
+        >
+          <h3
+            className="
+              mb-3
+              text-[12px]
+              font-semibold
+              tracking-[0.01em]
+              text-white
+            "
+          >
+            Quick Links
+          </h3>
+
+          <ul className="space-y-[5px]">
+            {quickLinks.map((item) => {
+              const active = isActive(item.to);
+
+              return (
+                <li key={item.label}>
+                  <Link
+                    to={item.to}
+                    className={`
+                      group
+                      relative
+                      inline-flex
+                      items-center
+                      text-[10.5px]
+                      leading-[1.4]
+                      transition-all
+                      duration-300
+
+                      ${
+                        active
+                          ? "text-[#51b64e]"
+                          : "text-white/90 hover:translate-x-[3px] hover:text-[#51b64e]"
+                      }
+                    `}
+                  >
+                    <span
+                      className={`
+                        mr-0
+                        h-[3px]
+                        w-0
+                        rounded-full
+                        bg-[#51b64e]
+                        opacity-0
+                        transition-all
+                        duration-300
+
+                        group-hover:mr-1.5
+                        group-hover:w-[3px]
+                        group-hover:opacity-100
+                      `}
+                    />
+
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        {/* ===================================================
+            3. CONFERENCES
+        ==================================================== */}
+
+        <div
+          className="
+            border-t
+            border-white/10
+            py-7
+
+            md:border-t-0
+            md:py-0
+            md:pr-8
+
+            lg:min-h-[205px]
+            lg:border-r
+            lg:border-white/10
+            lg:px-7
+
+            xl:px-9
+          "
+        >
+          <h3
+            className="
+              mb-3
+              text-[12px]
+              font-semibold
+              tracking-[0.01em]
+              text-white
+            "
+          >
+            Conferences
+          </h3>
+
+          <ul className="space-y-[7px]">
+            {conferenceLinks.map((item) => (
+              <li key={item.label}>
+                <Link
+                  to={item.to}
+                  className="
+                    group
+                    inline-flex
+                    items-center
+                    text-[10.5px]
+                    leading-[1.4]
+                    text-white/90
+                    transition-all
+                    duration-300
+
+                    hover:translate-x-[3px]
+                    hover:text-[#51b64e]
+                  "
+                >
+                  <span
+                    className="
+                      mr-0
+                      h-[3px]
+                      w-0
+                      rounded-full
+                      bg-[#51b64e]
+                      opacity-0
+                      transition-all
+                      duration-300
+
+                      group-hover:mr-1.5
+                      group-hover:w-[3px]
+                      group-hover:opacity-100
+                    "
+                  />
+
+                  {item.label}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
 
-        <div>
-          <h3 className="text-white font-semibold mb-4">Conferences</h3>
-          <ul className="space-y-2.5 text-sm">
-            {confLinks.map((l) => (
-              <li key={l.label}>
-                <Link to={l.to} className="text-navy-200 hover:text-brandGreen transition-colors">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        {/* ===================================================
+            4. CONTACT US
+        ==================================================== */}
 
-          <h3 className="text-white font-semibold mb-4 mt-8">Contact Us</h3>
-          <ul className="space-y-2.5 text-sm text-navy-200">
-            <li className="flex items-center gap-2">
-              <Mail size={15} className="text-brandGreen shrink-0" />
-              <a href="mailto:support@innovationconferences.org" className="hover:text-brandGreen">
-                support@innovationconferences.org
+        <div
+          className="
+            border-t
+            border-white/10
+            py-7
+
+            md:border-t-0
+            md:py-0
+            md:pl-8
+
+            lg:min-h-[205px]
+            lg:border-r
+            lg:border-white/10
+            lg:px-7
+
+            xl:px-9
+          "
+        >
+          <h3
+            className="
+              mb-3
+              text-[12px]
+              font-semibold
+              tracking-[0.01em]
+              text-white
+            "
+          >
+            Contact Us
+          </h3>
+
+          <ul className="space-y-[10px]">
+            {/* Email */}
+
+            <li>
+              <a
+                href="mailto:support@innovationconferences.org"
+                className="
+                  group
+                  flex
+                  items-start
+                  gap-2.5
+                  text-[9.5px]
+                  leading-[1.45]
+                  text-white/90
+                  transition-colors
+                  duration-300
+
+                  hover:text-[#51b64e]
+                "
+              >
+                <Mail
+                  size={12}
+                  strokeWidth={1.8}
+                  className="
+                    mt-[1px]
+                    shrink-0
+                    text-white/90
+                    transition-all
+                    duration-300
+
+                    group-hover:scale-110
+                    group-hover:text-[#51b64e]
+                  "
+                />
+
+                <span className="break-all">
+                  support@innovationconferences.org
+                </span>
               </a>
             </li>
-            <li className="flex items-center gap-2">
-              <Phone size={15} className="text-brandGreen shrink-0" />
-              <span>+91 12345 67890</span>
+
+            {/* Phone */}
+
+            <li>
+              <a
+                href="tel:+911234567890"
+                className="
+                  group
+                  flex
+                  items-center
+                  gap-2.5
+                  text-[9.5px]
+                  text-white/90
+                  transition-colors
+                  duration-300
+
+                  hover:text-[#51b64e]
+                "
+              >
+                <Phone
+                  size={12}
+                  strokeWidth={1.8}
+                  className="
+                    shrink-0
+                    transition-all
+                    duration-300
+
+                    group-hover:rotate-12
+                    group-hover:text-[#51b64e]
+                  "
+                />
+
+                <span>+91 12345 67890</span>
+              </a>
             </li>
-            <li className="flex items-center gap-2">
-              <Globe size={15} className="text-brandGreen shrink-0" />
-              <span>www.innovationconferences.org</span>
+
+            {/* Website */}
+
+            <li>
+              <a
+                href="https://www.innovationconferences.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                  group
+                  flex
+                  items-center
+                  gap-2.5
+                  text-[9.5px]
+                  text-white/90
+                  transition-colors
+                  duration-300
+
+                  hover:text-[#51b64e]
+                "
+              >
+                <Globe
+                  size={12}
+                  strokeWidth={1.8}
+                  className="
+                    shrink-0
+                    transition-all
+                    duration-500
+
+                    group-hover:rotate-[25deg]
+                    group-hover:text-[#51b64e]
+                  "
+                />
+
+                <span>www.innovationconferences.org</span>
+              </a>
             </li>
-            <li className="flex items-center gap-2">
-              <MapPin size={15} className="text-brandGreen shrink-0" />
+
+            {/* Location */}
+
+            <li
+              className="
+                group
+                flex
+                items-center
+                gap-2.5
+                text-[9.5px]
+                text-white/90
+              "
+            >
+              <MapPin
+                size={12}
+                strokeWidth={1.8}
+                className="
+                  shrink-0
+                  transition-all
+                  duration-300
+
+                  group-hover:-translate-y-0.5
+                  group-hover:text-[#51b64e]
+                "
+              />
+
               <span>Worldwide</span>
             </li>
           </ul>
         </div>
 
-        <div>
-          <h3 className="text-white font-semibold mb-4">We Support</h3>
-          <p className="text-sm text-navy-200 mb-3">Sustainable Development Goals</p>
-          <div className="grid grid-cols-5 gap-2 max-w-[220px]">
-            {supportSdgIds.map((id) => (
-              <div
-                key={id}
-                className="w-10 h-10 rounded flex items-center justify-center text-white text-xs font-bold"
-                style={{ backgroundColor: sdgColors[id] }}
-                aria-label={`SDG ${id}`}
-              >
-                {id}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+        {/* ===================================================
+            5. WE SUPPORT / SDGs
+        ==================================================== */}
 
-      <div className="border-t border-white/10">
-        <div className="container-page py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-navy-300">
-          <p>&copy; {new Date().getFullYear()} Innovation Conferences. All Rights Reserved.</p>
-          <div className="flex gap-5">
-            <a href="#" className="hover:text-white">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-white">
-              Terms of Use
-            </a>
+        <div
+          className="
+            border-t
+            border-white/10
+            pt-7
+
+            md:col-span-2
+            md:mt-8
+            md:pt-7
+
+            lg:col-span-1
+            lg:mt-0
+            lg:min-h-[205px]
+            lg:border-t-0
+            lg:pl-7
+            lg:pt-0
+
+            xl:pl-9
+          "
+        >
+          <h3
+            className="
+              mb-2
+              text-[12px]
+              font-semibold
+              tracking-[0.01em]
+              text-white
+            "
+          >
+            We Support
+          </h3>
+
+          <p
+            className="
+              mb-3
+              text-[9.5px]
+              font-medium
+              leading-[1.4]
+              text-white/90
+            "
+          >
+            Sustainable Development Goals
+          </p>
+
+          {/* SDG Grid */}
+
+          <div
+            className="
+              grid
+              max-w-[185px]
+              grid-cols-4
+              gap-[5px]
+            "
+          >
+            {sdgs.map((sdg, index) => (
+              <motion.div
+                key={sdg.id}
+                whileHover={{
+                  y: -3,
+                  scale: 1.05,
+                }}
+                transition={{
+                  duration: 0.2,
+                }}
+                style={{
+                  backgroundColor: sdg.bg,
+                }}
+                className={`
+                  relative
+                  flex
+                  h-[43px]
+                  w-[43px]
+                  cursor-default
+                  flex-col
+                  overflow-hidden
+                  rounded-[1px]
+                  p-[4px]
+                  text-white
+                  shadow-sm
+
+                  ${index === 4 ? "col-start-1" : ""}
+                `}
+                aria-label={`SDG ${sdg.id}: ${sdg.title}`}
+              >
+                {/* Number */}
+
+                <span className="text-[13px] font-bold leading-none">
+                  {sdg.id}
+                </span>
+
+                {/* Title */}
+
+                <span
+                  className="
+                    mt-[2px]
+                    line-clamp-3
+                    text-[4.7px]
+                    font-semibold
+                    uppercase
+                    leading-[1.05]
+                  "
+                >
+                  {sdg.title}
+                </span>
+
+                {/* Decorative bottom circle */}
+
+                <span
+                  className="
+                    absolute
+                    bottom-[3px]
+                    right-[4px]
+                    flex
+                    h-[10px]
+                    w-[10px]
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-white/70
+                    text-[5px]
+                    font-bold
+                  "
+                >
+                  {sdg.id}
+                </span>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

@@ -1,43 +1,83 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, Send } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Send, ArrowRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+
 import logo from "../assets/images/logo.png";
 
 const navItems = [
-  { label: "Home", to: "/" },
+  {
+    label: "Home",
+    to: "/",
+  },
   {
     label: "Conferences",
     to: "/conferences",
-    // children: [
-    //   { label: "Upcoming Conferences", to: "/conferences" },
-    //   { label: "Past Conferences", to: "/conferences" },
-    // ],
   },
   {
     label: "Associate Us",
     to: "/associate-conference",
   },
-  // {
-  //   label: "For Authors",
-  //   to: "/associate-conference",
-  //   children: [{ label: "Submit Your Paper", to: "/associate-conference" }],
-  // },
   {
     label: "About Us",
     to: "/about",
   },
-  { label: "SDG Impact", to: "/sdg-impact" },
+  {
+    label: "SDG Impact",
+    to: "/sdg-impact",
+  },
+  {
+    label: "Contact Us",
+    to: "/contact",
+  },
 ];
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
-  const [dropdown, setDropdown] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
   const location = useLocation();
 
+  /* =========================================================
+     CLOSE MOBILE MENU AFTER ROUTE CHANGE
+  ========================================================== */
   useEffect(() => {
-    setOpen(false);
+    setMobileMenuOpen(false);
   }, [location.pathname]);
+
+  /* =========================================================
+     DISABLE BODY SCROLL WHEN MOBILE MENU IS OPEN
+  ========================================================== */
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
+  /* =========================================================
+     NAVBAR SCROLL EFFECT
+  ========================================================== */
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 15);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur mt-1">
@@ -55,88 +95,385 @@ export default function Header() {
               onMouseLeave={() => item.children && setDropdown(null)}
             >
               <NavLink
+                key={item.label}
                 to={item.to}
-                className={({ isActive }) =>
-                  `flex items-center gap-1 text-[15px] font-medium py-2 transition-colors ${
-                    isActive ? "text-brandGreen" : "text-navy-900 hover:text-brandGreen"
-                  }`
-                }
+                end={item.to === "/"}
+                className="group relative flex items-center py-4"
               >
-                {item.label}
-                {item.children && <ChevronDown size={15} />}
-              </NavLink>
-              <AnimatePresence>
-                {item.children && dropdown === item.label && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 6 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute left-0 top-full mt-1 w-64 bg-white rounded-lg shadow-cardHover border border-navy-100 py-2"
-                  >
-                    {item.children.map((c) => (
-                      <Link
-                        key={c.label}
-                        to={c.to}
-                        className="block px-4 py-2 text-sm text-navy-800 hover:bg-navy-50 hover:text-brandGreen"
-                      >
-                        {c.label}
-                      </Link>
-                    ))}
-                  </motion.div>
+                {({ isActive }) => (
+                  <>
+                    {/* Nav Text */}
+                    <span
+                      className={`
+                        relative
+                        z-10
+                        whitespace-nowrap
+                        text-[14px]
+                        font-semibold
+                        tracking-[-0.01em]
+                        transition-all
+                        duration-300
+
+                        xl:text-[15px]
+
+                        ${
+                          isActive
+                            ? "text-[#31883a]"
+                            : "text-[#092b61] group-hover:text-[#31883a]"
+                        }
+                      `}
+                    >
+                      {item.label}
+                    </span>
+
+                    {/* Active / Hover Underline */}
+                    <span
+                      className={`
+                        absolute
+                        bottom-[12px]
+                        left-1/2
+                        h-[3px]
+                        -translate-x-1/2
+                        rounded-full
+                        bg-[#31883a]
+                        transition-all
+                        duration-300
+                        ease-out
+
+                        ${
+                          isActive
+                            ? "w-full"
+                            : "w-0 group-hover:w-full"
+                        }
+                      `}
+                    />
+                  </>
                 )}
-              </AnimatePresence>
-            </div>
-          ))}
-        </nav>
+              </NavLink>
+            ))}
+          </nav>
 
-        <div className="hidden lg:block">
-          <Link to="/associate-conference" className="btn-primary text-sm px-5 py-2.5">
-            Submit Your Paper <Send size={15} />
-          </Link>
-        </div>
+       
 
-        <button
-          className="lg:hidden p-2 text-navy-900"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-        >
-          {open ? <X size={26} /> : <Menu size={26} />}
-        </button>
-      </div>
+          {/* =====================================================
+              MOBILE MENU BUTTON
+          ====================================================== */}
+          <motion.button
+            type="button"
+            whileTap={{
+              scale: 0.92,
+            }}
+            onClick={() =>
+              setMobileMenuOpen((previous) => !previous)
+            }
+            aria-label={
+              mobileMenuOpen
+                ? "Close navigation menu"
+                : "Open navigation menu"
+            }
+            aria-expanded={mobileMenuOpen}
+            className="
+              flex
+              h-11
+              w-11
+              items-center
+              justify-center
+              rounded-lg
+              border
+              border-[#e6ebf1]
+              bg-white
+              text-[#092b61]
+              shadow-sm
+              transition-all
+              duration-300
 
-      <AnimatePresence>
-        {open && (
-          <motion.nav
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="lg:hidden overflow-hidden bg-white border-t border-navy-100"
-            aria-label="Mobile navigation"
+              hover:border-[#31883a]/40
+              hover:bg-[#f8fbf8]
+              hover:text-[#31883a]
+
+              lg:hidden
+            "
           >
-            <div className="flex flex-col px-4 py-3">
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.label}
-                  to={item.to}
-                  className={({ isActive }) =>
-                    `py-3 border-b border-navy-50 text-[15px] font-medium ${
-                      isActive ? "text-brandGreen" : "text-navy-900"
-                    }`
-                  }
+            <AnimatePresence
+              mode="wait"
+              initial={false}
+            >
+              {mobileMenuOpen ? (
+                <motion.span
+                  key="close"
+                  initial={{
+                    opacity: 0,
+                    rotate: -90,
+                    scale: 0.7,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    rotate: 0,
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    rotate: 90,
+                    scale: 0.7,
+                  }}
+                  transition={{
+                    duration: 0.2,
+                  }}
                 >
-                  {item.label}
-                </NavLink>
-              ))}
-              <Link to="/associate-conference" className="btn-primary mt-4 text-sm">
-                Submit Your Paper <Send size={15} />
-              </Link>
-            </div>
-          </motion.nav>
+                  <X
+                    size={25}
+                    strokeWidth={2}
+                  />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="menu"
+                  initial={{
+                    opacity: 0,
+                    rotate: 90,
+                    scale: 0.7,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    rotate: 0,
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    rotate: -90,
+                    scale: 0.7,
+                  }}
+                  transition={{
+                    duration: 0.2,
+                  }}
+                >
+                  <Menu
+                    size={26}
+                    strokeWidth={2}
+                  />
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </motion.button>
+        </div>
+      </header>
+
+      {/* =========================================================
+          VERY IMPORTANT SPACER
+
+          Fixed elements do not take normal page space.
+          This prevents hero/content from going behind navbar.
+
+          Mobile navbar = 90px
+          Desktop navbar = 116px
+      ========================================================== */}
+      <div
+        className="h-[90px] shrink-0 lg:h-[116px]"
+        aria-hidden="true"
+      />
+
+      {/* =========================================================
+          MOBILE BACKDROP
+      ========================================================== */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.25,
+            }}
+            onClick={() => setMobileMenuOpen(false)}
+            className="
+              fixed
+              inset-x-0
+              bottom-0
+              top-[90px]
+              z-[997]
+              bg-[#071a33]/40
+              backdrop-blur-[2px]
+
+              lg:hidden
+            "
+          />
         )}
       </AnimatePresence>
-    </header>
+
+      {/* =========================================================
+          MOBILE SLIDE MENU
+      ========================================================== */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.aside
+            initial={{
+              x: "100%",
+              opacity: 0,
+            }}
+            animate={{
+              x: 0,
+              opacity: 1,
+            }}
+            exit={{
+              x: "100%",
+              opacity: 0,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 330,
+              damping: 32,
+            }}
+            className="
+              fixed
+              bottom-0
+              right-0
+              top-[90px]
+              z-[998]
+              w-[86%]
+              max-w-[360px]
+              overflow-y-auto
+              border-l
+              border-[#e7ebf0]
+              bg-white
+              shadow-[-12px_0_35px_rgba(5,37,76,0.12)]
+
+              lg:hidden
+            "
+          >
+            <div className="flex min-h-full flex-col">
+              {/* ===============================================
+                  MOBILE NAVIGATION LINKS
+              ================================================ */}
+              <nav
+                aria-label="Mobile Navigation"
+                className="
+                  flex
+                  flex-1
+                  flex-col
+                  px-5
+                  pb-7
+                  pt-6
+                "
+              >
+                {navItems.map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{
+                      opacity: 0,
+                      x: 30,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      x: 0,
+                    }}
+                    transition={{
+                      delay: 0.05 + index * 0.045,
+                      duration: 0.3,
+                    }}
+                  >
+                    <NavLink
+                      to={item.to}
+                      end={item.to === "/"}
+                      className={({ isActive }) =>
+                        `
+                          group
+                          flex
+                          items-center
+                          justify-between
+                          border-b
+                          border-[#edf0f3]
+                          py-[17px]
+                          text-[15px]
+                          font-semibold
+                          transition-all
+                          duration-300
+
+                          ${
+                            isActive
+                              ? "pl-2 text-[#31883a]"
+                              : "text-[#092b61] hover:pl-2 hover:text-[#31883a]"
+                          }
+                        `
+                      }
+                    >
+                      {({ isActive }) => (
+                        <>
+                          <div className="flex items-center gap-3">
+                            {/* Active Indicator */}
+                            <span
+                              className={`
+                                h-5
+                                w-[3px]
+                                rounded-full
+                                bg-[#31883a]
+                                transition-all
+                                duration-300
+
+                                ${
+                                  isActive
+                                    ? "scale-y-100 opacity-100"
+                                    : "scale-y-0 opacity-0 group-hover:scale-y-100 group-hover:opacity-100"
+                                }
+                              `}
+                            />
+
+                            <span>{item.label}</span>
+                          </div>
+
+                          <ArrowRight
+                            size={17}
+                            strokeWidth={1.8}
+                            className="
+                              -translate-x-2
+                              opacity-0
+                              transition-all
+                              duration-300
+
+                              group-hover:translate-x-0
+                              group-hover:opacity-100
+                            "
+                          />
+                        </>
+                      )}
+                    </NavLink>
+                  </motion.div>
+                ))}
+
+              
+              </nav>
+
+              {/* ===============================================
+                  MOBILE MENU BOTTOM TEXT
+              ================================================ */}
+              <div
+                className="
+                  border-t
+                  border-[#edf0f3]
+                  px-5
+                  py-5
+                "
+              >
+                <p
+                  className="
+                    text-center
+                    text-[11px]
+                    leading-5
+                    text-slate-400
+                  "
+                >
+                  Ideas. Research. Collaboration. Impact.
+                </p>
+              </div>
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
