@@ -9,25 +9,23 @@ const navItems = [
   {
     label: "Conferences",
     to: "/conferences",
-    children: [
-      { label: "Upcoming Conferences", to: "/conferences" },
-      { label: "Past Conferences", to: "/conferences" },
-    ],
+    // children: [
+    //   { label: "Upcoming Conferences", to: "/conferences" },
+    //   { label: "Past Conferences", to: "/conferences" },
+    // ],
   },
   {
-    label: "Journals & Proceedings",
-    to: "/conferences",
-    children: [{ label: "Scopus Indexed Proceedings", to: "/conferences" }],
-  },
-  {
-    label: "For Authors",
+    label: "Associate Us",
     to: "/associate-conference",
-    children: [{ label: "Submit Your Paper", to: "/associate-conference" }],
   },
+  // {
+  //   label: "For Authors",
+  //   to: "/associate-conference",
+  //   children: [{ label: "Submit Your Paper", to: "/associate-conference" }],
+  // },
   {
     label: "About Us",
     to: "/about",
-    children: [{ label: "About Innovation Conferences", to: "/about" }],
   },
   { label: "SDG Impact", to: "/sdg-impact" },
 ];
@@ -42,10 +40,10 @@ export default function Header() {
   }, [location.pathname]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-navy-100">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-navy-100 mt-1">
       <div className="container-page flex items-center justify-between h-20">
         <Link to="/" className="flex-shrink-0" aria-label="Innovation Conference home">
-          <img src={logo} alt="Innovation Conference logo" className="h-14 w-auto object-contain" />
+          <img src={logo} alt="Innovation Conference logo" className="h-[5.5rem] w-auto object-contain" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7" aria-label="Primary navigation">
