@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   BarChart3,
@@ -38,6 +40,7 @@ import sdg15 from "../assets/img/sd15.png";
 import sdg16 from "../assets/img/sd16.png";
 import sdg17 from "../assets/img/sd17.png";
 import sdgLogo from "../assets/img/sd18.png";
+import networkBg from "../assets/img/network-bg.jpg";
 
 const trust = [
   [ShieldCheck, "Scopus Indexed", "Conferences & Proceedings"],
@@ -156,6 +159,108 @@ const sdgImages = [
 ];
 
 export default function Home() {
+  const [currentConference, setCurrentConference] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(3);
+
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      if (window.innerWidth < 768) {
+        setVisibleCards(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCards(2);
+      } else {
+        setVisibleCards(3);
+      }
+    };
+
+    updateVisibleCards();
+    window.addEventListener("resize", updateVisibleCards);
+
+    return () => {
+      window.removeEventListener("resize", updateVisibleCards);
+    };
+  }, []);
+
+  const maxConferenceIndex = Math.max(
+    conferences.length - visibleCards,
+    0
+  );
+
+  const previousConference = () => {
+    setCurrentConference((current) =>
+      current === 0 ? maxConferenceIndex : current - 1
+    );
+  };
+
+  const nextConference = () => {
+    setCurrentConference((current) =>
+      current >= maxConferenceIndex ? 0 : current + 1
+    );
+  };
+
+  useEffect(() => {
+    if (currentConference > maxConferenceIndex) {
+      setCurrentConference(maxConferenceIndex);
+    }
+  }, [currentConference, maxConferenceIndex]);
+
+  const [subscriberEmail, setSubscriberEmail] = useState("");
+const [subscribeStatus, setSubscribeStatus] = useState("");
+const [subscribeLoading, setSubscribeLoading] = useState(false);
+
+const handleSubscribe = async (event) => {
+  event.preventDefault();
+
+  const cleanEmail = subscriberEmail.trim().toLowerCase();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!cleanEmail) {
+    setSubscribeStatus("Please enter your email address.");
+    return;
+  }
+
+  if (!emailPattern.test(cleanEmail)) {
+    setSubscribeStatus("Please enter a valid email address.");
+    return;
+  }
+
+  setSubscribeLoading(true);
+  setSubscribeStatus("");
+
+  try {
+    /*
+      Replace this localStorage section with your backend API
+      when your newsletter API is available.
+    */
+    const savedSubscribers = JSON.parse(
+      localStorage.getItem("conferenceSubscribers") || "[]"
+    );
+
+    const alreadySubscribed = savedSubscribers.some(
+      (email) => email === cleanEmail
+    );
+
+    if (alreadySubscribed) {
+      setSubscribeStatus("This email is already subscribed.");
+      return;
+    }
+
+    savedSubscribers.push(cleanEmail);
+
+    localStorage.setItem(
+      "conferenceSubscribers",
+      JSON.stringify(savedSubscribers)
+    );
+
+    setSubscribeStatus("Thank you! You have successfully subscribed.");
+    setSubscriberEmail("");
+  } catch (error) {
+    setSubscribeStatus("Subscription failed. Please try again.");
+  } finally {
+    setSubscribeLoading(false);
+  }
+};
+
   return (
     <main className="overflow-hidden bg-white font-sans text-[#071f46]">
       {/* ==================== HERO SECTION ==================== */}
@@ -361,130 +466,506 @@ export default function Home() {
           </div>
         </div>
       </motion.section>
-      {/* ==================== UPCOMING CONFERENCES SECTION ==================== */}
-      <section className="mx-auto max-w-[1170px] px-5 pb-4 sm:px-8 lg:px-10 xl:px-0">
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-[19px] font-bold">Upcoming Conferences</h2>
-          <a
-            href="#"
-            className="flex items-center gap-1 text-[10px] font-bold text-[#318b32] hover:gap-2"
-          >
-            View All Conferences <ArrowRight size={14} />
-          </a>
-        </div>
-        <div className="relative">
-          <button className="absolute -left-9 top-[72px] z-10 hidden h-9 w-9 place-items-center rounded-full bg-[#082f63] text-white transition hover:scale-110 xl:grid">
-            <ChevronLeft />
-          </button>
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-            {conferences.map(([date, month, place, image, title], i) => (
+     {/* ==================== UPCOMING CONFERENCES SECTION ==================== */}
+<section className="mx-auto max-w-[1170px] px-5 pb-4 sm:px-8 lg:px-10 xl:px-0">
+  <div className="mb-4 flex items-center justify-between gap-4">
+    <h2 className="text-[22px] font-[550]">
+      Upcoming Conferences
+    </h2>
+
+    <Link
+      to="/conferences"
+      className="group flex shrink-0 items-center gap-1 text-[12px] font-[550] text-[#318b32]"
+    >
+      View All Conferences
+
+      <ArrowRight
+        size={14}
+        className="transition-transform duration-300 group-hover:translate-x-1"
+      />
+    </Link>
+  </div>
+
+  <div className="relative">
+    {/* Previous button */}
+    {conferences.length > visibleCards && (
+      <button
+        type="button"
+        onClick={previousConference}
+        aria-label="Previous conference"
+        className="absolute -left-4 top-1/2 z-20 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-[#082f63] text-white shadow-lg transition duration-300 hover:scale-110 hover:bg-[#318b32] sm:-left-5 xl:-left-12"
+      >
+        <ChevronLeft size={20} />
+      </button>
+    )}
+
+    {/* Carousel viewport */}
+    <div className="overflow-hidden">
+      <motion.div
+        className="flex"
+        animate={{
+          x: `-${currentConference * (100 / visibleCards)}%`,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 30,
+        }}
+      >
+        {conferences.map(
+          ([date, month, place, image, title], index) => (
+            <div
+              key={title}
+              className="shrink-0 px-2.5"
+              style={{
+                width: `${100 / visibleCards}%`,
+              }}
+            >
               <motion.article
                 {...show}
-                transition={{ delay: i * 0.07 }}
-                whileHover={{ y: -7 }}
-                key={title}
-                className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-md hover:shadow-xl"
+                transition={{
+                  delay: index * 0.07,
+                }}
+                whileHover={{
+                  y: -7,
+                }}
+                className="h-full overflow-hidden rounded-lg border border-slate-200 bg-white shadow-md transition-shadow duration-300 hover:shadow-xl"
               >
                 <div
-                  className="relative h-[103px] bg-cover bg-center"
-                  style={{ backgroundImage: `url(${image})` }}
+                  className="relative h-[105px] bg-cover bg-center"
+                  style={{
+                    backgroundImage: `url(${image})`,
+                  }}
                 >
-                  <div className="absolute left-3 top-0 rounded-b-md bg-[#318b32] px-3 py-2 text-center text-[7px] text-white">
-                    <b className="block text-[17px] leading-none">{date}</b>
-                    {month}
-                    <br />
-                    {place}
+                  <div className="absolute left-3 top-0 rounded-b-md bg-[#318b32] px-3 py-2 text-center text-[7px] text-white shadow-md">
+                    <b className="block text-[17px] leading-none">
+                      {date}
+                    </b>
+
+                    <span>{month}</span>
+
+                    <span className="block">
+                      {place}
+                    </span>
                   </div>
                 </div>
+
                 <div className="px-4 py-3">
-                  <h3 className="min-h-[36px] text-[11px] font-bold leading-[1.45]">
+                  <h3 className="min-h-[36px] text-[12px] font-[550] leading-[1.45]">
                     {title}
                   </h3>
-                  <div className="mt-2 flex gap-2">
-                    <span className="rounded-full bg-blue-50 px-3 py-1.5 text-[8px] text-blue-700">
+
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    <span className="rounded-full bg-blue-50 px-3 py-1.5 text-[10px] text-blue-700">
                       Scopus Indexed Proceedings
                     </span>
-                    <span className="rounded-full bg-green-50 px-3 py-1.5 text-[8px] text-green-700">
+
+                    <span className="rounded-full bg-green-50 px-3 py-1.5 text-[10px] text-green-700">
                       Hybrid
                     </span>
                   </div>
                 </div>
               </motion.article>
-            ))}
-          </div>
-          <button className="absolute -right-9 top-[72px] z-10 hidden h-9 w-9 place-items-center rounded-full bg-[#082f63] text-white transition hover:scale-110 xl:grid">
-            <ChevronRight />
-          </button>
-        </div>
-      </section>
+            </div>
+          )
+        )}
+      </motion.div>
+    </div>
+
+    {/* Next button */}
+    {conferences.length > visibleCards && (
+      <button
+        type="button"
+        onClick={nextConference}
+        aria-label="Next conference"
+        className="absolute -right-4 top-1/2 z-20 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-[#082f63] text-white shadow-lg transition duration-300 hover:scale-110 hover:bg-[#318b32] sm:-right-5 xl:-right-12"
+      >
+        <ChevronRight size={20} />
+      </button>
+    )}
+  </div>
+
+  {/* Carousel dots */}
+  {conferences.length > visibleCards && (
+    <div className="mt-5 flex justify-center gap-2">
+      {Array.from({
+        length: maxConferenceIndex + 1,
+      }).map((_, index) => (
+        <button
+          type="button"
+          key={index}
+          onClick={() => setCurrentConference(index)}
+          aria-label={`Open conference slide ${index + 1}`}
+          className={`h-2 rounded-full transition-all duration-300 ${
+            currentConference === index
+              ? "w-7 bg-[#318b32]"
+              : "w-2 bg-slate-300 hover:bg-[#082f63]"
+          }`}
+        />
+      ))}
+    </div>
+  )}
+</section>
       {/* ==================== PLATFORM FEATURES SECTION ==================== */}
-      <section className="mt-2 bg-gradient-to-r from-[#07386f] to-[#004276] py-7 text-white">
-        <div className="mx-auto grid max-w-[1170px] grid-cols-1 gap-7 px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-4 lg:gap-0 lg:px-10 xl:px-0">
-          {features.map(([Icon, title, text], i) => (
-            <motion.div
-              {...show}
-              whileHover={{ y: -4 }}
-              key={title}
-              className={`flex gap-4 lg:border-r lg:border-white/30 lg:px-7 ${i === 0 ? "lg:pl-0" : ""} ${i === 3 ? "lg:border-0" : ""}`}
+<section
+  className="relative mt-2 overflow-hidden bg-[#04366a] bg-cover bg-center text-white"
+  style={{
+    backgroundImage: `url(${networkBg})`,
+  }}
+>
+  {/* Dark blue overlay */}
+  <div className="absolute inset-0 bg-[#032f61]/75" />
+
+  {/* Features */}
+  <div
+    className="
+      relative
+      z-10
+      mx-auto
+      grid
+      min-h-[130px]
+      max-w-[1170px]
+      grid-cols-1
+      px-5
+      py-6
+
+      sm:grid-cols-2
+      sm:px-8
+
+      lg:grid-cols-4
+      lg:px-10
+      lg:py-7
+
+      xl:px-0
+    "
+  >
+    {features.map(([Icon, title, text], index) => (
+      <motion.div
+        {...show}
+        transition={{
+          duration: 0.45,
+          delay: index * 0.08,
+        }}
+        whileHover={{
+          y: -4,
+        }}
+        key={title}
+        className={`
+          group
+          flex
+          min-h-[105px]
+          items-start
+          gap-5
+          border-b
+          border-white/25
+          px-2
+          py-6
+
+          sm:px-6
+
+          lg:min-h-[78px]
+          lg:border-b-0
+          lg:border-r
+          lg:px-8
+          lg:py-0
+
+          ${index === 0 ? "lg:pl-0" : ""}
+          ${index === 3 ? "border-b-0 lg:border-r-0 lg:pr-0" : ""}
+        `}
+      >
+        {/* Feature icon */}
+        <Icon
+          size={44}
+          strokeWidth={1.5}
+          className="
+            mt-0.5
+            shrink-0
+            text-white
+            transition
+            duration-300
+            group-hover:scale-110
+            group-hover:text-[#74d83c]
+          "
+        />
+
+        {/* Feature content */}
+        <div>
+          <h3 className="text-[14px] font-[550] leading-5 text-white">
+            {title}
+          </h3>
+
+          <p className="mt-1.5 max-w-[190px] text-[12px] leading-[1.75] text-white/95 sm:text-[10.5px]">
+            {text}
+          </p>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</section>
+      {/* ==================== NEWSLETTER CTA SECTION ==================== */}
+<section className="-mt-4">
+  <div
+    className="
+      relative
+      mx-auto
+      max-w-[1440px]
+      overflow-hidden
+      rounded-t-[22px]
+      rounded-b-none
+      bg-[#075585]
+      bg-cover
+      bg-center
+      text-white
+    "
+    style={{
+      backgroundImage: `url(${networkBg})`,
+      backgroundPosition: "center 63%",
+    }}
+  >
+    {/* Background overlays */}
+    <div className="absolute inset-0 bg-gradient-to-r from-[#075b98]/95 via-[#09658b]/92 to-[#15977b]/80" />
+    <div className="absolute inset-0 bg-[#043b6b]/25" />
+
+    <div
+      className="
+        relative
+        z-10
+        mx-auto
+        grid
+        max-w-[1170px]
+        grid-cols-1
+        px-6
+        py-6
+
+        sm:px-8
+
+        md:grid-cols-[1.15fr_1fr_.78fr]
+        md:items-center
+        md:px-10
+        md:py-5
+
+        lg:px-5
+
+        xl:px-0
+      "
+    >
+      {/* Submit paper */}
+      <div
+        className="
+          border-b
+          border-white/35
+          pb-6
+
+          md:min-h-[100px]
+          md:border-b-0
+          md:border-r
+          md:pb-0
+          md:pr-10
+        "
+      >
+        <h3 className="text-[18px] font-[550] leading-tight sm:text-[20px]">
+          Be Part of Innovation. Be Part of Impact.
+        </h3>
+
+        <p className="mt-2 text-[12px] leading-relaxed text-white/95 sm:text-[13px]">
+          Share your research. Inspire change. Build a better future.
+        </p>
+
+        <a
+          href="/submit-paper"
+          className="
+            mt-3
+            inline-flex
+            min-h-[34px]
+            items-center
+            justify-center
+            gap-3
+            rounded-[4px]
+            bg-[#50a92f]
+            px-5
+            text-[12px]
+            font-[550]
+            text-white
+            shadow-md
+            transition
+            duration-300
+
+            hover:-translate-y-1
+            hover:bg-[#5fbb38]
+            hover:shadow-lg
+          "
+        >
+          Submit Your Paper
+          <Send size={14} strokeWidth={1.8} />
+        </a>
+      </div>
+
+      {/* Newsletter form */}
+      <div
+        className="
+          border-b
+          border-white/35
+          py-6
+
+          md:min-h-[100px]
+          md:border-b-0
+          md:border-r
+          md:px-10
+          md:py-0
+        "
+      >
+        <h3 className="text-[14px] font-[550] sm:text-[15px]">
+          Stay Updated
+        </h3>
+
+        <p className="mt-1 max-w-[290px] text-[12px] sm:text-[13px] leading-[1.6] text-white/95">
+          Subscribe to get latest conference updates and important
+          announcements.
+        </p>
+
+        <form
+          onSubmit={handleSubscribe}
+          className="mt-2.5"
+          noValidate
+        >
+          <div className="flex w-full max-w-[320px] overflow-hidden rounded-[3px] bg-white shadow-sm">
+            <input
+              type="email"
+              value={subscriberEmail}
+              onChange={(event) => {
+                setSubscriberEmail(event.target.value);
+
+                if (subscribeStatus) {
+                  setSubscribeStatus("");
+                }
+              }}
+              placeholder="Enter your email"
+              aria-label="Email address"
+              disabled={subscribeLoading}
+              className="
+                min-h-[32px]
+                min-w-0
+                flex-1
+                bg-white
+                px-3
+                text-[12px]
+                text-slate-900
+                outline-none
+                placeholder:text-slate-400
+
+                focus:ring-2
+                focus:ring-inset
+                focus:ring-green-500
+              "
+            />
+
+            <button
+              type="submit"
+              disabled={subscribeLoading}
+              className="
+                min-h-[32px]
+                shrink-0
+                bg-[#4da52d]
+                px-5
+                text-[12px]
+                font-[550]
+                text-white
+                transition
+                duration-300
+
+                hover:bg-[#5cba35]
+                disabled:cursor-not-allowed
+                disabled:opacity-70
+              "
             >
-              <Icon size={35} className="shrink-0" />
-              <div>
-                <h3 className="text-[12px] font-bold">{title}</h3>
-                <p className="mt-1 text-[9.5px] leading-relaxed">{text}</p>
-              </div>
-            </motion.div>
+              {subscribeLoading ? "Please wait..." : "Subscribe"}
+            </button>
+          </div>
+
+          {/* Fixed-height status prevents layout movement */}
+          <p
+            aria-live="polite"
+            className={`mt-1.5 min-h-[14px] text-[12px] ${
+              subscribeStatus.includes("successfully")
+                ? "text-[#a9f58d]"
+                : "text-yellow-200"
+            }`}
+          >
+            {subscribeStatus}
+          </p>
+        </form>
+      </div>
+
+      {/* Social media */}
+      <div className="pt-6 md:min-h-[100px] md:pl-10 md:pt-0">
+        <h3 className="text-[14px] font-[550] sm:text-[15px]">
+          Connect With Us
+        </h3>
+
+        <div className="mt-4 flex flex-wrap gap-2">
+          {[
+            {
+              label: "LinkedIn",
+              href: "https://www.linkedin.com/",
+              icon: "in",
+            },
+            {
+              label: "Twitter",
+              href: "https://twitter.com/",
+              icon: "𝕏",
+            },
+            {
+              label: "Facebook",
+              href: "https://www.facebook.com/",
+              icon: "f",
+            },
+            {
+              label: "YouTube",
+              href: "https://www.youtube.com/",
+              icon: "▶",
+            },
+            {
+              label: "Instagram",
+              href: "https://www.instagram.com/",
+              icon: "◎",
+            },
+          ].map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
+              title={social.label}
+              className="
+                grid
+                h-8
+                w-8
+                place-items-center
+                rounded-full
+                border
+                border-white/70
+                bg-white/5
+                text-[16px]
+                font-[550]
+                text-white
+                transition
+                duration-300
+
+                hover:-translate-y-1
+                hover:border-white
+                hover:bg-white
+                hover:text-[#075181]
+              "
+            >
+              {social.icon}
+            </a>
           ))}
         </div>
-      </section>
-      {/* ==================== NEWSLETTER CTA SECTION ==================== */}
-      <section className="bg-[radial-gradient(circle_at_92%_120%,#319a75_0%,transparent_38%),linear-gradient(100deg,#155d98,#006d75)] py-5 text-white">
-        <div className="mx-auto grid max-w-[1170px] grid-cols-1 gap-7 px-5 sm:px-8 md:grid-cols-[1.15fr_1fr_.8fr] lg:px-10 xl:px-0">
-          <div className="md:border-r md:border-white/35 md:pr-8">
-            <h3 className="text-[16px] font-bold">
-              Be Part of Innovation. Be Part of Impact.
-            </h3>
-            <p className="mt-1 text-[9.5px]">
-              Share your research. Inspire change. Build a better future.
-            </p>
-            <a
-              href="#"
-              className="mt-3 inline-flex items-center gap-3 rounded bg-[#3b9e38] px-5 py-2.5 text-[10px] font-bold transition hover:-translate-y-1"
-            >
-              Submit Your Paper <Send size={14} />
-            </a>
-          </div>
-          <div className="md:border-r md:border-white/35 md:pr-8">
-            <h3 className="text-[13px] font-bold">Stay Updated</h3>
-            <p className="mt-1 text-[9.5px]">
-              Subscribe to get latest conference updates and important
-              announcements.
-            </p>
-            <div className="mt-2 flex">
-              <input
-                placeholder="Enter your email"
-                className="min-w-0 flex-1 rounded-l px-3 py-2 text-[10px] text-slate-900 outline-none"
-              />
-              <button className="rounded-r bg-[#3b9e38] px-5 text-[10px] font-bold hover:bg-green-500">
-                Subscribe
-              </button>
-            </div>
-          </div>
-          <div>
-            <h3 className="text-[13px] font-bold">Connect With Us</h3>
-            <div className="mt-4 flex gap-2">
-              {["in", "𝕏", "f", "▶", "◎"].map((x) => (
-                <a
-                  href="#"
-                  key={x}
-                  className="grid h-8 w-8 place-items-center rounded-full border border-white/60 text-[11px] font-bold transition hover:-translate-y-1 hover:bg-white hover:text-[#083664]"
-                >
-                  {x}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
     </main>
   );
 }
