@@ -20,24 +20,24 @@ import {
 import homeBg from "../assets/img/homeBg.png";
 import goal from "../assets/img/goal.png";
 
-import sdg1 from "../assets/images/sdg/sdg-1.png";
-import sdg2 from "../assets/images/sdg/sdg-2.png";
-import sdg3 from "../assets/images/sdg/sdg-3.png";
-import sdg4 from "../assets/images/sdg/sdg-4.png";
-import sdg5 from "../assets/images/sdg/sdg-5.png";
-import sdg6 from "../assets/images/sdg/sdg-6.png";
-import sdg7 from "../assets/images/sdg/sdg-7.png";
-import sdg8 from "../assets/images/sdg/sdg-8.png";
-import sdg9 from "../assets/images/sdg/sdg-9.png";
-import sdg10 from "../assets/images/sdg/sdg-10.png";
-import sdg11 from "../assets/images/sdg/sdg-11.png";
-import sdg12 from "../assets/images/sdg/sdg-12.png";
-import sdg13 from "../assets/images/sdg/sdg-13.png";
-import sdg14 from "../assets/images/sdg/sdg-14.png";
-import sdg15 from "../assets/images/sdg/sdg-15.png";
-import sdg16 from "../assets/images/sdg/sdg-16.png";
-import sdg17 from "../assets/images/sdg/sdg-17.png";
-import sdgLogo from "../assets/images/sdg/sdg-logo.png";
+import sdg1 from "../assets/img/sd1.png";
+import sdg2 from "../assets/img/sd2.png";
+import sdg3 from "../assets/img/sd3.png";
+import sdg4 from "../assets/img/sd4.png";
+import sdg5 from "../assets/img/sd5.png";
+import sdg6 from "../assets/img/sd6.png";
+import sdg7 from "../assets/img/sd7.png";
+import sdg8 from "../assets/img/sd8.png";
+import sdg9 from "../assets/img/sd9.png";
+import sdg10 from "../assets/img/sd10.png";
+import sdg11 from "../assets/img/sd11.png";
+import sdg12 from "../assets/img/sd12.png";
+import sdg13 from "../assets/img/sd13.png";
+import sdg14 from "../assets/img/sd14.png";
+import sdg15 from "../assets/img/sd15.png";
+import sdg16 from "../assets/img/sd16.png";
+import sdg17 from "../assets/img/sd17.png";
+import sdgLogo from "../assets/img/sd18.png";
 
 
 
@@ -162,7 +162,7 @@ export default function Home() {
     <main className="overflow-hidden bg-white font-sans text-[#071f46]">
       {/* ==================== HERO SECTION ==================== */}
       <section
-        className="relative mt-0 min-h-[545px] bg-cover bg-[64%_center] lg:bg-center"
+        className="relative  min-h-[545px] bg-cover bg-[64%_center] lg:bg-center"
         style={{ backgroundImage: `url(${homeBg})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent lg:hidden" />
