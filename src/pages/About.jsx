@@ -9,7 +9,9 @@ import {
   Award,
   BadgeCheck,
   BookOpenCheck,
+  ChartNoAxesCombined,
   CheckCircle2,
+  CircleCheckBig,
   ClipboardCheck,
   Eye,
   FileText,
@@ -22,13 +24,14 @@ import {
   Star,
   Target,
   TrendingUp,
+  UserRoundCheck,
   Users2,
 } from "lucide-react";
 
 import aboutHero from "../assets/img/aboutbg.png";
 import ctaimg from "../assets/img/aboutcta.png";
-
-import cta from "../assets/img/cta.png";
+import sdgImg from "../assets/img/sd18.png";
+import ctaBg from "../assets/img/cta.png";
 
 
 
@@ -101,21 +104,21 @@ const authorBenefits = [
     text: "Global visibility for your research",
   },
   {
-    icon: Award,
+    icon: BadgeCheck,
     text: "Scopus indexed publications",
   },
   {
-    icon: CheckCircle2,
+    icon: CircleCheckBig,
     text: "High quality peer review",
   },
   {
-    icon: Users2,
+    icon: UserRoundCheck,
     text: "Connect with global experts & leaders",
   },
   {
-    icon: TrendingUp,
+    icon: ChartNoAxesCombined,
     text: "Make a real world impact",
-  },
+  }
 ];
 
 /* =========================================================
@@ -758,486 +761,782 @@ const About = () => {
           WHY AUTHORS CHOOSE INNOVATION CONFERENCES
       ========================================================== */}
 
-      <section className="px-3 py-2 sm:px-5">
-        <div
+   <section className="w-full px-3 py-3 sm:px-4 md:px-5">
+  <motion.div
+    initial={{ opacity: 0, y: 15 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{
+      duration: 0.5,
+      ease: "easeOut",
+    }}
+    className="
+      mx-auto
+      w-full
+      max-w-[1400px]
+      overflow-hidden
+      rounded-[13px]
+      bg-gradient-to-r
+      from-[#f7faf6]
+      via-[#f6f9f6]
+      to-[#f1f6f2]
+      px-4
+      pb-5
+      pt-4
+
+      sm:px-5
+
+      md:px-6
+
+      lg:px-8
+      lg:pb-5
+      lg:pt-4
+    "
+  >
+    {/* ==================== HEADING ==================== */}
+    <motion.h2
+      initial={{ opacity: 0, y: -8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.45,
+        delay: 0.1,
+      }}
+      className="
+        text-center
+        text-[17px]
+        font-bold
+        leading-[1.25]
+        tracking-[-0.15px]
+        text-[#082f63]
+
+        sm:text-[18px]
+
+        lg:text-[19px]
+      "
+    >
+      Why Authors Choose Innovation Conferences
+    </motion.h2>
+
+    {/* ==================== CONTENT ==================== */}
+    <div
+      className="
+        mt-4
+        grid
+        grid-cols-1
+        gap-y-5
+
+        sm:grid-cols-2
+        sm:gap-y-6
+
+        md:grid-cols-3
+
+        lg:mt-[15px]
+        lg:grid-cols-[repeat(5,minmax(0,1fr))_1.18fr]
+        lg:gap-0
+      "
+    >
+      {authorBenefits.map(({ icon: Icon, text }, index) => (
+        <motion.div
+          key={text}
+          initial={{
+            opacity: 0,
+            y: 15,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
+          transition={{
+            duration: 0.4,
+            delay: index * 0.07,
+            ease: "easeOut",
+          }}
+          whileHover={{
+            y: -5,
+          }}
+          className={`
+            group
+            relative
+            flex
+            min-h-[105px]
+            flex-col
+            items-center
+            justify-center
+            px-4
+            py-3
+            text-center
+
+            sm:min-h-[110px]
+
+            lg:min-h-[98px]
+            lg:py-1
+
+            ${
+              index !== authorBenefits.length - 1
+                ? "lg:border-r lg:border-[#cbd7d2]"
+                : ""
+            }
+          `}
+        >
+          {/* Icon */}
+          <motion.div
+            whileHover={{
+              scale: 1.08,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 280,
+              damping: 18,
+            }}
+            className="
+              mb-[9px]
+              flex
+              h-[45px]
+              w-[45px]
+              items-center
+              justify-center
+              text-[#3c963c]
+
+              sm:h-[47px]
+              sm:w-[47px]
+            "
+          >
+            <Icon
+              size={40}
+              strokeWidth={1.35}
+              className="
+                transition-all
+                duration-300
+                group-hover:drop-shadow-[0_4px_5px_rgba(60,150,60,0.15)]
+              "
+            />
+          </motion.div>
+
+          {/* Text */}
+          <p
+            className="
+              max-w-[125px]
+              text-[9.5px]
+              font-medium
+              leading-[1.45]
+              text-[#17365f]
+
+              sm:text-[10px]
+
+              lg:text-[10px]
+            "
+          >
+            {text}
+          </p>
+        </motion.div>
+      ))}
+
+      {/* ==================== SDG SECTION ==================== */}
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 15,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: true,
+          amount: 0.25,
+        }}
+        transition={{
+          duration: 0.45,
+          delay: 0.35,
+        }}
+        whileHover={{
+          y: -5,
+        }}
+        className="
+          group
+          relative
+          flex
+          min-h-[115px]
+          flex-col
+          items-center
+          justify-center
+          px-4
+          py-3
+          text-center
+
+          sm:min-h-[110px]
+
+          lg:min-h-[98px]
+          lg:border-l
+          lg:border-[#cbd7d2]
+          lg:px-5
+          lg:py-1
+        "
+      >
+        {/* SDG Image */}
+        <motion.img
+          src={sdgImg}
+          alt="United Nations Sustainable Development Goals"
+          whileHover={{
+            scale: 1.04,
+          }}
+          transition={{
+            duration: 0.25,
+          }}
           className="
-            mx-auto
-            w-full
-            max-w-[1400px]
-            rounded-[14px]
-            bg-gradient-to-r
-            from-[#f7faf6]
-            via-[#f4f8f5]
-            to-[#eef4ef]
-            px-5
-            py-6
+            mb-[7px]
+            h-[48px]
+            w-auto
+            max-w-[135px]
+            object-contain
 
-            md:px-7
+            sm:h-[50px]
 
-            lg:px-9
+            lg:h-[52px]
+            lg:max-w-[145px]
+          "
+        />
+
+        <p
+          className="
+            max-w-[160px]
+            text-[8.8px]
+            font-medium
+            leading-[1.4]
+            text-[#17365f]
+
+            sm:text-[9px]
+
+            lg:text-[9px]
           "
         >
-          <h2
-            className="
-              text-center
-              text-[19px]
-              font-bold
-              text-[#092c5c]
-
-              lg:text-[21px]
-            "
-          >
-            Why Authors Choose Innovation Conferences
-          </h2>
-
-          <div
-            className="
-              mt-6
-              grid
-              grid-cols-2
-              gap-y-8
-
-              sm:grid-cols-3
-
-              lg:grid-cols-[repeat(5,1fr)_1.2fr]
-              lg:gap-0
-            "
-          >
-            {authorBenefits.map(({ icon: Icon, text }, index) => (
-              <motion.div
-                key={text}
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.2 }}
-                className={`
-                  relative
-                  flex
-                  min-h-[110px]
-                  flex-col
-                  items-center
-                  justify-center
-                  px-4
-                  text-center
-
-                  ${
-                    index < authorBenefits.length - 1
-                      ? "lg:border-r lg:border-[#cad7d3]"
-                      : ""
-                  }
-                `}
-              >
-                <Icon
-                  size={37}
-                  strokeWidth={1.35}
-                  className="mb-3 text-[#48a33f]"
-                />
-
-                <p
-                  className="
-                    max-w-[125px]
-                    text-[10px]
-                    font-medium
-                    leading-[1.5]
-                    text-[#233d5d]
-
-                    sm:text-[10.5px]
-                  "
-                >
-                  {text}
-                </p>
-              </motion.div>
-            ))}
-
-            {/* SDG */}
-            <motion.div
-              whileHover={{ y: -4 }}
-              className="
-                col-span-2
-                flex
-                min-h-[110px]
-                flex-col
-                items-center
-                justify-center
-                px-5
-                text-center
-
-                sm:col-span-1
-
-                lg:border-l
-                lg:border-[#cad7d3]
-              "
-            >
-              <p
-                className="
-                  text-[13px]
-                  font-extrabold
-                  uppercase
-                  leading-[1]
-                  text-[#1598c6]
-                "
-              >
-                Sustainable
-              </p>
-
-              <p
-                className="
-                  mt-[2px]
-                  text-[13px]
-                  font-extrabold
-                  uppercase
-                  leading-[1]
-                  text-[#1598c6]
-                "
-              >
-                Development
-              </p>
-
-              <p
-                className="
-                  mt-[2px]
-                  text-[17px]
-                  font-extrabold
-                  uppercase
-                  leading-none
-                  text-[#f4a525]
-                "
-              >
-                Goals
-              </p>
-
-              <p
-                className="
-                  mt-3
-                  max-w-[150px]
-                  text-[9px]
-                  leading-[1.45]
-                  text-[#334b63]
-                "
-              >
-                We align with all 17 UN Sustainable Development Goals (SDGs).
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+          We align with all 17 UN Sustainable Development Goals (SDGs).
+        </p>
+      </motion.div>
+    </div>
+  </motion.div>
+</section>
 
       {/* =========================================================
           OUR CONFERENCE EVALUATION PROCESS
       ========================================================== */}
 
-      <section
+    <section
+  className="
+    w-full
+    bg-white
+    px-4
+    pb-9
+    pt-5
+
+    sm:px-6
+    sm:pb-10
+    sm:pt-6
+
+    lg:px-8
+    lg:pb-11
+    lg:pt-6
+  "
+>
+  <div className="mx-auto w-full max-w-[1380px]">
+    {/* ================= HEADING ================= */}
+    <motion.div
+      initial={{ opacity: 0, y: -8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.7 }}
+      transition={{
+        duration: 0.45,
+        ease: "easeOut",
+      }}
+      className="text-center"
+    >
+      <h2
         className="
-          mx-auto
-          w-full
-          max-w-[1380px]
-          px-5
-          pb-10
-          pt-7
+          text-[18px]
+          font-bold
+          leading-tight
+          tracking-[-0.2px]
+          text-[#082d60]
 
-          sm:px-7
+          sm:text-[19px]
 
-          lg:pb-12
-          lg:pt-8
+          lg:text-[20px]
         "
       >
-        <div className="text-center">
-          <h2
-            className="
-              text-[20px]
-              font-bold
-              text-[#092c5c]
+        Our Conference Evaluation Process
+      </h2>
 
-              lg:text-[22px]
+      <motion.div
+        initial={{ width: 0 }}
+        whileInView={{ width: 27 }}
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.45,
+          delay: 0.15,
+        }}
+        className="
+          mx-auto
+          mt-[7px]
+          h-[1.5px]
+          bg-[#42a247]
+        "
+      />
+    </motion.div>
+
+    {/* ================= PROCESS GRID ================= */}
+    <div
+      className="
+        mt-6
+        grid
+        grid-cols-1
+        gap-x-7
+        gap-y-8
+
+        sm:grid-cols-2
+
+        md:grid-cols-3
+
+        xl:mt-[22px]
+        xl:grid-cols-6
+        xl:gap-x-[22px]
+        xl:gap-y-0
+      "
+    >
+      {processItems.map(
+        ({ number, icon: Icon, title, description }, index) => (
+          <motion.div
+            key={number}
+            initial={{
+              opacity: 0,
+              y: 18,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.25,
+            }}
+            transition={{
+              duration: 0.45,
+              delay: index * 0.07,
+              ease: "easeOut",
+            }}
+            whileHover={{
+              y: -4,
+            }}
+            className="
+              group
+              relative
+              mx-auto
+              w-full
+              max-w-[250px]
+
+              sm:mx-0
+
+              xl:max-w-none
             "
           >
-            Our Conference Evaluation Process
-          </h2>
+            {/* ================= DESKTOP CONNECTOR ================= */}
+            {index !== processItems.length - 1 && (
+              <div
+                className="
+                  pointer-events-none
+                  absolute
+                  left-[64px]
+                  top-[22px]
+                  z-0
+                  hidden
+                  w-[calc(100%-47px)]
+                  items-center
 
-          <div className="mx-auto mt-2 h-[2px] w-[35px] bg-[#48a33f]" />
-        </div>
-
-        {/* Process */}
-        <div
-          className="
-            mt-7
-            grid
-            grid-cols-1
-            gap-8
-
-            sm:grid-cols-2
-
-            md:grid-cols-3
-
-            xl:grid-cols-6
-            xl:gap-5
-          "
-        >
-          {processItems.map(
-            ({ number, icon: Icon, title, description }, index) => (
-              <motion.div
-                key={number}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.4,
-                  delay: index * 0.07,
-                }}
-                className="relative"
+                  xl:flex
+                "
               >
-                {/* Desktop connector */}
-                {index !== processItems.length - 1 && (
-                  <div
-                    className="
-                      absolute
-                      left-[72%]
-                      top-[31px]
-                      hidden
-                      w-[60%]
-                      items-center
+                <div
+                  className="
+                    h-[1px]
+                    flex-1
+                    border-t-[2px]
+                    border-dotted
+                    border-[#32984a]
+                  "
+                />
 
-                      xl:flex
-                    "
-                  >
-                    <div className="w-full border-t-2 border-dotted border-[#51a649]" />
+                <ArrowRight
+                  size={12}
+                  strokeWidth={2.1}
+                  className="
+                    -ml-[2px]
+                    shrink-0
+                    text-[#32984a]
+                  "
+                />
+              </div>
+            )}
 
-                    <ArrowRight
-                      size={13}
-                      className="-ml-[5px] shrink-0 text-[#51a649]"
-                    />
-                  </div>
-                )}
+            {/* ================= ICON ================= */}
+            <motion.div
+              whileHover={{
+                scale: 1.08,
+                rotate: 1,
+              }}
+              transition={{
+                type: "spring",
+                stiffness: 280,
+                damping: 18,
+              }}
+              className="
+                relative
+                z-10
+                flex
+                h-[47px]
+                w-[47px]
+                items-center
+                justify-center
+                rounded-full
+                bg-[#052f61]
+                text-white
+                shadow-[0_3px_8px_rgba(0,35,75,0.12)]
+                transition-shadow
+                duration-300
 
-                <div className="relative z-10">
-                  {/* Icon */}
-                  <motion.div
-                    whileHover={{
-                      scale: 1.08,
-                    }}
-                    className="
-                      flex
-                      h-[60px]
-                      w-[60px]
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#062e5d]
-                      text-white
-                      shadow-[0_6px_15px_rgba(6,46,93,0.15)]
-                    "
-                  >
-                    <Icon size={27} strokeWidth={1.5} />
-                  </motion.div>
+                group-hover:shadow-[0_8px_18px_rgba(0,39,82,0.20)]
 
-                  {/* Step number */}
-                  <p
-                    className="
-                      mt-3
-                      text-[11px]
-                      font-bold
-                      text-[#48a33f]
-                    "
-                  >
-                    {number}
-                  </p>
+                sm:h-[48px]
+                sm:w-[48px]
 
-                  {/* Title */}
-                  <h3
-                    className="
-                      mt-1
-                      max-w-[150px]
-                      text-[11px]
-                      font-bold
-                      leading-[1.35]
-                      text-[#092c5c]
+                lg:h-[49px]
+                lg:w-[49px]
+              "
+            >
+              <Icon
+                size={23}
+                strokeWidth={1.55}
+                className="
+                  transition-transform
+                  duration-300
+                  group-hover:scale-[1.04]
+                "
+              />
+            </motion.div>
 
-                      sm:text-[11.5px]
-                    "
-                  >
-                    {title}
-                  </h3>
+            {/* ================= STEP NUMBER ================= */}
+            <p
+              className="
+                mt-[9px]
+                text-[11px]
+                font-bold
+                leading-none
+                text-[#2e983f]
+              "
+            >
+              {number}
+            </p>
 
-                  {/* Description */}
-                  <p
-                    className="
-                      mt-2
-                      max-w-[170px]
-                      text-[9.5px]
-                      leading-[1.55]
-                      text-[#465c73]
-                    "
-                  >
-                    {description}
-                  </p>
-                </div>
-              </motion.div>
-            )
-          )}
-        </div>
-      </section>
+            {/* ================= TITLE ================= */}
+            <h3
+              className="
+                mt-[4px]
+                max-w-[130px]
+                text-[10.5px]
+                font-bold
+                leading-[1.25]
+                tracking-[-0.05px]
+                text-[#092e61]
+
+                sm:text-[11px]
+
+                lg:text-[11px]
+              "
+            >
+              {title}
+            </h3>
+
+            {/* ================= DESCRIPTION ================= */}
+            <p
+              className="
+                mt-[7px]
+                max-w-[150px]
+                text-[8.8px]
+                font-normal
+                leading-[1.55]
+                text-[#324b68]
+
+                sm:text-[9px]
+
+                lg:text-[9.2px]
+              "
+            >
+              {description}
+            </p>
+
+            {/* ================= MOBILE/TABLET ACCENT ================= */}
+            {index !== processItems.length - 1 && (
+              <div
+                className="
+                  mt-5
+                  flex
+                  w-[75px]
+                  items-center
+                  xl:hidden
+                "
+              >
+                <div
+                  className="
+                    h-0
+                    flex-1
+                    border-t
+                    border-dashed
+                    border-[#32984a]/60
+                  "
+                />
+
+                <ArrowRight
+                  size={11}
+                  className="-ml-[1px] text-[#32984a]"
+                />
+              </div>
+            )}
+          </motion.div>
+        )
+      )}
+    </div>
+  </div>
+</section>
 
       {/* =========================================================
           BOTTOM CTA SECTION
       ========================================================== */}
 
-      <section className="px-3 pb-6 sm:px-5 lg:pb-8">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+<section className="w-full px-1 pb-5 sm:px-3 md:px-4 lg:px-5">
+  <motion.div
+    initial={{ opacity: 0, y: 12 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.45, ease: "easeOut" }}
+    viewport={{ once: true }}
+    className="
+      relative
+      mx-auto
+      w-full
+      max-w-[1140px]
+      overflow-hidden
+      rounded-[10px]
+      bg-[#00305d]
+    "
+  >
+    {/* ================= FULL BACKGROUND ================= */}
+    <img
+      src={ctaBg}
+      alt=""
+      aria-hidden="true"
+      className="
+        pointer-events-none
+        absolute
+        inset-0
+        h-full
+        w-full
+        select-none
+        object-cover
+        object-center
+      "
+    />
+
+    {/* ================= LEFT IMAGE ================= */}
+    <img
+      src={ctaimg}
+      alt=""
+      aria-hidden="true"
+      className="
+        pointer-events-none
+        absolute
+        z-[2]
+        hidden
+        select-none
+        object-contain
+
+        sm:block
+        sm:left-[24px]
+        sm:top-1/2
+        sm:h-[48px]
+        sm:w-[48px]
+        sm:-translate-y-1/2
+
+        md:left-[38px]
+        md:h-[52px]
+        md:w-[52px]
+
+        lg:left-[52px]
+        lg:h-[58px]
+        lg:w-[58px]
+
+        xl:left-[64px]
+        xl:h-[62px]
+        xl:w-[62px]
+      "
+    />
+
+    {/* ================= CONTENT ================= */}
+    <div
+      className="
+        relative
+        z-10
+        flex
+        w-full
+        flex-col
+        items-center
+        justify-center
+        gap-4
+        px-5
+        py-7
+        text-center
+
+        sm:min-h-[82px]
+        sm:items-start
+        sm:pl-[92px]
+        sm:pr-6
+        sm:text-left
+
+        md:min-h-[82px]
+        md:flex-row
+        md:items-center
+        md:justify-between
+        md:gap-6
+        md:py-0
+        md:pl-[108px]
+        md:pr-[80px]
+
+        lg:min-h-[96px]
+        lg:pl-[130px]
+        lg:pr-[110px]
+
+        xl:min-h-[98px]
+        xl:pl-[150px]
+        xl:pr-[130px]
+      "
+    >
+      {/* ================= TEXT ================= */}
+      <div
+        className="
+          min-w-0
+          flex-1
+        "
+      >
+        <h3
           className="
-            relative
-            mx-auto
-            flex
-            w-full
-            max-w-[1400px]
-            flex-col
-            items-center
-            justify-between
-            gap-6
-            overflow-hidden
-            rounded-[13px]
-            bg-gradient-to-r
-            from-[#002d5a]
-            via-[#00396c]
-            to-[#087445]
-            px-6
-            py-7
+            m-0
+            text-[14px]
+            font-bold
+            leading-[1.25]
+            tracking-[-0.1px]
+            text-white
 
-            sm:px-8
+            sm:text-[14.5px]
 
-            md:flex-row
+            md:text-[15px]
 
-            lg:px-[70px]
-            lg:py-8
+            lg:text-[16px]
           "
         >
-          {/* Decorative network pattern */}
-          <div
+          Quality is Our Promise. Impact is Our Purpose.
+        </h3>
+
+        <p
+          className="
+            mx-auto
+            mt-[5px]
+            max-w-[520px]
+            text-[9px]
+            font-normal
+            leading-[1.4]
+            text-white/90
+
+            sm:mx-0
+            sm:text-[9.5px]
+
+            md:text-[10px]
+          "
+        >
+          Join us in building a better future through high quality research
+          and collaboration.
+        </p>
+      </div>
+
+      {/* ================= BUTTON ================= */}
+      <motion.div
+        whileHover={{
+          y: -2,
+          scale: 1.02,
+        }}
+        whileTap={{
+          scale: 0.98,
+        }}
+        transition={{
+          duration: 0.2,
+        }}
+        className="
+          relative
+          z-20
+          shrink-0
+        "
+      >
+        <Link
+          to="/conferences"
+          className="
+            group
+            inline-flex
+            h-[34px]
+            min-w-[150px]
+            items-center
+            justify-center
+            gap-[8px]
+            rounded-[4px]
+            bg-[#3c9635]
+            px-4
+            text-[9.5px]
+            font-semibold
+            text-white
+            shadow-[0_3px_8px_rgba(0,0,0,0.15)]
+            transition-all
+            duration-300
+
+            hover:bg-[#31872c]
+            hover:shadow-[0_5px_12px_rgba(0,0,0,0.2)]
+
+            sm:h-[35px]
+            sm:min-w-[155px]
+
+            md:h-[36px]
+            md:min-w-[160px]
+            md:text-[10px]
+
+            lg:h-[38px]
+            lg:min-w-[170px]
+          "
+        >
+          <span>Explore Conferences</span>
+
+          <ArrowRight
+            size={14}
+            strokeWidth={2}
             className="
-              pointer-events-none
-              absolute
-              inset-0
-              opacity-20
-              [background-image:radial-gradient(circle_at_80%_20%,white_1px,transparent_1px)]
-              [background-size:32px_32px]
+              shrink-0
+              transition-transform
+              duration-300
+              group-hover:translate-x-[3px]
             "
           />
-
-          {/* Left content */}
-          <div
-            className="
-              relative
-              z-10
-              flex
-              flex-col
-              items-center
-              gap-4
-              text-center
-
-              sm:flex-row
-              sm:text-left
-            "
-          >
-            <div
-              className="
-                flex
-                h-[58px]
-                w-[58px]
-                shrink-0
-                items-center
-                justify-center
-                rounded-full
-                border
-                border-[#59b94d]/70
-                text-[#66c357]
-              "
-            >
-              <Handshake size={32} strokeWidth={1.4} />
-            </div>
-
-            <div>
-              <h3
-                className="
-                  text-[18px]
-                  font-bold
-                  leading-[1.35]
-                  text-white
-
-                  sm:text-[20px]
-
-                  lg:text-[22px]
-                "
-              >
-                Quality is Our Promise. Impact is Our Purpose.
-              </h3>
-
-              <p
-                className="
-                  mt-2
-                  text-[10.5px]
-                  leading-[1.55]
-                  text-white/85
-
-                  sm:text-[11px]
-                "
-              >
-                Join us in building a better future through high quality
-                research and collaboration.
-              </p>
-            </div>
-          </div>
-
-          {/* CTA Button */}
-          <motion.div
-            whileHover={{
-              y: -2,
-              scale: 1.02,
-            }}
-            whileTap={{
-              scale: 0.98,
-            }}
-            className="relative z-10 shrink-0"
-          >
-            <Link
-              to="/conferences"
-              className="
-                group
-                flex
-                min-h-[46px]
-                items-center
-                justify-center
-                gap-3
-                rounded-[5px]
-                bg-[#4ca33e]
-                px-6
-                text-[11px]
-                font-semibold
-                text-white
-                shadow-[0_5px_15px_rgba(0,0,0,0.15)]
-                transition-all
-                duration-300
-
-                hover:bg-[#398e31]
-                hover:shadow-[0_8px_20px_rgba(0,0,0,0.20)]
-
-                sm:min-w-[180px]
-              "
-            >
-              Explore Conferences
-
-              <ArrowRight
-                size={15}
-                className="
-                  transition-transform
-                  duration-300
-
-                  group-hover:translate-x-1
-                "
-              />
-            </Link>
-          </motion.div>
-        </motion.div>
-      </section>
+        </Link>
+      </motion.div>
+    </div>
+  </motion.div>
+</section>
     </main>
   );
 };
