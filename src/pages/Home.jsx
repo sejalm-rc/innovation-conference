@@ -20,6 +20,25 @@ import {
 import homeBg from "../assets/img/homeBg.png";
 import goal from "../assets/img/goal.png";
 
+import sdg1 from "../assets/images/sdg/sdg-1.png";
+import sdg2 from "../assets/images/sdg/sdg-2.png";
+import sdg3 from "../assets/images/sdg/sdg-3.png";
+import sdg4 from "../assets/images/sdg/sdg-4.png";
+import sdg5 from "../assets/images/sdg/sdg-5.png";
+import sdg6 from "../assets/images/sdg/sdg-6.png";
+import sdg7 from "../assets/images/sdg/sdg-7.png";
+import sdg8 from "../assets/images/sdg/sdg-8.png";
+import sdg9 from "../assets/images/sdg/sdg-9.png";
+import sdg10 from "../assets/images/sdg/sdg-10.png";
+import sdg11 from "../assets/images/sdg/sdg-11.png";
+import sdg12 from "../assets/images/sdg/sdg-12.png";
+import sdg13 from "../assets/images/sdg/sdg-13.png";
+import sdg14 from "../assets/images/sdg/sdg-14.png";
+import sdg15 from "../assets/images/sdg/sdg-15.png";
+import sdg16 from "../assets/images/sdg/sdg-16.png";
+import sdg17 from "../assets/images/sdg/sdg-17.png";
+import sdgLogo from "../assets/images/sdg/sdg-logo.png";
+
 
 
 const trust = [
@@ -116,6 +135,27 @@ const show = {
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, amount: 0.15 },
 };
+
+const sdgImages = [
+  sdg1,
+  sdg2,
+  sdg3,
+  sdg4,
+  sdg5,
+  sdg6,
+  sdg7,
+  sdg8,
+  sdg9,
+  sdg10,
+  sdg11,
+  sdg12,
+  sdg13,
+  sdg14,
+  sdg15,
+  sdg16,
+  sdg17,
+  sdgLogo,
+];
 
 export default function Home() {
   return (
@@ -254,38 +294,82 @@ export default function Home() {
         </div>
       </section>
       {/* ==================== SDG CTA SECTION ==================== */}
-      <motion.section
-        {...show}
-        className="mx-auto mb-4 grid w-[calc(100%-32px)] max-w-[1170px] grid-cols-1 items-center gap-5 rounded-xl bg-[#f4f7f4] p-4 sm:grid-cols-[110px_1fr] lg:grid-cols-[125px_345px_1fr]"
+<motion.section
+  {...show}
+  transition={{ duration: 0.6 }}
+  className="mx-auto mb-5 w-[calc(100%-32px)] max-w-[1170px] overflow-hidden rounded-xl bg-[#f4f7f4] px-4 py-4 shadow-sm sm:px-5"
+>
+  <div className="grid grid-cols-1 items-center gap-5 lg:grid-cols-[110px_315px_1fr] lg:gap-4">
+    {/* Left SDG goal image */}
+    <motion.div
+      whileHover={{ scale: 1.05, rotate: 2 }}
+      transition={{ duration: 0.3 }}
+      className="flex items-center justify-center"
+    >
+      <img
+        src={goal}
+        alt="Sustainable Development Goals"
+        className="h-[105px] w-[105px] object-contain sm:h-[112px] sm:w-[112px]"
+      />
+    </motion.div>
+
+    {/* Middle text content */}
+    <div className="text-center lg:text-left">
+      <h2 className="text-[15px] font-bold leading-snug text-[#2d8733] sm:text-[16px]">
+        Driving Research for a Sustainable World
+      </h2>
+
+      <p className="mx-auto mt-2 max-w-[310px] text-[10.5px] leading-[1.65] text-[#1c3048] lg:mx-0">
+        Our conferences and publications support all 17 Sustainable Development
+        Goals of the United Nations.
+      </p>
+
+      <a
+        href="#"
+        className="mt-3 inline-flex min-h-[35px] items-center justify-center gap-2 rounded-md border border-[#8099b7] bg-white px-4 text-[10px] font-bold text-[#082f63] transition duration-300 hover:-translate-y-1 hover:border-[#318b32] hover:text-[#318b32] hover:shadow-md"
       >
-        <img
-          src={goal}
-          alt="Sustainable Development Goals"
-          className="mx-auto h-[105px] w-[105px] object-contain"
+        Learn More About Our SDG Impact
+
+        <Leaf
+          size={14}
+          strokeWidth={1.8}
+          className="text-[#318b32]"
         />
-        <div className="text-center sm:text-left">
-          <h2 className="text-[15px] font-bold text-[#2d8733]">
-            Driving Research for a Sustainable World
-          </h2>
-          <p className="mt-2 text-[10.5px] leading-relaxed">
-            Our conferences and publications support all 17 Sustainable
-            Development Goals of the United Nations.
-          </p>
-          <a
-            href="#"
-            className="mt-3 inline-flex items-center gap-2 rounded-md border border-[#8099b7] bg-white px-4 py-2 text-[10px] font-bold transition hover:-translate-y-1 hover:border-green-600 hover:text-green-700"
-          >
-            Learn More About Our SDG Impact <Leaf size={14} />
-          </a>
-        </div>
-        <div className="hidden h-[105px] overflow-hidden rounded-md bg-white lg:block">
+      </a>
+    </div>
+
+    {/* Right 18 SDG images */}
+    <div className="grid grid-cols-3 gap-2 sm:grid-cols-6 lg:grid-cols-9 lg:gap-[7px]">
+      {sdgImages.map((image, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0.85 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.35,
+            delay: index * 0.025,
+          }}
+          whileHover={{
+            y: -4,
+            scale: 1.06,
+          }}
+          className="flex aspect-square items-center justify-center overflow-hidden rounded-[2px] bg-white transition-shadow duration-300 hover:z-10 hover:shadow-lg"
+        >
           <img
-            src={goal}
-            alt="All 17 SDG icons"
-            className="h-full w-full object-cover"
+            src={image}
+            alt={
+              index < 17
+                ? `Sustainable Development Goal ${index + 1}`
+                : "Sustainable Development Goals logo"
+            }
+            className="h-full w-full object-contain"
           />
-        </div>
-      </motion.section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</motion.section>
       {/* ==================== UPCOMING CONFERENCES SECTION ==================== */}
       <section className="mx-auto max-w-[1170px] px-5 pb-4 sm:px-8 lg:px-10 xl:px-0">
         <div className="mb-4 flex items-center justify-between">
