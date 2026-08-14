@@ -79,22 +79,105 @@ export default function Header() {
     };
   }, []);
 
-    return (
+  return (
     <>
-    <header className="sticky top-0 z-50 mt-1 bg-white/95 backdrop-blur">
-      <div className="container-page flex items-center justify-between h-20">
-        <Link to="/" className="flex-shrink-0" aria-label="Innovation Conference home">
-          <img src={logo} alt="Innovation Conference logo" className="h-[5.5rem] w-auto object-contain" />
-        </Link>
+      {/* =========================================================
+          FIXED HEADER
+      ========================================================== */}
+      <header
+        className={`
+          fixed
+          left-0
+          right-0
+          top-0
+          z-[999]
+          w-full
+          border-b
+          border-[#edf0f4]
+          bg-white/95
+          backdrop-blur-md
+          transition-all
+          duration-300
+          ${
+            scrolled
+              ? "shadow-[0_5px_25px_rgba(3,42,81,0.12)]"
+              : "shadow-[0_1px_8px_rgba(0,0,0,0.025)]"
+          }
+        `}
+      >
+        {/* =======================================================
+            NAVBAR CONTAINER
+        ======================================================== */}
+        <div
+          className="
+            mx-auto
+            flex
+            min-h-[90px]
+            w-full
+            max-w-[1600px]
+            items-center
+            justify-between
+            px-4
 
-        <nav className="hidden lg:flex items-center gap-7" aria-label="Primary navigation">
-          {navItems.map((item) => (
-            <div
-              key={item.label}
-              className="relative"
-              onMouseEnter={() => item.children && setDropdown(item.label)}
-              onMouseLeave={() => item.children && setDropdown(null)}
-            >
+            sm:px-6
+
+            lg:min-h-[86px]
+            lg:px-12
+
+          
+          "
+        >
+          {/* =====================================================
+              LOGO
+          ====================================================== */}
+          <Link
+            to="/"
+            aria-label="Innovation Conference Home"
+            className="
+              relative
+              z-10
+              flex
+              shrink-0
+              items-center
+            "
+          >
+            <motion.img
+              src={logo}
+              alt="Innovation Conference"
+              whileHover={{
+                scale: 1.025,
+              }}
+              transition={{
+                duration: 0.25,
+              }}
+              className="
+                h-[72px]
+                w-auto
+                object-contain
+
+                sm:h-[80px]
+
+             
+              "
+            />
+          </Link>
+
+          {/* =====================================================
+              DESKTOP NAVIGATION
+          ====================================================== */}
+          <nav
+            aria-label="Main Navigation"
+            className="
+              hidden
+              items-center
+              justify-center
+
+              lg:flex
+              lg:gap-10
+
+            "
+          >
+            {navItems.map((item) => (
               <NavLink
                 key={item.label}
                 to={item.to}
@@ -151,11 +234,10 @@ export default function Header() {
                   </>
                 )}
               </NavLink>
-</div>
-))}
+            ))}
           </nav>
 
-       
+        
 
           {/* =====================================================
               MOBILE MENU BUTTON
@@ -260,15 +342,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* =========================================================
-          VERY IMPORTANT SPACER
-
-          Fixed elements do not take normal page space.
-          This prevents hero/content from going behind navbar.
-
-          Mobile navbar = 90px
-          Desktop navbar = 116px
-      ========================================================== */}
+     
       <div
         className="h-[90px] shrink-0 lg:h-[116px]"
         aria-hidden="true"
@@ -447,7 +521,7 @@ export default function Header() {
                   </motion.div>
                 ))}
 
-              
+             
               </nav>
 
               {/* ===============================================
