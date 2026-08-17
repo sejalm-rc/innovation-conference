@@ -9,6 +9,7 @@ import ConferenceDetails from "./pages/ConferenceDetails";
 import SDGImpact from "./pages/SDGImpact";
 import AssociateConference from "./pages/AssociateConference";
 import NotFound from "./pages/NotFound";
+import Contact from "./pages/Contact";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/conferences/:id" element={<ConferenceDetails />} />
           <Route path="/sdg-impact" element={<SDGImpact />} />
           <Route path="/associate-conference" element={<AssociateConference />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
