@@ -1,5 +1,3 @@
-// src/pages/About.jsx
-
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -32,9 +30,6 @@ import aboutHero from "../assets/img/aboutbg.png";
 import ctaimg from "../assets/img/aboutcta.png";
 import sdgImg from "../assets/img/sd18.png";
 import ctaBg from "../assets/img/cta.png";
-
-
-
 
 const missionItems = [
   {
@@ -118,7 +113,7 @@ const authorBenefits = [
   {
     icon: ChartNoAxesCombined,
     text: "Make a real world impact",
-  }
+  },
 ];
 
 /* =========================================================
@@ -130,8 +125,7 @@ const processItems = [
     number: "01",
     icon: FileText,
     title: "Application Received",
-    description:
-      "Conference proposal submitted by the host organization.",
+    description: "Conference proposal submitted by the host organization.",
   },
   {
     number: "02",
@@ -183,7 +177,7 @@ const About = () => {
     if (meta) {
       meta.setAttribute(
         "content",
-        "Innovation Conferences is a global platform dedicated to organizing high quality academic conferences with Scopus indexed publication opportunities."
+        "Innovation Conferences is a global platform dedicated to organizing high quality academic conferences with Scopus indexed publication opportunities.",
       );
     }
   }, []);
@@ -198,312 +192,193 @@ const About = () => {
         font-['Poppins',sans-serif]
       "
     >
-      {/* =========================================================
-          ABOUT HERO SECTION
-      ========================================================== */}
-<section
-  className="
-    w-full
-    bg-white
-    px-[10px]
-
-    sm:px-4
-    sm:pt-3
-    md:px-5
-    lg:px-6
- 
-  "
->
-  <motion.div
-    initial={{ opacity: 0, y: 10 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{
-      duration: 0.55,
-      ease: "easeOut",
-    }}
-    className="
+      {/* ==================== ABOUT HERO SECTION ==================== */}
+      <section className="px-3 sm:px-5 lg:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="
       relative
       mx-auto
+      min-h-[300px]
       w-full
       max-w-[1440px]
       overflow-hidden
       rounded-[14px]
       bg-[#002c59]
-
-      min-h-[300px]
-
-      sm:min-h-[320px]
-
-      md:min-h-[330px]
-
-      lg:min-h-[340px]
-
-  
+      bg-cover
+      sm:min-h-[275px]
+      lg:min-h-[260px]
     "
-  >
-
-    <img
-      src={aboutHero}
-      alt=""
-      aria-hidden="true"
-      className="
+          style={{
+            backgroundImage: `url(${aboutHero})`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          {/* Text readability overlay */}
+          <div
+            className="
         pointer-events-none
         absolute
         inset-0
-        h-full
-        w-full
-        select-none
-        object-cover
-
-        object-[68%_center]
-
-        sm:object-[65%_center]
-
-        md:object-[62%_center]
-
-        lg:object-center
+        bg-gradient-to-r
+        from-[#00294f]/95
+        via-[#003768]/80
+        to-[#002c59]/20
+        sm:via-[#003768]/55
+        lg:via-transparent
       "
-    />
+          />
 
-    {/* =====================================================
-        VERY LIGHT LEFT GRADIENT
-        Only improves text readability.
-        It does NOT hide the globe.
-    ====================================================== */}
-    <div
-      className="
-        pointer-events-none
-        absolute
-        inset-0
-
-        bg-[linear-gradient(90deg,rgba(0,39,78,0.96)_0%,rgba(0,42,82,0.91)_29%,rgba(0,44,84,0.52)_48%,rgba(0,35,68,0.08)_67%,rgba(0,0,0,0)_100%)]
-
-        sm:bg-[linear-gradient(90deg,rgba(0,39,78,0.97)_0%,rgba(0,42,82,0.91)_32%,rgba(0,44,84,0.45)_52%,rgba(0,35,68,0.04)_70%,rgba(0,0,0,0)_100%)]
-
-        lg:bg-[linear-gradient(90deg,rgba(0,39,78,0.95)_0%,rgba(0,42,82,0.84)_30%,rgba(0,44,84,0.30)_48%,rgba(0,0,0,0)_65%)]
-      "
-    />
-
-    {/* =====================================================
-        MOBILE READABILITY GRADIENT
-    ====================================================== */}
-    <div
-      className="
-        pointer-events-none
-        absolute
-        inset-0
-        bg-gradient-to-t
-        from-[#00294f]/45
-        via-transparent
-        to-transparent
-        md:hidden
-      "
-    />
-
-    {/* =====================================================
-        HERO CONTENT
-    ====================================================== */}
-    <div
-      className="
+          {/* Hero content */}
+          <div
+            className="
         relative
         z-10
+        mx-auto
         flex
         min-h-[300px]
         w-full
+        max-w-[1320px]
         items-center
-
-        px-[24px]
-        py-[30px]
-
-        sm:min-h-[320px]
-        sm:px-[34px]
-        sm:py-[34px]
-
-        md:min-h-[330px]
-        md:px-[44px]
-
-        lg:min-h-[340px]
-        lg:px-[64px]
-
-        xl:min-h-[350px]
-        xl:px-[72px]
-
-        2xl:min-h-[355px]
-        2xl:px-[76px]
+        px-6
+        py-9
+        sm:min-h-[275px]
+        sm:px-10
+        lg:min-h-[260px]
+        lg:px-16
       "
-    >
-      {/* ===================================================
-          TEXT CONTAINER
-      ==================================================== */}
-      <div
-        className="
-          w-full
-          max-w-[620px]
-
-          sm:max-w-[650px]
-
-          md:max-w-[680px]
-
-          lg:max-w-[700px]
-        "
-      >
-        {/* =================================================
-            EYEBROW
-        ================================================== */}
-        <motion.p
-          initial={{ opacity: 0, x: -15 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{
-            duration: 0.45,
-            delay: 0.12,
-          }}
-          className="
-            mb-[12px]
-            font-semibold
+          >
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.65,
+                delay: 0.12,
+                ease: "easeOut",
+              }}
+              className="w-full max-w-[700px]"
+            >
+              {/* Eyebrow */}
+              <motion.p
+                initial={{ opacity: 0, x: -15 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.45, delay: 0.15 }}
+                className="
+            mb-3
+            text-[11px]
+            font-[550]
             uppercase
             tracking-[0.015em]
             text-[#58b947]
-
-            text-[clamp(10px,0.85vw,13px)]
-
-            sm:mb-[13px]
-            lg:mb-[14px]
+            sm:text-[12px]
+            lg:text-[13px]
           "
-        >
-          About Innovation Conferences
-        </motion.p>
+              >
+                About Innovation Conferences
+              </motion.p>
 
-        {/* =================================================
-            MAIN HEADING
-        ================================================== */}
-        <motion.h1
-          initial={{ opacity: 0, x: -18 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{
-            duration: 0.5,
-            delay: 0.18,
-          }}
-          className="
-            m-0
-            max-w-[700px]
-            font-bold
-            tracking-[-0.022em]
+              {/* Main heading */}
+              <h1
+                className="
+            text-[29px]
+            font-[600]
+            leading-[1.15]
+            tracking-[-0.02em]
             text-white
-
-            text-[clamp(27px,3.05vw,47px)]
-            leading-[1.16]
+            min-[400px]:text-[32px]
+            sm:text-[32px]
+            lg:text-[34px]
           "
-        >
-          <span className="block">
-            Advancing Research.
-          </span>
+              >
+                Advancing Research.
+                <span className="mt-1 text-[#58b947] block">
+                  Ensuring Quality. Creating Impact.
+                </span>
+              </h1>
 
-          <span
-            className="
-              mt-[5px]
-              block
-              whitespace-normal
-
-              lg:whitespace-nowrap
-            "
-          >
-            Ensuring Quality. Creating Impact.
-          </span>
-        </motion.h1>
-
-        {/* =================================================
-            DESCRIPTION
-        ================================================== */}
-        <motion.p
-          initial={{ opacity: 0, x: -18 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{
-            duration: 0.5,
-            delay: 0.25,
-          }}
-          className="
-            mt-[18px]
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, x: -18 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.25 }}
+                className="
+            mt-5
             max-w-[590px]
-            font-normal
-            text-white/95
-
-            text-[clamp(11px,0.94vw,14px)]
+            text-[12px]
             leading-[1.75]
-
-            sm:mt-[19px]
-
-            lg:mt-[21px]
+            text-white/95
+            sm:text-[13px]
           "
-        >
-          Innovation Conferences is a global platform dedicated to organizing
-          <br className="hidden md:block" />
-          high quality academic conferences that lead to publications in
-          <br className="hidden md:block" />
-          Scopus indexed proceedings and journals.
-        </motion.p>
-      </div>
-    </div>
-
-   
-  
-  </motion.div>
-</section>
+              >
+                Innovation Conferences is a global platform dedicated to
+                organizing high quality academic conferences that lead to
+                publications in Scopus indexed proceedings and journals.
+              </motion.p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
 
       {/* =========================================================
           WHO WE ARE + OUR MISSION
       ========================================================== */}
 
-      <section
-        className="
-          mx-auto
-          grid
-          w-full
-          max-w-[1320px]
-          grid-cols-1
-          gap-8
-          px-6
-          pb-9
-          pt-6
-
-          md:grid-cols-2
-          md:gap-0
-
-          lg:px-10
-          lg:pb-10
-          lg:pt-7
-        "
-      >
-        {/* Who We Are */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
+      <section className="w-full px-3 sm:px-5 lg:px-6">
+        <div
           className="
+            mx-auto
+            grid
+            w-full
+            max-w-[1320px]
+            grid-cols-1
+            gap-8
+            px-6
+            pb-9
+            pt-6
+
+            sm:px-10
+            md:grid-cols-2
+            md:gap-0
+
+            lg:px-16
+            lg:pb-10
+            lg:pt-7
+          "
+        >
+          {/* Who We Are */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+            className="
             md:border-r
             md:border-[#d4dde7]
             md:pr-10
 
             lg:pr-[60px]
           "
-        >
-          <h2
-            className="
+          >
+            <h2
+              className="
               text-[20px]
-              font-bold
+              font-[550]
               leading-tight
               text-[#092c5c]
 
               lg:text-[22px]
             "
-          >
-            Who We Are
-          </h2>
+            >
+              Who We Are
+            </h2>
 
-          <div className="mt-2 h-[2px] w-[34px] bg-[#48a33f]" />
+            <div className="mt-1 h-[2px] w-[34px] bg-[#48a33f]" />
 
-          <p
-            className="
+            <p
+              className="
               mt-5
               text-[12px]
               leading-[1.75]
@@ -511,15 +386,15 @@ const About = () => {
 
               sm:text-[13px]
             "
-          >
-            Innovation Conferences brings together researchers, academicians,
-            industry experts and policy leaders from around the world to
-            exchange ideas, share knowledge and advance solutions for real
-            world challenges.
-          </p>
+            >
+              Innovation Conferences brings together researchers, academicians,
+              industry experts and policy leaders from around the world to
+              exchange ideas, share knowledge and advance solutions for real
+              world challenges.
+            </p>
 
-          <p
-            className="
+            <p
+              className="
               mt-5
               text-[12px]
               leading-[1.75]
@@ -527,55 +402,55 @@ const About = () => {
 
               sm:text-[13px]
             "
-          >
-            We are committed to research excellence, ethical standards and
-            global impact aligned with the United Nations Sustainable
-            Development Goals (SDGs).
-          </p>
-        </motion.div>
+            >
+              We are committed to research excellence, ethical standards and
+              global impact aligned with the United Nations Sustainable
+              Development Goals (SDGs).
+            </p>
+          </motion.div>
 
-        {/* Our Mission */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
-          className="
+          {/* Our Mission */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5 }}
+            className="
             md:pl-10
 
             lg:pl-[60px]
           "
-        >
-          <h2
-            className="
+          >
+            <h2
+              className="
               text-[20px]
-              font-bold
+              font-[550]
               leading-tight
               text-[#092c5c]
 
               lg:text-[22px]
             "
-          >
-            Our Mission
-          </h2>
+            >
+              Our Mission
+            </h2>
 
-          <div className="mt-2 h-[2px] w-[34px] bg-[#48a33f]" />
+            <div className="mt-2 h-[2px] w-[34px] bg-[#48a33f]" />
 
-          <div className="mt-5 space-y-5">
-            {missionItems.map(({ icon: Icon, text }, index) => (
-              <motion.div
-                key={text}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.35,
-                  delay: index * 0.08,
-                }}
-                className="group flex items-start gap-4"
-              >
-                <div
-                  className="
+            <div className="mt-5 space-y-5">
+              {missionItems.map(({ icon: Icon, text }, index) => (
+                <motion.div
+                  key={text}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.35,
+                    delay: index * 0.08,
+                  }}
+                  className="group flex items-start gap-4"
+                >
+                  <div
+                    className="
                     flex
                     h-[38px]
                     w-[38px]
@@ -592,12 +467,12 @@ const About = () => {
                     group-hover:bg-[#46a23e]
                     group-hover:text-white
                   "
-                >
-                  <Icon size={22} strokeWidth={1.5} />
-                </div>
+                  >
+                    <Icon size={22} strokeWidth={1.5} />
+                  </div>
 
-                <p
-                  className="
+                  <p
+                    className="
                     pt-[2px]
                     text-[12px]
                     leading-[1.6]
@@ -605,27 +480,28 @@ const About = () => {
 
                     sm:text-[13px]
                   "
-                >
-                  {text}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                  >
+                    {text}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </section>
 
       {/* =========================================================
           OUR COMMITMENT TO QUALITY
       ========================================================== */}
 
-      <section className="px-5 pb-8 pt-1">
-        <div className="mx-auto w-full max-w-[1340px]">
+      <section className="w-full px-3 pb-8 pt-1 sm:px-5 lg:px-6">
+        <div className="mx-auto w-full max-w-[1320px] px-6 sm:px-10 lg:px-16">
           {/* Section heading */}
           <div className="text-center">
             <h2
               className="
                 text-[20px]
-                font-bold
+                font-[550]
                 text-[#092c5c]
 
                 lg:text-[22px]
@@ -634,7 +510,7 @@ const About = () => {
               Our Commitment to Quality
             </h2>
 
-            <div className="mx-auto mt-2 h-[2px] w-[35px] bg-[#48a33f]" />
+            <div className="mx-auto mt-1 h-[2px] w-[35px] bg-[#48a33f]" />
 
             <p
               className="
@@ -651,8 +527,8 @@ const About = () => {
             <p
               className="
                 mt-1
-                text-[11px]
-                font-semibold
+                text-[12px]
+                font-[520]
                 text-[#48a33f]
 
                 sm:text-[12px]
@@ -730,7 +606,7 @@ const About = () => {
                   <h3
                     className="
                       text-[12px]
-                      font-bold
+                      font-[550]
                       leading-[1.35]
                       text-[#0b2e5e]
                     "
@@ -741,7 +617,7 @@ const About = () => {
                   <p
                     className="
                       mt-3
-                      text-[10px]
+                      text-[11.5px]
                       leading-[1.65]
                       text-[#3b506b]
 
@@ -751,7 +627,7 @@ const About = () => {
                     {description}
                   </p>
                 </motion.article>
-              )
+              ),
             )}
           </div>
         </div>
@@ -761,66 +637,64 @@ const About = () => {
           WHY AUTHORS CHOOSE INNOVATION CONFERENCES
       ========================================================== */}
 
-   <section className="w-full px-3 py-3 sm:px-4 md:px-5">
-  <motion.div
-    initial={{ opacity: 0, y: 15 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{
-      duration: 0.5,
-      ease: "easeOut",
-    }}
-    className="
+      <section className="w-full px-3 py-3 sm:px-5 lg:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{
+            duration: 0.5,
+            ease: "easeOut",
+          }}
+          className="
       mx-auto
       w-full
-      max-w-[1400px]
+      max-w-[1320px]
       overflow-hidden
       rounded-[13px]
       bg-gradient-to-r
       from-[#f7faf6]
       via-[#f6f9f6]
       to-[#f1f6f2]
-      px-4
+      px-6
       pb-5
       pt-4
 
-      sm:px-5
+      sm:px-10
 
-      md:px-6
-
-      lg:px-8
+      lg:px-16
       lg:pb-5
       lg:pt-4
     "
-  >
-    {/* ==================== HEADING ==================== */}
-    <motion.h2
-      initial={{ opacity: 0, y: -8 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.45,
-        delay: 0.1,
-      }}
-      className="
+        >
+          {/* ==================== HEADING ==================== */}
+          <motion.h2
+            initial={{ opacity: 0, y: -8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.45,
+              delay: 0.1,
+            }}
+            className="
         text-center
-        text-[17px]
-        font-bold
+        text-[20px]
+        font-[550]
         leading-[1.25]
         tracking-[-0.15px]
         text-[#082f63]
 
-        sm:text-[18px]
+        sm:text-[20px]
 
-        lg:text-[19px]
+        lg:text-[22px]
       "
-    >
-      Why Authors Choose Innovation Conferences
-    </motion.h2>
+          >
+            Why Authors Choose Innovation Conferences
+          </motion.h2>
 
-    {/* ==================== CONTENT ==================== */}
-    <div
-      className="
+          {/* ==================== CONTENT ==================== */}
+          <div
+            className="
         mt-4
         grid
         grid-cols-1
@@ -835,31 +709,31 @@ const About = () => {
         lg:grid-cols-[repeat(5,minmax(0,1fr))_1.18fr]
         lg:gap-0
       "
-    >
-      {authorBenefits.map(({ icon: Icon, text }, index) => (
-        <motion.div
-          key={text}
-          initial={{
-            opacity: 0,
-            y: 15,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-            amount: 0.25,
-          }}
-          transition={{
-            duration: 0.4,
-            delay: index * 0.07,
-            ease: "easeOut",
-          }}
-          whileHover={{
-            y: -5,
-          }}
-          className={`
+          >
+            {authorBenefits.map(({ icon: Icon, text }, index) => (
+              <motion.div
+                key={text}
+                initial={{
+                  opacity: 0,
+                  y: 15,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.25,
+                }}
+                transition={{
+                  duration: 0.4,
+                  delay: index * 0.07,
+                  ease: "easeOut",
+                }}
+                whileHover={{
+                  y: -5,
+                }}
+                className={`
             group
             relative
             flex
@@ -870,9 +744,7 @@ const About = () => {
             px-4
             py-3
             text-center
-
             sm:min-h-[110px]
-
             lg:min-h-[98px]
             lg:py-1
 
@@ -882,18 +754,18 @@ const About = () => {
                 : ""
             }
           `}
-        >
-          {/* Icon */}
-          <motion.div
-            whileHover={{
-              scale: 1.08,
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 280,
-              damping: 18,
-            }}
-            className="
+              >
+                {/* Icon */}
+                <motion.div
+                  whileHover={{
+                    scale: 1.08,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 280,
+                    damping: 18,
+                  }}
+                  className="
               mb-[9px]
               flex
               h-[45px]
@@ -905,59 +777,59 @@ const About = () => {
               sm:h-[47px]
               sm:w-[47px]
             "
-          >
-            <Icon
-              size={40}
-              strokeWidth={1.35}
-              className="
+                >
+                  <Icon
+                    size={40}
+                    strokeWidth={1.35}
+                    className="
                 transition-all
                 duration-300
                 group-hover:drop-shadow-[0_4px_5px_rgba(60,150,60,0.15)]
               "
-            />
-          </motion.div>
+                  />
+                </motion.div>
 
-          {/* Text */}
-          <p
-            className="
+                {/* Text */}
+                <p
+                  className="
               max-w-[125px]
-              text-[9.5px]
+              text-[12px]
               font-medium
               leading-[1.45]
               text-[#17365f]
 
-              sm:text-[10px]
+              sm:text-[12px]
 
-              lg:text-[10px]
+              lg:text-[12px]
             "
-          >
-            {text}
-          </p>
-        </motion.div>
-      ))}
+                >
+                  {text}
+                </p>
+              </motion.div>
+            ))}
 
-      {/* ==================== SDG SECTION ==================== */}
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 15,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.25,
-        }}
-        transition={{
-          duration: 0.45,
-          delay: 0.35,
-        }}
-        whileHover={{
-          y: -5,
-        }}
-        className="
+            {/* ==================== SDG SECTION ==================== */}
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 15,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.25,
+              }}
+              transition={{
+                duration: 0.45,
+                delay: 0.35,
+              }}
+              whileHover={{
+                y: -5,
+              }}
+              className="
           group
           relative
           flex
@@ -977,88 +849,88 @@ const About = () => {
           lg:px-5
           lg:py-1
         "
-      >
-        {/* SDG Image */}
-        <motion.img
-          src={sdgImg}
-          alt="United Nations Sustainable Development Goals"
-          whileHover={{
-            scale: 1.04,
-          }}
-          transition={{
-            duration: 0.25,
-          }}
-          className="
+            >
+              {/* SDG Image */}
+              <motion.img
+                src={sdgImg}
+                alt="United Nations Sustainable Development Goals"
+                whileHover={{
+                  scale: 1.04,
+                }}
+                transition={{
+                  duration: 0.25,
+                }}
+                className="
             mb-[7px]
             h-[48px]
             w-auto
             max-w-[135px]
             object-contain
 
-            sm:h-[50px]
+            sm:h-[52px]
 
-            lg:h-[52px]
+            lg:h-[55px]
             lg:max-w-[145px]
           "
-        />
+              />
 
-        <p
-          className="
+              <p
+                className="
             max-w-[160px]
-            text-[8.8px]
+            text-[12px]
             font-medium
             leading-[1.4]
             text-[#17365f]
 
-            sm:text-[9px]
+            sm:text-[12px]
 
-            lg:text-[9px]
+            lg:text-[12px]
           "
-        >
-          We align with all 17 UN Sustainable Development Goals (SDGs).
-        </p>
-      </motion.div>
-    </div>
-  </motion.div>
-</section>
+              >
+                We align with all 17 UN Sustainable Development Goals (SDGs).
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
 
       {/* =========================================================
           OUR CONFERENCE EVALUATION PROCESS
       ========================================================== */}
 
-    <section
-  className="
+      <section
+        className="
     w-full
     bg-white
-    px-4
+    px-3
     pb-9
     pt-5
 
-    sm:px-6
+    sm:px-5
     sm:pb-10
     sm:pt-6
 
-    lg:px-8
+    lg:px-6
     lg:pb-11
     lg:pt-6
   "
->
-  <div className="mx-auto w-full max-w-[1380px]">
-    {/* ================= HEADING ================= */}
-    <motion.div
-      initial={{ opacity: 0, y: -8 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.7 }}
-      transition={{
-        duration: 0.45,
-        ease: "easeOut",
-      }}
-      className="text-center"
-    >
-      <h2
-        className="
+      >
+        <div className="mx-auto w-full max-w-[1320px] px-6 sm:px-10 lg:px-16">
+          {/* ================= HEADING ================= */}
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.7 }}
+            transition={{
+              duration: 0.45,
+              ease: "easeOut",
+            }}
+            className="text-center"
+          >
+            <h2
+              className="
           text-[18px]
-          font-bold
+          font-[550]
           leading-tight
           tracking-[-0.2px]
           text-[#082d60]
@@ -1067,34 +939,34 @@ const About = () => {
 
           lg:text-[20px]
         "
-      >
-        Our Conference Evaluation Process
-      </h2>
+            >
+              Our Conference Evaluation Process
+            </h2>
 
-      <motion.div
-        initial={{ width: 0 }}
-        whileInView={{ width: 27 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 0.45,
-          delay: 0.15,
-        }}
-        className="
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: 27 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.45,
+                delay: 0.15,
+              }}
+              className="
           mx-auto
           mt-[7px]
           h-[1.5px]
           bg-[#42a247]
         "
-      />
-    </motion.div>
+            />
+          </motion.div>
 
-    {/* ================= PROCESS GRID ================= */}
-    <div
-      className="
+          {/* ================= PROCESS GRID ================= */}
+          <div
+            className="
         mt-6
         grid
         grid-cols-1
-        gap-x-7
+        gap-x-4
         gap-y-8
 
         sm:grid-cols-2
@@ -1106,32 +978,32 @@ const About = () => {
         xl:gap-x-[22px]
         xl:gap-y-0
       "
-    >
-      {processItems.map(
-        ({ number, icon: Icon, title, description }, index) => (
-          <motion.div
-            key={number}
-            initial={{
-              opacity: 0,
-              y: 18,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-              amount: 0.25,
-            }}
-            transition={{
-              duration: 0.45,
-              delay: index * 0.07,
-              ease: "easeOut",
-            }}
-            whileHover={{
-              y: -4,
-            }}
-            className="
+          >
+            {processItems.map(
+              ({ number, icon: Icon, title, description }, index) => (
+                <motion.div
+                  key={number}
+                  initial={{
+                    opacity: 0,
+                    y: 18,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                    amount: 0.25,
+                  }}
+                  transition={{
+                    duration: 0.45,
+                    delay: index * 0.07,
+                    ease: "easeOut",
+                  }}
+                  whileHover={{
+                    y: -4,
+                  }}
+                  className="
               group
               relative
               mx-auto
@@ -1142,11 +1014,11 @@ const About = () => {
 
               xl:max-w-none
             "
-          >
-            {/* ================= DESKTOP CONNECTOR ================= */}
-            {index !== processItems.length - 1 && (
-              <div
-                className="
+                >
+                  {/* ================= DESKTOP CONNECTOR ================= */}
+                  {index !== processItems.length - 1 && (
+                    <div
+                      className="
                   pointer-events-none
                   absolute
                   left-[64px]
@@ -1158,41 +1030,41 @@ const About = () => {
 
                   xl:flex
                 "
-              >
-                <div
-                  className="
+                    >
+                      <div
+                        className="
                     h-[1px]
                     flex-1
                     border-t-[2px]
                     border-dotted
                     border-[#32984a]
                   "
-                />
+                      />
 
-                <ArrowRight
-                  size={12}
-                  strokeWidth={2.1}
-                  className="
+                      <ArrowRight
+                        size={12}
+                        strokeWidth={2.1}
+                        className="
                     -ml-[2px]
                     shrink-0
                     text-[#32984a]
                   "
-                />
-              </div>
-            )}
+                      />
+                    </div>
+                  )}
 
-            {/* ================= ICON ================= */}
-            <motion.div
-              whileHover={{
-                scale: 1.08,
-                rotate: 1,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 280,
-                damping: 18,
-              }}
-              className="
+                  {/* ================= ICON ================= */}
+                  <motion.div
+                    whileHover={{
+                      scale: 1.08,
+                      rotate: 1,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 280,
+                      damping: 18,
+                    }}
+                    className="
                 relative
                 z-10
                 flex
@@ -1215,128 +1087,129 @@ const About = () => {
                 lg:h-[49px]
                 lg:w-[49px]
               "
-            >
-              <Icon
-                size={23}
-                strokeWidth={1.55}
-                className="
+                  >
+                    <Icon
+                      size={23}
+                      strokeWidth={1.55}
+                      className="
                   transition-transform
                   duration-300
                   group-hover:scale-[1.04]
                 "
-              />
-            </motion.div>
+                    />
+                  </motion.div>
 
-            {/* ================= STEP NUMBER ================= */}
-            <p
-              className="
+                  {/* ================= STEP NUMBER ================= */}
+                  <p
+                    className="
                 mt-[9px]
-                text-[11px]
-                font-bold
+                text-[13px]
+                font-[550]
                 leading-none
                 text-[#2e983f]
               "
-            >
-              {number}
-            </p>
+                  >
+                    {number}
+                  </p>
 
-            {/* ================= TITLE ================= */}
-            <h3
-              className="
-                mt-[4px]
+                  {/* ================= TITLE ================= */}
+                  <h3
+                    className="
+                mt-[5px]
                 max-w-[130px]
-                text-[10.5px]
-                font-bold
+                text-[11px]
+                font-[550]
                 leading-[1.25]
                 tracking-[-0.05px]
                 text-[#092e61]
 
                 sm:text-[11px]
 
-                lg:text-[11px]
+                lg:text-[12px]
               "
-            >
-              {title}
-            </h3>
+                  >
+                    {title}
+                  </h3>
 
-            {/* ================= DESCRIPTION ================= */}
-            <p
-              className="
+                  {/* ================= DESCRIPTION ================= */}
+                  <p
+                    className="
                 mt-[7px]
                 max-w-[150px]
-                text-[8.8px]
+                text-[11px]
                 font-normal
                 leading-[1.55]
                 text-[#324b68]
 
-                sm:text-[9px]
+                sm:text-[11px]
 
-                lg:text-[9.2px]
+                lg:text-[11.5px]
               "
-            >
-              {description}
-            </p>
+                  >
+                    {description}
+                  </p>
 
-            {/* ================= MOBILE/TABLET ACCENT ================= */}
-            {index !== processItems.length - 1 && (
-              <div
-                className="
+                  {/* ================= MOBILE/TABLET ACCENT ================= */}
+                  {index !== processItems.length - 1 && (
+                    <div
+                      className="
                   mt-5
                   flex
                   w-[75px]
                   items-center
                   xl:hidden
                 "
-              >
-                <div
-                  className="
+                    >
+                      <div
+                        className="
                     h-0
                     flex-1
                     border-t
                     border-dashed
                     border-[#32984a]/60
                   "
-                />
+                      />
 
-                <ArrowRight
-                  size={11}
-                  className="-ml-[1px] text-[#32984a]"
-                />
-              </div>
+                      <ArrowRight
+                        size={11}
+                        className="-ml-[1px] text-[#32984a]"
+                      />
+                    </div>
+                  )}
+                </motion.div>
+              ),
             )}
-          </motion.div>
-        )
-      )}
-    </div>
-  </div>
-</section>
+          </div>
+        </div>
+      </section>
 
       {/* =========================================================
           BOTTOM CTA SECTION
       ========================================================== */}
 
-<section className="w-full px-1 pb-5 sm:px-3 md:px-4 lg:px-5">
-  <motion.div
-    initial={{ opacity: 0, y: 12 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.45, ease: "easeOut" }}
-    viewport={{ once: true }}
-    className="
+      <section className="w-full px-3 pb-5 sm:px-5 lg:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="
       relative
       mx-auto
       w-full
-      max-w-[1140px]
+      max-w-[1440px]
       overflow-hidden
       rounded-[10px]
       bg-[#00305d]
+      py-2
     "
-  >
-    {/* ================= FULL BACKGROUND ================= */}
-    <img
-      src={ctaBg}
-      alt=""
-      aria-hidden="true"
-      className="
+        >
+          {/* ================= FULL BACKGROUND ================= */}
+          <img
+            src={ctaBg}
+            alt=""
+            aria-hidden="true"
+            className="
         pointer-events-none
         absolute
         inset-0
@@ -1346,14 +1219,14 @@ const About = () => {
         object-cover
         object-center
       "
-    />
+          />
 
-    {/* ================= LEFT IMAGE ================= */}
-    <img
-      src={ctaimg}
-      alt=""
-      aria-hidden="true"
-      className="
+          {/* ================= LEFT IMAGE ================= */}
+          <img
+            src={ctaimg}
+            alt=""
+            aria-hidden="true"
+            className="
         pointer-events-none
         absolute
         z-[2]
@@ -1364,27 +1237,27 @@ const About = () => {
         sm:block
         sm:left-[24px]
         sm:top-1/2
-        sm:h-[48px]
-        sm:w-[48px]
+        sm:h-[68px]
+        sm:w-[68px]
         sm:-translate-y-1/2
 
         md:left-[38px]
-        md:h-[52px]
-        md:w-[52px]
+        md:h-[72px]
+        md:w-[72px]
 
         lg:left-[52px]
-        lg:h-[58px]
-        lg:w-[58px]
+        lg:h-[88px]
+        lg:w-[88px]
 
         xl:left-[64px]
-        xl:h-[62px]
-        xl:w-[62px]
+        xl:h-[92px]
+        xl:w-[92px]
       "
-    />
+          />
 
-    {/* ================= CONTENT ================= */}
-    <div
-      className="
+          {/* ================= CONTENT ================= */}
+          <div
+            className="
         relative
         z-10
         flex
@@ -1420,75 +1293,76 @@ const About = () => {
         xl:pl-[150px]
         xl:pr-[130px]
       "
-    >
-      {/* ================= TEXT ================= */}
-      <div
-        className="
+          >
+            {/* ================= TEXT ================= */}
+            <div
+              className="
           min-w-0
           flex-1
+          px-4
         "
-      >
-        <h3
-          className="
+            >
+              <h3
+                className="
             m-0
-            text-[14px]
-            font-bold
+            text-[16px]
+            font-[550]
             leading-[1.25]
             tracking-[-0.1px]
             text-white
 
-            sm:text-[14.5px]
+            sm:text-[16px]
 
-            md:text-[15px]
+            md:text-[17px]
 
-            lg:text-[16px]
+            lg:text-[18px]
           "
-        >
-          Quality is Our Promise. Impact is Our Purpose.
-        </h3>
+              >
+                Quality is Our Promise. Impact is Our Purpose.
+              </h3>
 
-        <p
-          className="
+              <p
+                className="
             mx-auto
             mt-[5px]
             max-w-[520px]
-            text-[9px]
+            text-[12px]
             font-normal
             leading-[1.4]
             text-white/90
 
             sm:mx-0
-            sm:text-[9.5px]
+            sm:text-[12px]
 
-            md:text-[10px]
+            md:text-[13px]
           "
-        >
-          Join us in building a better future through high quality research
-          and collaboration.
-        </p>
-      </div>
+              >
+                Join us in building a better future through high quality
+                research and collaboration.
+              </p>
+            </div>
 
-      {/* ================= BUTTON ================= */}
-      <motion.div
-        whileHover={{
-          y: -2,
-          scale: 1.02,
-        }}
-        whileTap={{
-          scale: 0.98,
-        }}
-        transition={{
-          duration: 0.2,
-        }}
-        className="
+            {/* ================= BUTTON ================= */}
+            <motion.div
+              whileHover={{
+                y: -2,
+                scale: 1.02,
+              }}
+              whileTap={{
+                scale: 0.98,
+              }}
+              transition={{
+                duration: 0.2,
+              }}
+              className="
           relative
           z-20
           shrink-0
         "
-      >
-        <Link
-          to="/conferences"
-          className="
+            >
+              <Link
+                to="/conferences"
+                className="
             group
             inline-flex
             h-[34px]
@@ -1499,7 +1373,7 @@ const About = () => {
             rounded-[4px]
             bg-[#3c9635]
             px-4
-            text-[9.5px]
+            text-[12px]
             font-semibold
             text-white
             shadow-[0_3px_8px_rgba(0,0,0,0.15)]
@@ -1514,29 +1388,29 @@ const About = () => {
 
             md:h-[36px]
             md:min-w-[160px]
-            md:text-[10px]
+            md:text-[12px]
 
             lg:h-[38px]
             lg:min-w-[170px]
           "
-        >
-          <span>Explore Conferences</span>
+              >
+                <span>Explore Conferences</span>
 
-          <ArrowRight
-            size={14}
-            strokeWidth={2}
-            className="
+                <ArrowRight
+                  size={16}
+                  strokeWidth={2}
+                  className="
               shrink-0
               transition-transform
               duration-300
               group-hover:translate-x-[3px]
             "
-          />
-        </Link>
-      </motion.div>
-    </div>
-  </motion.div>
-</section>
+                />
+              </Link>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
     </main>
   );
 };

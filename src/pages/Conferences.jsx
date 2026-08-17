@@ -23,6 +23,11 @@ import ScopusTable from "../components/ScopusTable";
 import { upcomingConferences, pastConferences } from "../data/conferences";
 import { proceedings } from "../data/proceedings";
 
+import cardSingapore from "../assets/images/card_singapore.png";
+import cardDubai from "../assets/images/card_dubai.png";
+import cardBangkok from "../assets/images/card_bangkok.png";
+import cardPerth from "../assets/images/card_perth.png";
+
 const stats = [
   { icon: CalendarDays, value: "50+", label: "Upcoming Conferences" },
   { icon: Users2, value: "100+", label: "Global Partners & Institutions" },
