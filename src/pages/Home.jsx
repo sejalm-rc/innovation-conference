@@ -265,7 +265,7 @@ const handleSubscribe = async (event) => {
     <main className="overflow-hidden bg-white font-sans text-[#071f46]">
       {/* ==================== HERO SECTION ==================== */}
       <section
-        className="relative  min-h-[545px] bg-cover bg-[64%_center] lg:bg-center"
+        className="relative  min-h-[545px] bg-cover bg-[64%_center] lg:bg-center mt-2"
         style={{ backgroundImage: `url(${homeBg})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent lg:hidden" />

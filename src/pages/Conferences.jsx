@@ -141,7 +141,7 @@ export default function Conferences() {
   return (
     <main className="w-full overflow-x-clip bg-white text-[#082b5c]">
       {/* ==================== HERO SECTION ==================== */}
-      <section className="px-3  sm:px-5 lg:px-6">
+      <section className="px-3  sm:px-5 lg:px-6 mt-2">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -163,7 +163,7 @@ export default function Conferences() {
               transition={{ duration: 0.65, delay: 0.12 }}
               className="max-w-[610px]"
             >
-              <h1 className="text-[29px] font-[600] leading-[1.15] tracking-[-0.02em] text-white min-[400px]:text-[32px] sm:text-[32px] lg:text-[34px]">
+              <h1 className="text-[28px] font-[600] leading-[1.15] tracking-[-0.02em] text-white min-[400px]:text-[32px] sm:text-[29px] lg:text-[29px]">
                 Explore High Quality,
                 <span className="mt-1 block text-[#7eb43c]">
                   Scopus Indexed Conferences

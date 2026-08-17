@@ -214,7 +214,7 @@ export default function Footer() {
             className="
               mt-3
               max-w-[205px]
-              text-[11px]
+              text-[12px]
               font-normal
               leading-[1.45]
               text-white/80
@@ -261,7 +261,7 @@ export default function Footer() {
                 "
               >
                 <Icon
-                  size={12}
+                  size={14}
                   className="transition-transform duration-300"
                 />
               </motion.a>
@@ -294,7 +294,7 @@ export default function Footer() {
           <h3
             className="
               mb-3
-              text-[12px]
+              text-[14px]
               font-semibold
               tracking-[0.01em]
               text-white
@@ -316,7 +316,7 @@ export default function Footer() {
                       relative
                       inline-flex
                       items-center
-                      text-[10.5px]
+                      text-[12px]
                       leading-[1.4]
                       transition-all
                       duration-300
@@ -378,7 +378,7 @@ export default function Footer() {
           <h3
             className="
               mb-3
-              text-[12px]
+              text-[14px]
               font-semibold
               tracking-[0.01em]
               text-white
@@ -396,7 +396,7 @@ export default function Footer() {
                     group
                     inline-flex
                     items-center
-                    text-[10.5px]
+                    text-[12px]
                     leading-[1.4]
                     text-white/90
                     transition-all
@@ -455,7 +455,7 @@ export default function Footer() {
           <h3
             className="
               mb-3
-              text-[12px]
+              text-[14px]
               font-semibold
               tracking-[0.01em]
               text-white
@@ -475,7 +475,7 @@ export default function Footer() {
                   flex
                   items-start
                   gap-2.5
-                  text-[9.5px]
+                  text-[12px]
                   leading-[1.45]
                   text-white/90
                   transition-colors
@@ -500,7 +500,7 @@ export default function Footer() {
                 />
 
                 <span className="break-all">
-                  support@innovationconferences.org
+                  contact@innovationconferences.org
                 </span>
               </a>
             </li>
@@ -509,13 +509,13 @@ export default function Footer() {
 
             <li>
               <a
-                href="tel:+911234567890"
+                href="tel:+919970294396"
                 className="
                   group
                   flex
                   items-center
                   gap-2.5
-                  text-[9.5px]
+                  text-[12px]
                   text-white/90
                   transition-colors
                   duration-300
@@ -524,7 +524,7 @@ export default function Footer() {
                 "
               >
                 <Phone
-                  size={12}
+                  size={14}
                   strokeWidth={1.8}
                   className="
                     shrink-0
@@ -552,7 +552,7 @@ export default function Footer() {
                   flex
                   items-center
                   gap-2.5
-                  text-[9.5px]
+                  text-[12px]
                   text-white/90
                   transition-colors
                   duration-300
@@ -585,7 +585,7 @@ export default function Footer() {
                 flex
                 items-center
                 gap-2.5
-                text-[9.5px]
+                text-[12px]
                 text-white/90
               "
             >
@@ -634,7 +634,7 @@ export default function Footer() {
           <h3
             className="
               mb-2
-              text-[12px]
+              text-[14px]
               font-semibold
               tracking-[0.01em]
               text-white
@@ -646,7 +646,7 @@ export default function Footer() {
           <p
             className="
               mb-3
-              text-[9.5px]
+              text-[12px]
               font-medium
               leading-[1.4]
               text-white/90
@@ -697,7 +697,7 @@ export default function Footer() {
               >
                 {/* Number */}
 
-                <span className="text-[13px] font-bold leading-none">
+                <span className="text-[13px] font-[550] leading-none">
                   {sdg.id}
                 </span>
 

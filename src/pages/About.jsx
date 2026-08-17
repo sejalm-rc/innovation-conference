@@ -193,7 +193,7 @@ const About = () => {
       "
     >
       {/* ==================== ABOUT HERO SECTION ==================== */}
-      <section className="px-3 sm:px-5 lg:px-6">
+      <section className="px-3 sm:px-5 lg:px-6 mt-2">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -283,14 +283,14 @@ const About = () => {
               {/* Main heading */}
               <h1
                 className="
-            text-[29px]
+            text-[28px]
             font-[600]
             leading-[1.15]
             tracking-[-0.02em]
             text-white
             min-[400px]:text-[32px]
-            sm:text-[32px]
-            lg:text-[34px]
+            sm:text-[29px]
+            lg:text-[29px]
           "
               >
                 Advancing Research.
