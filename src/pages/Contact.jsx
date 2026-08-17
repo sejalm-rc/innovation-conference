@@ -35,14 +35,14 @@ const contactCards = [
   {
     icon: Mail,
     title: "Email Us",
-    text: "support@innovationconferences.org",
-    href: "mailto:support@innovationconferences.org",
+    text: "contact@innovationconferences.org",
+    href: "mailto:contact@innovationconferences.org",
   },
   {
     icon: Phone,
     title: "Call Us",
-    text: "+91 12345 67890",
-    href: "tel:+911234567890",
+    text: "+91 99702 94396",
+    href: "tel:+919970294396",
   },
   {
     icon: Clock3,
@@ -89,11 +89,11 @@ const inputClass = (error) =>
 function Field({ label, required, error, children }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-[11px] font-[550] text-[#0a315f]">
+      <span className="mb-1.5 block text-[13px] font-[530] text-[#0a315f]">
         {label} {required && <span className="text-red-500">*</span>}
       </span>
       {children}
-      {error && <span className="mt-1 block text-[10px] text-red-600">{error}</span>}
+      {error && <span className="mt-1 block text-[11px] text-red-600">{error}</span>}
     </label>
   );
 }
@@ -166,10 +166,10 @@ export default function Contact() {
   return (
     <main className="w-full overflow-hidden bg-white font-['Poppins',sans-serif] text-[#17385e]">
       {/* ==================== HERO SECTION ==================== */}
-      <section className="px-3 sm:px-5 lg:px-6">
+      <section className="px-3 sm:px-5 lg:px-6 mt-2">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}    
           transition={{ duration: 0.55 }}
           className="relative mx-auto min-h-[300px] max-w-[1440px] overflow-hidden rounded-[14px] bg-[#032f60] bg-cover bg-center sm:min-h-[275px] lg:min-h-[260px]"
           style={{ backgroundImage: `url(${contactBg})` }}
@@ -185,11 +185,11 @@ export default function Contact() {
               <p className="mb-3 flex items-center gap-2 text-[12px] font-[550] uppercase text-[#79b83d]">
                 <MessageSquareText size={19} /> Contact Us
               </p>
-              <h1 className="text-[29px] font-[600] leading-[1.18] tracking-[-0.02em] text-white sm:text-[32px] lg:text-[34px]">
+              <h1 className="text-[28px] font-[600] leading-[1.18] tracking-[-0.02em] text-white sm:text-[29px] lg:text-[29px]">
                 Let&apos;s Connect. Let&apos;s Create
                 <span className="mt-1 block text-[#83b934]">Meaningful Research Impact.</span>
               </h1>
-              <p className="mt-5 max-w-[570px] text-[12px] leading-[1.75] text-white/95 sm:text-[13px]">
+              <p className="mt-5 max-w-[500px] text-[14px] leading-[1.75] text-white/95 sm:text-[15px]">
                 Have a question about conferences, paper submissions, publications or institutional association?
                 Our team is ready to assist you.
               </p>
@@ -199,10 +199,10 @@ export default function Contact() {
       </section>
 
       {/* ==================== CONTACT CARDS ==================== */}
-      <section className="px-3 py-7 sm:px-5 lg:px-6">
+      <section className="px-3 py-6 sm:px-4 lg:px-4">
         <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-4 px-6 min-[470px]:grid-cols-2 sm:px-10 lg:grid-cols-4 lg:px-16">
           {contactCards.map(({ icon: Icon, title, text, href }, index) => {
-            const content = <><div className="grid h-12 w-12 place-items-center rounded-full bg-[#eef7ec] text-[#459d3b] transition group-hover:bg-[#459d3b] group-hover:text-white"><Icon size={23} /></div><div><h2 className="text-[13px] font-[600] text-[#082f63]">{title}</h2><p className="mt-1 break-words text-[10.5px] leading-[1.5] text-[#3c5068] sm:text-[11px]">{text}</p></div></>;
+            const content = <><div className="grid h-12 w-12 place-items-center rounded-full bg-[#eef7ec] text-[#459d3b] transition group-hover:bg-[#459d3b] group-hover:text-white"><Icon size={23} /></div><div><h2 className="text-[14px] font-[550] text-[#082f63]">{title}</h2><p className="mt-1 break-words text-[12px] leading-[1.5] text-[#3c5068] sm:text-[13px]">{text}</p></div></>;
             return (
               <motion.article key={title} {...reveal} transition={{ duration: 0.4, delay: index * 0.06 }} whileHover={{ y: -5 }} className="group rounded-xl border border-[#d9e3ea] bg-white shadow-[0_5px_18px_rgba(8,47,99,.05)]">
                 {href ? <a href={href} className="flex min-h-[112px] items-center gap-4 px-5 py-4">{content}</a> : <div className="flex min-h-[112px] items-center gap-4 px-5 py-4">{content}</div>}
@@ -216,13 +216,13 @@ export default function Contact() {
       <section className="px-3 pb-9 sm:px-5 lg:px-6">
         <div className="mx-auto grid max-w-[1320px] gap-6 px-6 sm:px-10 lg:grid-cols-[1.45fr_.8fr] lg:px-16">
           <motion.div {...reveal} className="rounded-xl border border-[#d8e2e9] bg-[#fafcfb] p-5 sm:p-7">
-            <h2 className="text-[20px] font-[600] text-[#348a32]">Send Us a Message</h2>
-            <p className="mt-1 text-[11px] text-[#42566d] sm:text-[12px]">Complete the form and our support team will contact you shortly.</p>
+            <h2 className="text-[20px] font-[550] text-[#348a32]">Send Us a Message</h2>
+            <p className="mt-1 text-[12px] text-[#42566d] sm:text-[13px]">Complete the form and our support team will contact you shortly.</p>
 
             {status === "success" && (
               <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} role="status" className="mt-5 flex gap-3 rounded-lg border border-green-200 bg-green-50 px-4 py-3">
                 <CheckCircle2 className="shrink-0 text-[#3c9939]" size={21} />
-                <div><h3 className="text-[13px] font-[600] text-green-900">Message sent successfully!</h3><p className="mt-1 text-[11px] text-green-800">Thank you for contacting us. We will reply within 1–2 working days.</p></div>
+                <div><h3 className="text-[13px] font-[550] text-green-900">Message sent successfully!</h3><p className="mt-1 text-[11px] text-green-800">Thank you for contacting us. We will reply within 1–2 working days.</p></div>
               </motion.div>
             )}
             {status === "error" && <div role="alert" className="mt-5 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-[11px] text-red-700">We could not send your message. Please try again or email us directly.</div>}
@@ -236,7 +236,7 @@ export default function Contact() {
               </div>
               <Field label="Subject" required error={errors.subject}><input name="subject" value={form.subject} onChange={updateField} placeholder="How can we help you?" className={inputClass(errors.subject)} /></Field>
               <Field label="Message" required error={errors.message}><textarea name="message" value={form.message} onChange={updateField} rows={5} placeholder="Write your message here..." className={`${inputClass(errors.message)} resize-none`} /></Field>
-              <motion.button whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} disabled={status === "loading"} className="inline-flex min-h-[43px] w-full items-center justify-center gap-3 rounded-md bg-[#073665] px-7 py-3 text-[12px] font-[600] text-white transition hover:bg-[#459b38] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto">
+              <motion.button whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} disabled={status === "loading"} className="inline-flex min-h-[43px] w-full items-center justify-center gap-3 rounded-md bg-[#073665] px-7 py-3 text-[12px] font-[550] text-white transition hover:bg-[#459b38] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto">
                 {status === "loading" ? "Sending..." : "Send Message"} <Send size={16} />
               </motion.button>
             </form>
@@ -244,19 +244,19 @@ export default function Contact() {
 
           <div className="space-y-6">
             <motion.aside {...reveal} transition={{ duration: 0.5, delay: 0.08 }} className="rounded-xl bg-[#063665] p-6 text-white">
-              <h2 className="text-[18px] font-[600]">Contact Information</h2>
-              <p className="mt-2 text-[11px] leading-[1.65] text-white/80">Reach our team directly for conference and publication support.</p>
+              <h2 className="text-[18px] font-[550]">Contact Information</h2>
+              <p className="mt-2 text-[12px] leading-[1.65] text-white/80">Reach our team directly for conference and publication support.</p>
               <div className="mt-6 space-y-5">
-                <a href="mailto:support@innovationconferences.org" className="group flex items-start gap-4"><Mail className="mt-0.5 shrink-0 text-[#74b93e]" size={20} /><div><p className="text-[10px] text-white/65">Email</p><p className="mt-1 break-all text-[11px] group-hover:text-[#8dcc52]">support@innovationconferences.org</p></div></a>
-                <a href="tel:+911234567890" className="group flex items-start gap-4"><Phone className="mt-0.5 shrink-0 text-[#74b93e]" size={20} /><div><p className="text-[10px] text-white/65">Phone</p><p className="mt-1 text-[11px] group-hover:text-[#8dcc52]">+91 12345 67890</p></div></a>
-                <div className="flex items-start gap-4"><MapPin className="mt-0.5 shrink-0 text-[#74b93e]" size={20} /><div><p className="text-[10px] text-white/65">Location</p><p className="mt-1 text-[11px] leading-[1.6]">Nagpur, Maharashtra, India<br />Supporting researchers worldwide</p></div></div>
+                <a href="mailto:contact@innovationconferences.org" className="group flex items-start gap-4"><Mail className="mt-0.5 shrink-0 text-[#74b93e]" size={20} /><div><p className="text-[12px] text-white/65">Email</p><p className="mt-1 break-all text-[13px] group-hover:text-[#8dcc52]">contact@innovationconferences.org</p></div></a>
+                <a href="tel:+919970294396" className="group flex items-start gap-4"><Phone className="mt-0.5 shrink-0 text-[#74b93e]" size={20} /><div><p className="text-[12px] text-white/65">Phone</p><p className="mt-1 text-[13px] group-hover:text-[#8dcc52]">+91 99702 94396</p></div></a>
+                <div className="flex items-start gap-4"><MapPin className="mt-0.5 shrink-0 text-[#74b93e]" size={20} /><div><p className="text-[12px] text-white/65">Location</p><p className="mt-1 text-[13px] leading-[1.6]">Nagpur, Maharashtra, India<br />Supporting researchers worldwide</p></div></div>
               </div>
             </motion.aside>
 
             <motion.aside {...reveal} transition={{ duration: 0.5, delay: 0.12 }} whileHover={{ y: -4 }} className="rounded-xl border border-[#d8e2e9] bg-gradient-to-br from-[#f7faf6] to-[#eef5ef] p-6">
               <ShieldCheck size={31} className="text-[#449d3d]" />
-              <h3 className="mt-3 text-[15px] font-[600] text-[#082f63]">Reliable Academic Support</h3>
-              <p className="mt-2 text-[11px] leading-[1.7] text-[#42566d]">Transparent communication, ethical processes and timely support at every stage of your conference journey.</p>
+              <h3 className="mt-3 text-[15px] font-[550] text-[#082f63]">Reliable Academic Support</h3>
+              <p className="mt-2 text-[12px] leading-[1.7] text-[#42566d]">Transparent communication, ethical processes and timely support at every stage of your conference journey.</p>
             </motion.aside>
           </div>
         </div>
@@ -266,7 +266,7 @@ export default function Contact() {
       <section className="px-3 pb-9 sm:px-5 lg:px-6">
         <motion.div {...reveal} className="mx-auto max-w-[1320px] px-6 sm:px-10 lg:px-16">
           <div className="grid overflow-hidden rounded-xl border border-[#d7e1e8] bg-white lg:grid-cols-[.65fr_1.35fr]">
-            <div className="flex flex-col justify-center p-6 sm:p-8"><MapPin size={34} className="text-[#459d3b]" /><h2 className="mt-3 text-[20px] font-[600] text-[#082f63]">Our Global Presence</h2><span className="mt-2 h-[2px] w-9 bg-[#459d3b]" /><p className="mt-4 text-[11px] leading-[1.75] text-[#42566d] sm:text-[12px]">Innovation Conferences works with researchers, academic institutions and publication partners across the world.</p><div className="mt-5 flex items-center gap-3 text-[11px] font-[550] text-[#348a32]"><Users2 size={18} /> Global academic community</div></div>
+            <div className="flex flex-col justify-center p-6 sm:p-8"><MapPin size={34} className="text-[#459d3b]" /><h2 className="mt-3 text-[20px] font-[550] text-[#082f63]">Our Global Presence</h2><span className="mt-2 h-[2px] w-9 bg-[#459d3b]" /><p className="mt-4 text-[12px] leading-[1.75] text-[#42566d] sm:text-[13px]">Innovation Conferences works with researchers, academic institutions and publication partners across the world.</p><div className="mt-5 flex items-center gap-3 text-[12px] font-[550] text-[#348a32]"><Users2 size={18} /> Global academic community</div></div>
             <iframe title="Innovation Conferences location" src="https://www.google.com/maps?q=Nagpur%2C%20Maharashtra%2C%20India&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" className="h-[300px] w-full border-0 sm:h-[350px] lg:h-full lg:min-h-[360px]" />
           </div>
         </motion.div>
@@ -275,14 +275,27 @@ export default function Contact() {
       {/* ==================== FAQ ==================== */}
       <section className="px-3 pb-10 sm:px-5 lg:px-6">
         <div className="mx-auto max-w-[1320px] px-6 sm:px-10 lg:px-16">
-          <motion.div {...reveal} className="text-center"><h2 className="text-[20px] font-[600] text-[#082f63] sm:text-[22px]">Frequently Asked Questions</h2><span className="mx-auto mt-2 block h-[2px] w-9 bg-[#459d3b]" /></motion.div>
-          <div className="mx-auto mt-6 max-w-[900px] space-y-3">{faqs.map((item, index) => <motion.div key={item.question} {...reveal} transition={{ duration: 0.35, delay: index * 0.04 }} className="overflow-hidden rounded-lg border border-[#d8e2e9] bg-white"><button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)} aria-expanded={openFaq === index} className="flex w-full items-center justify-between gap-5 px-5 py-4 text-left text-[12px] font-[600] text-[#082f63]"><span>{item.question}</span><ChevronDown size={18} className={`shrink-0 text-[#459d3b] transition-transform ${openFaq === index ? "rotate-180" : ""}`} /></button>{openFaq === index && <motion.p initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="border-t border-[#e4ebf0] px-5 py-4 text-[11px] leading-[1.7] text-[#42566d]">{item.answer}</motion.p>}</motion.div>)}</div>
+          <motion.div {...reveal} className="text-center"><h2 className="text-[20px] font-[550] text-[#082f63] sm:text-[22px]">Frequently Asked Questions</h2><span className="mx-auto mt-2 block h-[2px] w-9 bg-[#459d3b]" /></motion.div>
+          <div className="mx-auto mt-6 max-w-[900px] space-y-3">{faqs.map((item, index) => <motion.div key={item.question} {...reveal} transition={{ duration: 0.35, delay: index * 0.04 }} className="overflow-hidden rounded-lg border border-[#d8e2e9] bg-white"><button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)} aria-expanded={openFaq === index} className="flex w-full items-center justify-between gap-5 px-5 py-4 text-left text-[12px] font-[600] text-[#082f63]"><span>{item.question}</span><ChevronDown size={18} className={`shrink-0 text-[#459d3b] transition-transform ${openFaq === index ? "rotate-180" : ""}`} /></button>{openFaq === index && <motion.p initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="border-t border-[#e4ebf0] px-5 py-4 text-[12px] leading-[1.7] text-[#42566d]">{item.answer}</motion.p>}</motion.div>)}</div>
         </div>
       </section>
 
       {/* ==================== CTA ==================== */}
       <section className="px-3 pb-5 sm:px-5 lg:px-6">
-        <motion.div {...reveal} className="relative mx-auto max-w-[1440px] overflow-hidden rounded-xl bg-[#063665] text-white"><div className="absolute inset-0 bg-[radial-gradient(circle_at_92%_100%,rgba(57,167,102,.50),transparent_30%),linear-gradient(110deg,#06305f,#004776)]" /><div className="relative z-10 mx-auto flex min-h-[112px] max-w-[1320px] flex-col items-center gap-5 px-6 py-6 text-center sm:px-10 md:flex-row md:text-left lg:px-16"><div className="grid h-16 w-16 shrink-0 place-items-center rounded-full border border-white/25 bg-white/10"><MessageSquareText size={31} /></div><div className="flex-1"><h2 className="text-[18px] font-[600] sm:text-[20px]">Let&apos;s Build Research Impact Together</h2><p className="mt-2 text-[11px] leading-[1.6] text-white/85 sm:text-[12px]">Connect with our team for conference, publication and collaboration support.</p></div><a href="mailto:support@innovationconferences.org" className="inline-flex w-full items-center justify-center gap-3 rounded bg-[#51a333] px-6 py-3.5 text-[12px] font-[600] text-white transition hover:-translate-y-1 hover:bg-[#438d2c] sm:w-auto">Email Our Team <ArrowRight size={17} /></a></div></motion.div>
+        <motion.div {...reveal} className="relative mx-auto max-w-[1440px] overflow-hidden rounded-xl bg-[#063665] text-white">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_92%_100%,rgba(57,167,102,.50),transparent_30%),linear-gradient(110deg,#06305f,#004776)]" />
+            <div className="relative z-10 mx-auto flex min-h-[112px] max-w-[1320px] flex-col items-center gap-5 px-6 py-6 text-center sm:px-10 md:flex-row md:text-left lg:px-16">
+                <div className="grid h-16 w-16 shrink-0 place-items-center rounded-full border border-white/25 bg-white/10">
+            <MessageSquareText size={31} />
+            </div>
+            <div className="flex-1">
+                <h2 className="text-[18px] font-[550] sm:text-[20px]">Let&apos;s Build Research Impact Together</h2>
+                <p className="mt-2 text-[12px] leading-[1.6] text-white/85 sm:text-[14px]">Connect with our team for conference, publication and collaboration support.</p></div>
+                <a href="mailto:support@innovationconferences.org" className="inline-flex w-full items-center justify-center gap-3 rounded bg-[#51a333] px-6 py-3.5 text-[12px] font-[550] text-white transition hover:-translate-y-1 hover:bg-[#438d2c] sm:w-auto">Email Our Team 
+                    <ArrowRight size={17} />
+                    </a>
+                    </div>
+                    </motion.div>
       </section>
     </main>
   );
