@@ -23,10 +23,28 @@ import ScopusTable from "../components/ScopusTable";
 import { upcomingConferences, pastConferences } from "../data/conferences";
 import { proceedings } from "../data/proceedings";
 
-import cardSingapore from "../assets/images/card_singapore.png";
-import cardDubai from "../assets/images/card_dubai.png";
-import cardBangkok from "../assets/images/card_bangkok.png";
-import cardPerth from "../assets/images/card_perth.png";
+import cardIndore from "../assets/img/j1.png";
+import cardKualaLumpur from "../assets/img/j2.png";
+import cardBarcelona from "../assets/img/j3.png";
+import cardBoston from "../assets/img/j4.png";
+import cardSingapore from "../assets/img/j4.png";
+import cardDubai from "../assets/img/j1.png";
+import cardBangkok from "../assets/img/j2.png";
+import cardPerth from "../assets/img/j4.png";
+
+const upcomingConferenceImages = [
+  cardIndore,
+  cardKualaLumpur,
+  cardBarcelona,
+  cardBoston,
+];
+
+const previousConferenceImages = [
+  cardSingapore,
+  cardDubai,
+  cardBangkok,
+  cardPerth,
+];
 
 const stats = [
   { icon: CalendarDays, value: "50+", label: "Upcoming Conferences" },
@@ -232,7 +250,16 @@ export default function Conferences() {
               className="min-w-[calc(100%-12px)] snap-start min-[520px]:min-w-[calc(50%-10px)] lg:min-w-[calc(33.333%-14px)] xl:min-w-[calc(25%-15px)]"
             >
               {/* ConferenceCard keeps the existing details-page link */}
-              <ConferenceCard conference={conference} index={index} />
+              <ConferenceCard
+                conference={{
+                  ...conference,
+                  image:
+                    upcomingConferenceImages[
+                      index % upcomingConferenceImages.length
+                    ] || conference.image,
+                }}
+                index={index}
+              />
             </motion.div>
           ))}
         </ConferenceRow>
@@ -250,7 +277,16 @@ export default function Conferences() {
               className="min-w-[calc(100%-12px)] snap-start min-[520px]:min-w-[calc(50%-10px)] lg:min-w-[calc(33.333%-14px)] xl:min-w-[calc(25%-15px)]"
             >
               {/* ConferenceCard keeps the existing details-page link */}
-              <ConferenceCard conference={conference} index={index} />
+              <ConferenceCard
+                conference={{
+                  ...conference,
+                  image:
+                    previousConferenceImages[
+                      index % previousConferenceImages.length
+                    ] || conference.image,
+                }}
+                index={index}
+              />
             </motion.div>
           ))}
         </ConferenceRow>
