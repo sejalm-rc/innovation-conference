@@ -174,7 +174,7 @@ export default function SDGImpact() {
   return (
     <main className="w-full overflow-hidden bg-white font-['Poppins',sans-serif] text-[#102f59]">
       {/* ==================== HERO ==================== */}
-      <section className="px-3 sm:px-5 lg:px-6">
+      <section className="px-3 sm:px-5 lg:px-6 mt-2">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}

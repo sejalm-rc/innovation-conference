@@ -32,19 +32,21 @@ import cardDubai from "../assets/img/j1.png";
 import cardBangkok from "../assets/img/j2.png";
 import cardPerth from "../assets/img/j4.png";
 
-const upcomingConferenceImages = [
-  cardIndore,
-  cardKualaLumpur,
-  cardBarcelona,
-  cardBoston,
-];
+const conferenceCoverImages = {
+  "entomosphere-2026": cardIndore,
+  "icaiet-2027": cardKualaLumpur,
+  "gcsse-2027": cardBarcelona,
+  "ichmls-2027": cardBoston,
+  "icadsi-2026": cardSingapore,
+  "gcsse-2026": cardDubai,
+  "icmsme-2026": cardBangkok,
+  "icesit-2026": cardPerth,
+};
 
-const previousConferenceImages = [
-  cardSingapore,
-  cardDubai,
-  cardBangkok,
-  cardPerth,
-];
+const addCoverImage = (conference) => ({
+  ...conference,
+  image: conferenceCoverImages[conference.id] || conference.image,
+});
 
 const stats = [
   { icon: CalendarDays, value: "50+", label: "Upcoming Conferences" },
@@ -200,8 +202,9 @@ export default function Conferences() {
       </section>
 
       {/* ==================== STATISTICS ==================== */}
-      <section className="mx-auto max-w-[1320px] px-4 py-4 sm:px-8 sm:py-4 lg:px-10">
-        <div className="grid grid-cols-1 overflow-hidden rounded-lg border border-slate-100 bg-white shadow-[0_5px_18px_rgba(8,43,92,.05)] min-[430px]:grid-cols-2 lg:grid-cols-5 lg:border-0 lg:shadow-none">
+      <section className="px-3 py-4 sm:px-5 lg:px-6">
+        <div className="mx-auto max-w-[1320px] px-6 sm:px-10 lg:px-16">
+          <div className="grid grid-cols-1 overflow-hidden rounded-lg border border-slate-100 bg-white shadow-[0_5px_18px_rgba(8,43,92,.05)] min-[430px]:grid-cols-2 lg:grid-cols-5 lg:border-0 lg:shadow-none">
           {stats.map(({ icon: Icon, value, label }, index) => (
             <motion.div
               key={label}
@@ -232,11 +235,13 @@ export default function Conferences() {
               </div>
             </motion.div>
           ))}
+          </div>
         </div>
       </section>
 
       {/* ==================== CONFERENCE CAROUSELS ==================== */}
-      <section className="mx-auto max-w-[1320px] px-4 sm:px-8 lg:px-10">
+      <section className="px-3 sm:px-5 lg:px-6">
+        <div className="mx-auto max-w-[1320px] px-6 sm:px-10 lg:px-16">
         <ConferenceRow
           title="Upcoming Conferences"
           viewAllLabel="View All Conferences"
@@ -251,13 +256,7 @@ export default function Conferences() {
             >
               {/* ConferenceCard keeps the existing details-page link */}
               <ConferenceCard
-                conference={{
-                  ...conference,
-                  image:
-                    upcomingConferenceImages[
-                      index % upcomingConferenceImages.length
-                    ] || conference.image,
-                }}
+                conference={addCoverImage(conference)}
                 index={index}
               />
             </motion.div>
@@ -278,26 +277,22 @@ export default function Conferences() {
             >
               {/* ConferenceCard keeps the existing details-page link */}
               <ConferenceCard
-                conference={{
-                  ...conference,
-                  image:
-                    previousConferenceImages[
-                      index % previousConferenceImages.length
-                    ] || conference.image,
-                }}
+                conference={addCoverImage(conference)}
                 index={index}
               />
             </motion.div>
           ))}
         </ConferenceRow>
+        </div>
       </section>
 
       {/* ==================== SCOPUS PROCEEDINGS ==================== */}
-      <motion.section
+      {/* <motion.section
         {...reveal}
         transition={{ duration: 0.55 }}
-        className="mx-auto max-w-[1320px] px-4 pb-7 sm:px-8 lg:px-10"
+        className="px-3 pb-7 sm:px-5 lg:px-6"
       >
+        <div className="mx-auto max-w-[1320px] px-6 sm:px-10 lg:px-16">
         <div className="mb-6 text-center">
           <h2 className="text-[19px] font-[550] leading-snug text-[#082b5c] sm:text-[22px]">
             Scopus Indexed Proceedings Associated with Our Conferences
@@ -329,14 +324,16 @@ export default function Conferences() {
             proceedings or Scopus indexed journals.
           </p>
         </motion.div>
-      </motion.section>
+        </div>
+      </motion.section> */}
 
       {/* ==================== WHY SUBMIT ==================== */}
-      <section className="px-4 pb-6 sm:px-8 lg:px-10">
+      <section className="px-3 pb-6 sm:px-5 lg:px-6">
+        <div className="mx-auto max-w-[1320px] px-6 sm:px-10 lg:px-16">
         <motion.div
           {...reveal}
           transition={{ duration: 0.55 }}
-          className="mx-auto max-w-[1260px] overflow-hidden rounded-[16px] bg-gradient-to-r from-[#07396f] to-[#00335f] px-4 py-4 text-white shadow-[0_9px_25px_rgba(2,37,76,.18)] sm:px-8"
+          className="overflow-hidden rounded-[16px] bg-gradient-to-r from-[#07396f] to-[#00335f] px-4 py-4 text-white shadow-[0_9px_25px_rgba(2,37,76,.18)] sm:px-8"
         >
           <h2 className="text-center text-[18px] font-[550] sm:text-[20px]">
             Why Submit to Our Conferences?
@@ -365,6 +362,7 @@ export default function Conferences() {
             ))}
           </div>
         </motion.div>
+        </div>
       </section>
     </main>
   );

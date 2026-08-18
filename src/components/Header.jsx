@@ -92,8 +92,7 @@ export default function Header() {
           top-0
           z-[999]
           w-full
-          border-b
-          border-[#edf0f4]
+         
           bg-white/95
           backdrop-blur-md
           transition-all
@@ -520,8 +519,6 @@ export default function Header() {
                     </NavLink>
                   </motion.div>
                 ))}
-
-             
               </nav>
 
               {/* ===============================================

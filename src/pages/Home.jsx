@@ -265,7 +265,7 @@ const handleSubscribe = async (event) => {
     <main className="overflow-hidden bg-white font-sans text-[#071f46]">
       {/* ==================== HERO SECTION ==================== */}
       <section
-        className="relative  min-h-[545px] bg-cover bg-[64%_center] lg:bg-center mt-2"
+        className="relative  min-h-[545px] bg-cover bg-[64%_center] lg:bg-center "
         style={{ backgroundImage: `url(${homeBg})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent lg:hidden" />
@@ -310,13 +310,13 @@ const handleSubscribe = async (event) => {
               ))}
             </div>
             <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:gap-7">
-              <a
-                href="#"
+              <Link
+                to="/conferences"
                 className="flex items-center justify-center gap-2 rounded-lg bg-[#082f63] px-5 py-3.5 text-[13px] font-[550] text-white shadow-lg transition hover:-translate-y-1 hover:bg-[#0b417f]"
               >
                 <Search size={18} />
                 Explore Conferences
-              </a>
+              </Link>
               <a
                 href="#"
                 className="flex items-center justify-center gap-2 rounded-lg border border-[#7d96b8] bg-white px-5 py-3.5 text-[13px] font-[550] transition hover:-translate-y-1 hover:border-green-600 hover:text-green-700"
@@ -425,13 +425,15 @@ const handleSubscribe = async (event) => {
               Development Goals of the United Nations.
             </p>
 
-            <a
+            <Link
+              to="/sdg-impact"
+              className="mt-3 inline-flex min-h-[35px] items-center justify-center gap-2 rounded-md border border-[#8099b7] bg-white px-4 text-[12px] font-[550] text-[#082f63] transition duration-300 hover:-translate-y-1 hover:border-[#318b32] hover:text-[#318b32] hover:shadow-md"
               href="#"
               className="mt-3 inline-flex min-h-[35px] items-center justify-center gap-2 rounded-md border border-[#8099b7] bg-white px-4 text-[12px] font-[550] text-[#082f63] transition duration-300 hover:-translate-y-1 hover:border-[#318b32] hover:text-[#318b32] hover:shadow-md"
             >
               Learn More About Our SDG Impact
               <Leaf size={16} strokeWidth={1.8} className="text-[#318b32]" />
-            </a>
+            </Link>
           </div>
 
           {/* Right 18 SDG images */}
@@ -771,8 +773,8 @@ const handleSubscribe = async (event) => {
           Share your research. Inspire change. Build a better future.
         </p>
 
-        <a
-          href="/submit-paper"
+        <Link
+          to="/contact"
           className="
             mt-3
             inline-flex
@@ -797,7 +799,7 @@ const handleSubscribe = async (event) => {
         >
           Submit Your Paper
           <Send size={14} strokeWidth={1.8} />
-        </a>
+        </Link>
       </div>
 
       {/* Newsletter form */}

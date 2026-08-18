@@ -12,7 +12,7 @@ import {
   InstagramIcon,
 } from "./SocialIcons";
 
-import logo from "../assets/images/logo.png";
+import logo from "../assets/img/footLogo.png";
 
 /* =========================================================
    QUICK LINKS
@@ -536,7 +536,7 @@ export default function Footer() {
                   "
                 />
 
-                <span>+91 12345 67890</span>
+                <span>+91 99702 94396</span>
               </a>
             </li>
 

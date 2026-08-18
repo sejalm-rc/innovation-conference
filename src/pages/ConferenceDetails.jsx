@@ -21,9 +21,31 @@ import ScopusTable from "../components/ScopusTable";
 import { getConferenceById, conferences } from "../data/conferences";
 import { proceedings } from "../data/proceedings";
 
+import conferenceCover1 from "../assets/img/j1.png";
+import conferenceCover2 from "../assets/img/j2.png";
+import conferenceCover3 from "../assets/img/j3.png";
+import conferenceCover4 from "../assets/img/j4.png";
+
+const conferenceCoverImages = {
+  "entomosphere-2026": conferenceCover1,
+  "icaiet-2027": conferenceCover2,
+  "gcsse-2027": conferenceCover3,
+  "ichmls-2027": conferenceCover4,
+  "icadsi-2026": conferenceCover4,
+  "gcsse-2026": conferenceCover1,
+  "icmsme-2026": conferenceCover2,
+  "icesit-2026": conferenceCover4,
+};
+
+const addCoverImage = (conference) => ({
+  ...conference,
+  image: conferenceCoverImages[conference.id] || conference.image,
+});
+
 export default function ConferenceDetails() {
   const { id } = useParams();
-  const conference = getConferenceById(id);
+  const conferenceData = getConferenceById(id);
+  const conference = conferenceData ? addCoverImage(conferenceData) : null;
 
   useEffect(() => {
     if (conference) {
@@ -38,7 +60,10 @@ export default function ConferenceDetails() {
   }
 
   const relatedProceedings = proceedings.filter((p) => conference.proceedingsIds.includes(p.id));
-  const otherConferences = conferences.filter((c) => c.id !== conference.id).slice(0, 3);
+  const otherConferences = conferences
+    .filter((c) => c.id !== conference.id)
+    .slice(0, 3)
+    .map(addCoverImage);
 
   return (
     <div>
