@@ -1,5 +1,3 @@
-// src/components/Footer.jsx
-
 import { Link, useLocation } from "react-router-dom";
 import { Mail, Phone, Globe, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
@@ -73,38 +71,6 @@ const socials = [
 ];
 
 /* =========================================================
-   SDG DATA
-========================================================= */
-
-const sdgs = [
-  {
-    id: 4,
-    title: "QUALITY EDUCATION",
-    bg: "#C5192D",
-  },
-  {
-    id: 9,
-    title: "INDUSTRY, INNOVATION AND INFRASTRUCTURE",
-    bg: "#FD6925",
-  },
-  {
-    id: 11,
-    title: "SUSTAINABLE CITIES AND COMMUNITIES",
-    bg: "#FD9D24",
-  },
-  {
-    id: 13,
-    title: "CLIMATE ACTION",
-    bg: "#3F7E44",
-  },
-  {
-    id: 17,
-    title: "PARTNERSHIPS FOR THE GOALS",
-    bg: "#19486A",
-  },
-];
-
-/* =========================================================
    FOOTER
 ========================================================= */
 
@@ -121,7 +87,6 @@ export default function Footer() {
       {/* =====================================================
           SUBTLE BACKGROUND
       ====================================================== */}
-
       <div
         className="
           pointer-events-none
@@ -145,18 +110,18 @@ export default function Footer() {
           grid-cols-1
           gap-0
           px-5
-          py-8
+          py-7
 
           sm:px-7
 
           md:grid-cols-2
           md:gap-y-8
-          md:px-8
+          md:px-7
 
-          lg:grid-cols-[1.15fr_1fr_1.05fr_1.35fr_1.3fr]
+          lg:grid-cols-[1.2fr_0.9fr_1.05fr_1.45fr]
           lg:gap-0
           lg:px-10
-          lg:py-8
+          lg:py-7
 
           xl:px-14
         "
@@ -203,7 +168,7 @@ export default function Footer() {
 
                 sm:h-[76px]
 
-                lg:h-[78px]
+                lg:h-[88px]
               "
             />
           </Link>
@@ -212,9 +177,9 @@ export default function Footer() {
 
           <p
             className="
-              mt-3
+              mt-2
               max-w-[205px]
-              text-[12px]
+              text-[11.5px]
               font-normal
               leading-[1.45]
               text-white/80
@@ -445,8 +410,6 @@ export default function Footer() {
             md:pl-8
 
             lg:min-h-[205px]
-            lg:border-r
-            lg:border-white/10
             lg:px-7
 
             xl:px-9
@@ -607,140 +570,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* ===================================================
-            5. WE SUPPORT / SDGs
-        ==================================================== */}
-
-        <div
-          className="
-            border-t
-            border-white/10
-            pt-7
-
-            md:col-span-2
-            md:mt-8
-            md:pt-7
-
-            lg:col-span-1
-            lg:mt-0
-            lg:min-h-[205px]
-            lg:border-t-0
-            lg:pl-7
-            lg:pt-0
-
-            xl:pl-9
-          "
-        >
-          <h3
-            className="
-              mb-2
-              text-[14px]
-              font-semibold
-              tracking-[0.01em]
-              text-white
-            "
-          >
-            We Support
-          </h3>
-
-          <p
-            className="
-              mb-3
-              text-[12px]
-              font-medium
-              leading-[1.4]
-              text-white/90
-            "
-          >
-            Sustainable Development Goals
-          </p>
-
-          {/* SDG Grid */}
-
-          <div
-            className="
-              grid
-              max-w-[185px]
-              grid-cols-4
-              gap-[5px]
-            "
-          >
-            {sdgs.map((sdg, index) => (
-              <motion.div
-                key={sdg.id}
-                whileHover={{
-                  y: -3,
-                  scale: 1.05,
-                }}
-                transition={{
-                  duration: 0.2,
-                }}
-                style={{
-                  backgroundColor: sdg.bg,
-                }}
-                className={`
-                  relative
-                  flex
-                  h-[43px]
-                  w-[43px]
-                  cursor-default
-                  flex-col
-                  overflow-hidden
-                  rounded-[1px]
-                  p-[4px]
-                  text-white
-                  shadow-sm
-
-                  ${index === 4 ? "col-start-1" : ""}
-                `}
-                aria-label={`SDG ${sdg.id}: ${sdg.title}`}
-              >
-                {/* Number */}
-
-                <span className="text-[13px] font-[550] leading-none">
-                  {sdg.id}
-                </span>
-
-                {/* Title */}
-
-                <span
-                  className="
-                    mt-[2px]
-                    line-clamp-3
-                    text-[4.7px]
-                    font-semibold
-                    uppercase
-                    leading-[1.05]
-                  "
-                >
-                  {sdg.title}
-                </span>
-
-                {/* Decorative bottom circle */}
-
-                <span
-                  className="
-                    absolute
-                    bottom-[3px]
-                    right-[4px]
-                    flex
-                    h-[10px]
-                    w-[10px]
-                    items-center
-                    justify-center
-                    rounded-full
-                    border
-                    border-white/70
-                    text-[5px]
-                    font-bold
-                  "
-                >
-                  {sdg.id}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
       </div>
     </footer>
   );

@@ -264,73 +264,230 @@ const handleSubscribe = async (event) => {
   return (
     <main className="overflow-hidden bg-white font-sans text-[#071f46]">
       {/* ==================== HERO SECTION ==================== */}
-      <section
-        className="relative  min-h-[545px] bg-cover bg-[64%_center] lg:bg-center "
-        style={{ backgroundImage: `url(${homeBg})` }}
+<section
+  className="
+    relative
+    mx-auto
+    min-h-[680px]
+    w-full
+    max-w-[1848px]
+    overflow-hidden
+    bg-white
+
+    sm:min-h-[620px]
+
+    lg:aspect-[1848/851]
+    lg:min-h-0
+  "
+>
+  {/* Complete background image — no desktop cropping */}
+  <img
+    src={homeBg}
+    alt=""
+    aria-hidden="true"
+    className="
+      pointer-events-none
+      absolute
+      inset-0
+      h-full
+      w-full
+      select-none
+
+      object-cover
+      object-[65%_center]
+
+      sm:object-[62%_center]
+
+      lg:object-contain
+      lg:object-center
+    "
+  />
+
+  {/* Mobile readability overlay */}
+  <div
+    className="
+      pointer-events-none
+      absolute
+      inset-0
+      bg-gradient-to-r
+      from-white
+      via-white/95
+      to-white/25
+      sm:via-white/85
+      lg:hidden
+    "
+  />
+
+  {/* Hero content */}
+  <div
+    className="
+      relative
+      z-10
+      mx-auto
+      w-full
+      max-w-[1170px]
+      px-5
+      pb-14
+      pt-12
+
+      sm:px-8
+      sm:pt-14
+
+      lg:px-10
+      lg:pb-10
+      lg:pt-12
+
+      xl:px-0
+    "
+  >
+    <motion.div
+      initial={{ opacity: 0, x: -35 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="w-full max-w-[555px]"
+    >
+      <h1
+        className="
+          text-[32px]
+          font-[600]
+          leading-[1.12]
+          tracking-tight
+          text-[#082f63]
+
+          min-[400px]:text-[34px]
+          sm:text-[38px]
+        "
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent lg:hidden" />
-        <div className="relative mx-auto max-w-[1170px] px-5 pb-14 pt-12 sm:px-8 lg:px-10 xl:px-0">
+        High Quality Conferences.
+        <br />
+        Scopus Indexed.
+        <br />
+        <span className="text-[#318b32]">Global Impact.</span>
+      </h1>
+
+      <p
+        className="
+          mt-5
+          max-w-[480px]
+          text-[13px]
+          leading-[1.65]
+          text-[#243954]
+          sm:text-[15px]
+        "
+      >
+        A trusted platform for researchers and innovators to publish in high
+        quality Scopus indexed conferences, proceedings and journals driving
+        sustainable development worldwide.
+      </p>
+
+      {/* Trust features */}
+      <div
+        className="
+          mt-7
+          grid
+          grid-cols-2
+          gap-y-4
+          text-center
+
+          sm:grid-cols-4
+          sm:gap-0
+        "
+      >
+        {trust.map(([Icon, title, text], index) => (
           <motion.div
-            initial={{ opacity: 0, x: -35 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-[555px]"
+            key={title}
+            whileHover={{ y: -5 }}
+            className={`
+              flex
+              min-h-[108px]
+              flex-col
+              items-center
+              px-2
+              text-center
+
+              sm:border-r
+              sm:border-slate-200
+
+              ${index === 0 ? "sm:pl-0" : ""}
+              ${index === trust.length - 1 ? "sm:border-r-0" : ""}
+            `}
           >
-            <h1 className="text-[34px] font-[600] leading-[1.12]  tracking-tight sm:text-[38px]">
-              High Quality Conferences.
-              <br />
-              Scopus Indexed.
-              <br />
-              <span className="text-[#318b32]">Global Impact.</span>
-            </h1>
-            <p className="mt-5 max-w-[480px] text-[14px] leading-[1.65] text-[#243954] sm:text-[15px]">
-              A trusted platform for researchers and innovators to publish in
-              high quality Scopus indexed conferences, proceedings and journals
-              driving sustainable development worldwide.
-            </p>
-            <div className="mt-7 grid grid-cols-2 gap-y-2 text-center sm:grid-cols-4 sm:gap-0">
-              {trust.map(([Icon, title, text], i) => (
-                <motion.div
-                  key={title}
-                  whileHover={{ y: -5 }}
-                  className={`flex min-h-[108px] flex-col items-center px-2 text-center sm:border-r sm:border-slate-200 ${
-                    i === 0 ? "sm:pl-0" : ""
-                  } ${i === 3 ? "sm:border-r-0" : ""}`}
-                >
-                  <Icon
-                    size={31}
-                    strokeWidth={1.6}
-                    className="mb-2 text-[#318b32]"
-                  />
+            <Icon
+              size={31}
+              strokeWidth={1.6}
+              className="mb-2 text-[#318b32]"
+            />
 
-                  <b className="block text-[11px] leading-5">{title}</b>
+            <b className="block text-[11px] font-[600] leading-5">
+              {title}
+            </b>
 
-                  <span className="block text-[11px] leading-5">{text}</span>
-                </motion.div>
-              ))}
-            </div>
-            <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:gap-7">
-              <Link
-                to="/conferences"
-                className="flex items-center justify-center gap-2 rounded-lg bg-[#082f63] px-5 py-3.5 text-[13px] font-[550] text-white shadow-lg transition hover:-translate-y-1 hover:bg-[#0b417f]"
-              >
-                <Search size={18} />
-                Explore Conferences
-              </Link>
-              <a
-                href="#"
-                className="flex items-center justify-center gap-2 rounded-lg border border-[#7d96b8] bg-white px-5 py-3.5 text-[13px] font-[550] transition hover:-translate-y-1 hover:border-green-600 hover:text-green-700"
-              >
-                <BookOpen size={18} />
-                Browse Journals & Proceedings
-              </a>
-            </div>
+            <span className="block text-[11px] leading-5">
+              {text}
+            </span>
           </motion.div>
-        </div>
-      </section>
+        ))}
+      </div>
+
+      {/* Buttons */}
+      <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:gap-7">
+        <Link
+          to="/conferences"
+          className="
+            flex
+            min-h-[48px]
+            items-center
+            justify-center
+            gap-2
+            rounded-lg
+            bg-[#082f63]
+            px-5
+            py-3.5
+            text-[13px]
+            font-[550]
+            text-white
+            shadow-lg
+            transition
+            hover:-translate-y-1
+            hover:bg-[#0b417f]
+          "
+        >
+          <Search size={18} />
+          Explore Conferences
+        </Link>
+
+        <Link
+          to="/journals-proceedings"
+          className="
+            flex
+            min-h-[48px]
+            items-center
+            justify-center
+            gap-2
+            rounded-lg
+            border
+            border-[#7d96b8]
+            bg-white
+            px-5
+            py-3.5
+            text-[13px]
+            font-[550]
+            transition
+            hover:-translate-y-1
+            hover:border-[#318b32]
+            hover:text-[#318b32]
+          "
+        >
+          <BookOpen size={18} />
+          Browse Journals &amp; Proceedings
+        </Link>
+      </div>
+    </motion.div>
+  </div>
+</section>
 
       {/* ==================== STATISTICS SECTION ==================== */}
-      <section className="relative z-10">
+      <section className="relative mt-4">
         <motion.div
           {...show}
           transition={{ duration: 0.55 }}
@@ -394,80 +551,146 @@ const handleSubscribe = async (event) => {
           ))}
         </div>
       </section>
-      {/* ==================== SDG CTA SECTION ==================== */}
-      <motion.section
-        {...show}
-        transition={{ duration: 0.6 }}
-        className="mx-auto mb-5 w-[calc(100%-32px)] max-w-[1170px] overflow-hidden rounded-xl bg-[#f4f7f4] px-4 py-4 shadow-sm sm:px-5"
+     {/* ==================== SDG CTA SECTION ==================== */}
+<motion.section
+  {...show}
+  transition={{ duration: 0.6 }}
+  className="
+    mx-auto
+    mb-5
+    w-[calc(100%-32px)]
+    max-w-[1170px]
+    overflow-hidden
+    rounded-xl
+    bg-[#f4f7f4]
+    px-4
+    py-5
+    shadow-sm
+    sm:px-6
+    lg:px-7
+  "
+>
+  <div
+    className="
+      grid
+      grid-cols-1
+      items-center
+      gap-6
+      lg:grid-cols-[315px_minmax(0,1fr)]
+      lg:gap-7
+    "
+  >
+    {/* Left text content */}
+    <div className="text-center lg:text-left">
+      <h2 className="text-[16px] font-[550] leading-snug text-[#2d8733]">
+        Driving Research for a Sustainable World
+      </h2>
+
+      <p
+        className="
+          mx-auto
+          mt-2
+          max-w-[310px]
+          text-[12px]
+          leading-[1.65]
+          text-[#1c3048]
+          lg:mx-0
+        "
       >
-        <div className="grid grid-cols-1 items-center gap-5 lg:grid-cols-[110px_315px_1fr] lg:gap-4">
-          {/* Left SDG goal image */}
-          <motion.div
-            whileHover={{ scale: 1.05, rotate: 2 }}
-            transition={{ duration: 0.3 }}
-            className="flex items-center justify-center"
-          >
-            <img
-              src={goal}
-              alt="Sustainable Development Goals"
-              className="h-[105px] w-[105px] object-contain sm:h-[112px] sm:w-[112px]"
-            />
-          </motion.div>
+        Our conferences and publications support all 17 Sustainable
+        Development Goals of the United Nations.
+      </p>
 
-          {/* Middle text content */}
-          <div className="text-center lg:text-left">
-            <h2 className="text-[16px] font-[550] leading-snug text-[#2d8733] sm:text-[16px]">
-              Driving Research for a Sustainable World
-            </h2>
+      <Link
+        to="/sdg-impact"
+        className="
+          mt-3
+          inline-flex
+          min-h-[35px]
+          items-center
+          justify-center
+          gap-2
+          rounded-md
+          border
+          border-[#8099b7]
+          bg-white
+          px-4
+          text-[12px]
+          font-[550]
+          text-[#082f63]
+          transition
+          duration-300
+          hover:-translate-y-1
+          hover:border-[#318b32]
+          hover:text-[#318b32]
+          hover:shadow-md
+        "
+      >
+        Learn More About Our SDG Impact
+        <Leaf
+          size={16}
+          strokeWidth={1.8}
+          className="text-[#318b32]"
+        />
+      </Link>
+    </div>
 
-            <p className="mx-auto mt-2 max-w-[310px] text-[12px] leading-[1.65] text-[#1c3048] lg:mx-0">
-              Our conferences and publications support all 17 Sustainable
-              Development Goals of the United Nations.
-            </p>
-
-            <Link
-              to="/sdg-impact"
-              className="mt-3 inline-flex min-h-[35px] items-center justify-center gap-2 rounded-md border border-[#8099b7] bg-white px-4 text-[12px] font-[550] text-[#082f63] transition duration-300 hover:-translate-y-1 hover:border-[#318b32] hover:text-[#318b32] hover:shadow-md"
-              href="#"
-              className="mt-3 inline-flex min-h-[35px] items-center justify-center gap-2 rounded-md border border-[#8099b7] bg-white px-4 text-[12px] font-[550] text-[#082f63] transition duration-300 hover:-translate-y-1 hover:border-[#318b32] hover:text-[#318b32] hover:shadow-md"
-            >
-              Learn More About Our SDG Impact
-              <Leaf size={16} strokeWidth={1.8} className="text-[#318b32]" />
-            </Link>
-          </div>
-
-          {/* Right 18 SDG images */}
-          <div className="grid grid-cols-3 gap-2 sm:grid-cols-6 lg:grid-cols-9 lg:gap-[7px]">
-            {sdgImages.map((image, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.85 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.35,
-                  delay: index * 0.025,
-                }}
-                whileHover={{
-                  y: -4,
-                  scale: 1.06,
-                }}
-                className="flex aspect-square items-center justify-center overflow-hidden rounded-[2px] bg-white transition-shadow duration-300 hover:z-10 hover:shadow-lg"
-              >
-                <img
-                  src={image}
-                  alt={
-                    index < 17
-                      ? `Sustainable Development Goal ${index + 1}`
-                      : "Sustainable Development Goals logo"
-                  }
-                  className="h-full w-full object-contain"
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
+    {/* Right 18 SDG images */}
+    <div
+      className="
+        grid
+        min-w-0
+        grid-cols-3
+        gap-2
+        min-[420px]:grid-cols-4
+        sm:grid-cols-6
+        lg:grid-cols-9
+        lg:gap-[7px]
+      "
+    >
+      {sdgImages.map((image, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0.85 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.35,
+            delay: index * 0.025,
+          }}
+          whileHover={{
+            y: -4,
+            scale: 1.06,
+          }}
+          className="
+            flex
+            aspect-square
+            items-center
+            justify-center
+            overflow-hidden
+            rounded-[2px]
+            bg-white
+            transition-shadow
+            duration-300
+            hover:z-10
+            hover:shadow-lg
+          "
+        >
+          <img
+            src={image}
+            alt={
+              index < 17
+                ? `Sustainable Development Goal ${index + 1}`
+                : "Sustainable Development Goals logo"
+            }
+            loading="lazy"
+            className="h-full w-full object-contain"
+          />
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</motion.section>
      {/* ==================== UPCOMING CONFERENCES SECTION ==================== */}
 <section className="mx-auto max-w-[1170px] px-5 pb-4 sm:px-8 lg:px-10 xl:px-0">
   <div className="mb-4 flex items-center justify-between gap-4">

@@ -726,8 +726,8 @@ export default function AssociateConference() {
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone size={17} className="shrink-0 text-[#063669]" />
-                  <a href="tel:+919970294396" className="hover:text-[#399038]">
-                    +91 99702 94396
+                  <a href="tel:+917020095748" className="hover:text-[#399038]">
+                    +91 70200 95748
                   </a>
                 </li>
               </ul>

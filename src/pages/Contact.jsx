@@ -41,8 +41,8 @@ const contactCards = [
   {
     icon: Phone,
     title: "Call Us",
-    text: "+91 99702 94396",
-    href: "tel:+919970294396",
+    text: "+91 70200 95748",
+    href: "tel:+917020095748",
   },
   {
     icon: Clock3,
@@ -248,7 +248,7 @@ export default function Contact() {
               <p className="mt-2 text-[12px] leading-[1.65] text-white/80">Reach our team directly for conference and publication support.</p>
               <div className="mt-6 space-y-5">
                 <a href="mailto:contact@innovationconferences.org" className="group flex items-start gap-4"><Mail className="mt-0.5 shrink-0 text-[#74b93e]" size={20} /><div><p className="text-[12px] text-white/65">Email</p><p className="mt-1 break-all text-[13px] group-hover:text-[#8dcc52]">contact@innovationconferences.org</p></div></a>
-                <a href="tel:+919970294396" className="group flex items-start gap-4"><Phone className="mt-0.5 shrink-0 text-[#74b93e]" size={20} /><div><p className="text-[12px] text-white/65">Phone</p><p className="mt-1 text-[13px] group-hover:text-[#8dcc52]">+91 99702 94396</p></div></a>
+                <a href="tel:+917020095748" className="group flex items-start gap-4"><Phone className="mt-0.5 shrink-0 text-[#74b93e]" size={20} /><div><p className="text-[12px] text-white/65">Phone</p><p className="mt-1 text-[13px] group-hover:text-[#8dcc52]">+91 70200 95748</p></div></a>
                 <div className="flex items-start gap-4"><MapPin className="mt-0.5 shrink-0 text-[#74b93e]" size={20} /><div><p className="text-[12px] text-white/65">Location</p><p className="mt-1 text-[13px] leading-[1.6]">Nagpur, Maharashtra, India<br />Supporting researchers worldwide</p></div></div>
               </div>
             </motion.aside>
